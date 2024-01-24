@@ -1,0 +1,2 @@
+January 24
+- fixed github issue using git push -f origin main (Force command, only use when starting a project)
