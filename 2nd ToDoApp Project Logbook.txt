@@ -2,3 +2,6 @@ January 24
 - fixed github issue using git push -f origin main (Force command, only use when starting a project)
 - installed tailwindcss and fixed dependency issues
 - added design template reference in project folder
+
+January 25
+- added homepage and layout page

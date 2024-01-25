@@ -32,4 +32,20 @@
     
     
     <script setup>
+
     </script>
+
+<style>
+  
+.my-25-percent {
+  margin-top: 25%;
+  margin-bottom: 25%;
+}
+
+.mx-25-percent {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+
+</style>
