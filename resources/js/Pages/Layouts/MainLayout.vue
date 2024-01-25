@@ -1,18 +1,35 @@
 <template>
 
-<div class="w-full h-screen bg-green-300">
-
-
-dads
-
-</div>
-
-
-
-</template>
-
-
-<script setup>
-
-
-</script>
+    <div id="container" class="w-full h-screen bg-white text-red-500 flex-nowrap">
+    
+      <div id="navbar" class="bg-gray-900 w-full h-12">
+    
+      </div>
+    
+    
+      <div  id="body content" class="w-full h-full bg-white flex ">
+    
+        <div class="w-20 h-full bg-gray-300">
+    
+        </div>
+    
+        <slot>
+            
+        </slot>
+    
+    
+      </div>
+    
+     
+    
+    
+    
+    </div>
+    
+    
+    </template>
+    
+    
+    
+    <script setup>
+    </script>
