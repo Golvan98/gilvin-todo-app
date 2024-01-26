@@ -1,3 +1,5 @@
+NOTE 1: 
+---------------------------------------------------------
 Zoom issue is still apparent.
 Might need to apply this next time
 
@@ -19,3 +21,11 @@ and this as well
     }
   }
 </style>
+NOTE 2: 
+---------------------------------------------------------
+it has come to my understanding that zoom is not to be disabled, and you must set your websites to be
+responsive and relative for every size, that's just one of the backbreaking works as a front end developer.
+
+NOTE 3:
+---------------------------------------------------------
+sm, md, and lg: must be used in a way that the transitions are smooth, will need trial & error

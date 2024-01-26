@@ -5,3 +5,4 @@ January 24
 
 January 25
 - added homepage and layout page
+- added project notes and margins to tweak next session

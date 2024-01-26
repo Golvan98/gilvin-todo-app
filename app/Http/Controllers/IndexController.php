@@ -11,4 +11,9 @@ class IndexController extends Controller
     {
         return inertia('homepage');
     }
+
+    public function test()
+    {
+    return inertia('testpage');
+}
 }

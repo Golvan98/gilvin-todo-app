@@ -21,4 +21,6 @@ Route::get('/', function () {
 
 Route::get('/test' , [IndexController::class, 'index']);
 
+Route::get('/testpage' , [IndexController::class, 'test']);
+
 
