@@ -19,6 +19,10 @@
     
     
       </div>
+
+      <footer class="h-1/6 mt-8 mx-auto bg-gray-300">
+sup biiiitch
+      </footer>
     
      
     
@@ -45,6 +49,11 @@
 .mx-25-percent {
   margin-left: 25%;
   margin-right: 25%;
+}
+
+.mx-10-percent{
+  margin-left:10%;
+  margin-right:10%;
 }
 
 
