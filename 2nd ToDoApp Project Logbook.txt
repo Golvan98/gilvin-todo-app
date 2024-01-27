@@ -10,3 +10,7 @@ January 25
 January 26
 - added project tasks notepad, and testpage
 - added excel for tasks/deliverables, footer, & image reference in project repository for project tasks UI
+
+January 27
+- added footer dummy outline & content
+- added dummy contents for mainLayout. Will experiment on hiding it on zoom next session
