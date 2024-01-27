@@ -6,3 +6,7 @@ January 24
 January 25
 - added homepage and layout page
 - added project notes and margins to tweak next session
+
+January 26
+- added project tasks notepad, and testpage
+- added excel for tasks/deliverables, footer, & image reference in project repository for project tasks UI

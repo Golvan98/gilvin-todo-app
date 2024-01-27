@@ -20,8 +20,13 @@
     
       </div>
 
-      <footer class="h-1/6 mt-8 mx-auto bg-gray-300">
-sup biiiitch
+      <footer class="h-1/6 mt-8 mx-auto bg-gray-900 flex items-center text-white justify-center">
+          <div id="leftFooter" class="w-1/2 h-full flex items-center justify-center">
+            This is the left side of the footer, this is meant to be shown when zoom reaches to an extent
+          </div>
+          <div id="rightFooter" class="w-1/2 h-full flex items-center justify-center">
+            This is the about option, this will not be rendered once zoom reaches to an extent.
+          </div>
       </footer>
     
      
