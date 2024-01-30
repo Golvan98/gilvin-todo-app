@@ -19,12 +19,12 @@
     </div>
 
     <!-- Footer -->
-    <footer class="h-1/6 mt-8 mx-auto bg-gray-900 flex-nowrap">
-      <div id="leftFooter" class="h-full bg-red-300">
-        This is the left side of the footer. Icons are meant to be shown here and will persist when zoom reaches to an extent
+    <footer id="footer" class="h-1/6 mt-8 mx-auto bg-gray-900 flex w-full">
+      <div id="leftFooter" class="h-full flex items-center justify-center">
+        This is the Left Footer. This Remains on Top if it is zoomed in to an extent
       </div>
-      <div id="rightFooter" class="h-full">
-        This is the about option, this will not be rendered once zoom reaches to an extent.
+      <div id="rightFooter" class="bg-gray-900 h-full flex items-center justify-center">
+        This is the Right Footer. This Remains Below if it is zoomed in to an extent
       </div>
     </footer>
   </div>
@@ -33,10 +33,16 @@
 <style>
   @media screen and (max-width: 768px) {
     /* Adjust styles for smaller screens */
-   
+    #footer {
+      
+      display: flex;
+      flex-wrap: wrap;
+      color:white ;
+      
+      
+    }
     #leftFooter, #rightFooter{
-      font-size: 2px;
-    
+      font-size: 10px;
       width: 100%;
       height: 100%;
     }
@@ -45,13 +51,19 @@
       }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     /* Adjust styles for different zoom levels */
+    #footer {
+      flex: none;
+      color:white ;
+    }
     #leftFooter, #rightFooter {
-      font-size: 14px;
-      width:100%;
+      font-size: 24px;
+      width: 50% ;
+      height: 100%;
       font:green;
-      
+      margin-left: 10px;
+      margin-right: 10px
     }
   }
 
