@@ -1,61 +1,36 @@
+
+
 <template>
-  <div class="container">
-    <div class="box" v-for="(box, index) in boxes" :key="index">{{ box }}</div>
+  <MainLayout>
+    <div class="w-full h-screen">
+    <!-- Button to open the modal -->
+    <div v-if="showModal" class="modal">
+      <div class="modal-content bg-red-300 w-full  z-50">
+        <button class=" fixed inset-0 z-50 flex items-center justify-center bg-red-300 bg-opacity-80 h-3/4" @click="close">ewaea</button>
+        <p>This is a modal!</p>
+      </div>
+    </div>
+    <button @click="showModal = true">Open Modal</button>
+    
+    <!-- The modal -->
+    
   </div>
+      
+  </MainLayout>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      boxes: ['Box 1', 'Box 2', 'Box 3']
-    };
-  }
+<script setup>
+import MainLayout from '@/Pages/Layouts/MainLayout.vue';
+
+import { ref } from 'vue';
+
+const showModal = ref(false);
+
+const close = () => {
+  showModal.value = false;
+  // Emit an event if needed
 };
 </script>
 
-<style>
-.container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
-.box {
-  width: 200px;
-  height: 100px;
-  background-color: #3498db;
-  color: white;
-  text-align: center;
-  line-height: 100px;
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
 
-@media screen and (max-width: 768px) {
-  .box {
-    width: 2000px;
-    height: 75px;
-    line-height: 75px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .box {
-    width: 100px;
-    height: 50px;
-    line-height: 50px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .box {
-    width: 8000px;
-    height: 40px;
-    line-height: 40px;
-  }
-}
-</style>
