@@ -14,3 +14,7 @@ January 26
 January 27
 - added footer dummy outline & content
 - added dummy contents for mainLayout. Will experiment on hiding it on zoom next session
+
+January 30
+- added further css styles on home page and testpage. decided left navbar to be hidden on zoom
+- finished homepage and layout where it adjusts accordingly when zoomedin/zoomedout

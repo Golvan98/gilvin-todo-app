@@ -1,10 +1,18 @@
 <template>
   <div id="container" class="w-full h-screen bg-white text-red-500 flex flex-col">
     <!-- Top Navbar -->
-    <div id="topNavBar" class="bg-gray-900 w-full h-20 flex items-center justify-center space-x-12 font-bold shadow-lg text-1xl text-white">
-      <div> Home </div>
-      <div> Projects </div>
-      <div> Account </div>
+    <div id="topNavBar" class="bg-gray-900 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white">
+      <div id="leftSection" class="col-span-1"></div>
+      <div id="midSection" class="col-span-1 bg-reen-300 flex items-center justify-center space-x-4">
+        <div> Home </div>
+        <div> Projects </div>
+        <div> Get Started </div>
+      </div>
+      <div id="rightSection" class="col-span-1 flex items-center justify-end space-x-2 mr-25-pct">
+        <button>Login</button>
+        <button>Register</button>
+      </div>
+   
     </div>
 
     <!-- Body Content -->
@@ -34,21 +42,26 @@
   @media screen and (max-width: 768px) {
     /* Adjust styles for smaller screens */
     #footer {
-      
       display: flex;
       flex-wrap: wrap;
-      color:white ;
-      
-      
+      color:white ; 
     }
+
     #leftFooter, #rightFooter{
       font-size: 10px;
       width: 100%;
       height: 100%;
     }
+
     #leftNavBar{
         display:none;
       }
+      #leftSection, #rightSection{
+      display:none;
+    }
+    #midSection{
+      grid-column: span 3;
+    }
   }
 
   @media screen and (min-width: 769px) {
@@ -57,6 +70,7 @@
       flex: none;
       color:white ;
     }
+   
     #leftFooter, #rightFooter {
       font-size: 24px;
       width: 50% ;
@@ -65,6 +79,10 @@
       margin-left: 10px;
       margin-right: 10px
     }
+  }
+
+  .mr-25-pct {
+    margin-right: 25%;
   }
 
 
