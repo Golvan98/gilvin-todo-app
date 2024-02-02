@@ -23,3 +23,7 @@ January 31
 - added further tasks to be done in project excel
 - Updated Homepage (added login/register buttons in homepage)
 - configured a modal in test page using vuejs, will integrate into homepage next session
+
+February 02
+- added defineemits and props to homepage to trigger loginmodal
+- 

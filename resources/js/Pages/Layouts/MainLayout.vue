@@ -8,8 +8,9 @@
         <div> Projects </div>
         <div> Get Started </div>
       </div>
-      <div id="rightSection" class="col-span-1 flex items-center justify-end space-x-2 mr-25-pct">
-        <button>Login</button>
+      <div id="rightSection" class="col-span-1 flex items-center justify-end mr-25-pct">
+        <button @click="showModal = true" class="mr-2">Login</button>
+          <loginModal v-if="showModal" :showModal="showModal" @closeModal="showModal = false"> </loginModal>
         <button>Register</button>
       </div>
    
@@ -87,3 +88,10 @@
 
 
 </style>
+
+<script setup>
+import loginModal from '@/Pages/Modals/loginModal.vue'
+import { ref } from 'vue'
+
+const showModal = ref(false);
+</script>
