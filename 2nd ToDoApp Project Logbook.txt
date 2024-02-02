@@ -18,3 +18,8 @@ January 27
 January 30
 - added further css styles on home page and testpage. decided left navbar to be hidden on zoom
 - finished homepage and layout where it adjusts accordingly when zoomedin/zoomedout
+
+January 31
+- added further tasks to be done in project excel
+- Updated Homepage (added login/register buttons in homepage)
+- configured a modal in test page using vuejs, will integrate into homepage next session

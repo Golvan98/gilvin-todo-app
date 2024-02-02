@@ -6,7 +6,11 @@
           
          <span class="mx-25-percent bg-black text-white p-2 rounded-xl opacity-80 sm:text-red-300 md:text-yellow-500 lg:text-orange-500 sm:text-xs md:text-xs lg:text-lg"> Project Management Simplified </span> 
           
+         <button @click="showModal = true"> hello</button>
 
+         <loginModal v-if="showModal" :showModal="showModal" @closeModal="showModal = false"> </loginModal>
+         
+        
       </div>
     </body>
 
@@ -18,6 +22,12 @@
 
 <script setup>
 import MainLayout from '@/Pages/Layouts/MainLayout.vue'
+import loginModal from '@/Pages/Modals/loginModal.vue'
+import { ref } from 'vue'
+
+const showModal = ref(false);
+
+
 </script>
 
 <style>

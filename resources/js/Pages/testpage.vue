@@ -1,10 +1,10 @@
 
 
 <template>
-  <MainLayout>
+  
     <div class="w-full h-screen">
     <!-- Button to open the modal -->
-    <div v-if="showModal" class="modal">
+    <div v-if="showModal" class="">
       <div class="modal-content bg-red-300 w-full  z-50">
         <button class=" fixed inset-0 z-50 flex items-center justify-center bg-red-300 bg-opacity-80 h-3/4" @click="close">ewaea</button>
         <p>This is a modal!</p>
@@ -16,7 +16,7 @@
     
   </div>
       
-  </MainLayout>
+ 
 </template>
 
 <script setup>
