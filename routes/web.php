@@ -24,3 +24,5 @@ Route::get('/home' , [IndexController::class, 'index']);
 Route::get('/testpage' , [IndexController::class, 'test']);
 
 
+
+

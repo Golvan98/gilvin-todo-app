@@ -26,4 +26,7 @@ January 31
 
 February 02
 - added defineemits and props to homepage to trigger loginmodal
-- 
+- added login modal with complete UI design
+
+February 05
+- added register page

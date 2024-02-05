@@ -9,9 +9,10 @@
         <div> Get Started </div>
       </div>
       <div id="rightSection" class="col-span-1 flex items-center justify-end mr-25-pct">
-        <button @click="showModal = true" class="mr-2">Login</button>
-          <loginModal v-if="showModal" :showModal="showModal" @closeModal="showModal = false"> </loginModal>
-        <button>Register</button>
+        <button @click="showLoginModal = true" class="mr-2">Login</button>
+          <loginModal v-if="showLoginModal" :showLoginModal="showLoginModal" @closeLoginModal="showLoginModal = false"> </loginModal>
+        <button @click="showRegisterModal = true"> Register </button> 
+          <registerModal v-if="showRegisterModal" :showRegisterModal="showRegisterModal" @closeRegisterModal="showRegisterModal = false"> </registerModal>
       </div>
    
     </div>
@@ -91,7 +92,9 @@
 
 <script setup>
 import loginModal from '@/Pages/Modals/loginModal.vue'
+import registerModal from '@/Pages/Modals/registerModal.vue'
 import { ref } from 'vue'
 
-const showModal = ref(false);
+const showLoginModal = ref(false);
+const showRegisterModal = ref(false);
 </script>
