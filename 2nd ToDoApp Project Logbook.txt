@@ -29,4 +29,5 @@ February 02
 - added login modal with complete UI design
 
 February 05
-- added register page
+- added another blank modal for register feature
+- polished register ui, made some spacing tweaks to login modal as well
