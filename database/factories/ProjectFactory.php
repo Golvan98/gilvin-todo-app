@@ -17,7 +17,8 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+          'project_name' => fake()->unique()->randomElement(['Phoenix', 'Thunderbolt','Aurora','Odyssey','Eclipse','Serenity','Chimera','Quantum','Titan','Horizon']),
+          'project_description' => fake()->sentence()
         ];
     }
 }
