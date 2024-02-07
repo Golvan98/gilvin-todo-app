@@ -14,4 +14,9 @@ class Project extends Model
     {
         return $this->hasMany(\App\Models\Task::class, 'task_id');
     }
+
+    public function megaproject(): HasMany
+    {
+        return $this->hasMany(\App\Models\ProjectUser::class, 'project_id');
+    }
 }

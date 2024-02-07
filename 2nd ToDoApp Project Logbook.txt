@@ -37,4 +37,6 @@ February 06
 - fixed docker rootnode bug & configured env (also updated erd, to create tables tomorrow)
 
 February 07
-- added projects table
+- added projects controller, factory, model, and migration
+- added tasks cfm and table, with relationsip to projects table
+- created many-to-many relationship ProjectUser table
