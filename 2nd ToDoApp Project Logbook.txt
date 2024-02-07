@@ -31,3 +31,10 @@ February 02
 February 05
 - added another blank modal for register feature
 - polished register ui, made some spacing tweaks to login modal as well
+
+February 06
+- added composer settings
+- fixed docker rootnode bug & configured env (also updated erd, to create tables tomorrow)
+
+February 07
+- added projects table
