@@ -13,10 +13,16 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('task_description');
-            $table->string('status');
-            $table->string('note');
+            $table->string('name')->nullable();
+            $table->string('status')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
+            
+
+            $table->foreignIdFor(\App\Models\Project::class, 'project_id')->nullable()
+            ->references('id')
+            ->on('projects')
+            ->onDelete('cascade');
         });
     }
 

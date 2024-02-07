@@ -18,5 +18,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\Project::factory(1)->create();
+
+        \App\Models\Task::factory(1)->create([
+            'project_id' => 1
+        ]);
     }
+
+    
 }
