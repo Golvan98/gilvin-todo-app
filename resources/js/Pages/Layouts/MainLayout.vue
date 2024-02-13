@@ -4,6 +4,7 @@
     <div id="topNavBar" class="bg-gray-900 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white">
       <div id="leftSection" class="col-span-1"></div>
       <div id="midSection" class="col-span-1 bg-reen-300 flex items-center justify-center space-x-2.5">
+        <div v-if="authenticated"> Positive Gilvz </div>
         <div> Home </div>
         <div> Projects </div>
         <div> Get Started </div>

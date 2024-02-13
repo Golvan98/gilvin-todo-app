@@ -29,3 +29,7 @@ responsive and relative for every size, that's just one of the backbreaking work
 NOTE 3:
 ---------------------------------------------------------
 sm, md, and lg: must be used in a way that the transitions are smooth, will need trial & error
+
+NOTE 4:
+---------------------------------------------------------
+In your new project, you need to setup handle inertia request, basis of things to load out by default when visiting any page, or you could setup another way to do it.

@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home' , [IndexController::class, 'index']);
+Route::get('/home' , [IndexController::class, 'index'])->name('home');
 
 Route::get('/testpage' , [IndexController::class, 'test']);
 

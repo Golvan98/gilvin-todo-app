@@ -12,6 +12,8 @@
               <div class="w-full h-10-percent flex items-center justify-center sm:text-xs md:text-md lg:text-4xl"> 𝔾ℙ𝕄</div>
              <div id="2ndBlock" class="w-4/5 h-70-percent flex flex-col items-center justify-center">
               
+              <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
+              
               <label for="name"></label><input id="name" v-model="form.name" type="text" placeholder="name" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto text-xs"> 
               <label for="email"></label><input id="email" v-model="form.email" type="text" placeholder="email" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto mt-3 mb-2 text-xs"> 
               <label for="password"></label><input id="password" v-model="form.password" type="text" placeholder="password" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto mt-1 mb-2 text-xs"> 
@@ -22,51 +24,51 @@
   
             </form>
       </div>
-  </template>
-  
-  
-  
-  <script setup>
-  import { defineProps, defineEmits  } from 'vue';
-  import { ref } from 'vue'
-  import { useForm } from '@inertiajs/vue3';
-  import { router } from '@inertiajs/vue3'
-  import { computed } from 'vue'
-  import { reactive } from 'vue'
+</template>
+
+<script setup>
+import { defineProps, defineEmits  } from 'vue';
+import { ref } from 'vue'
+import { useForm } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3'
+import { computed } from 'vue'
+import { reactive } from 'vue'
 
 
-  const form = useForm(
-  {
-    name:null,
-    email:null,
-    password:null,
-  })
+const form = useForm(
+{
+  name:null,
+  email:null,
+  password:null,
+})
 
-  const login = () => form.post('register')
-  
-  const showModal = defineProps(['showRegisterModal']);
-  const emits = defineEmits(['closeRegisterModal']);
-  
-  
-  const closeRegModal = () => {
-    emits('closeRegisterModal');
-    // Emit an event if needed
-  };
-  
-  //<button @click="close" class="">Close Content</button>
-  
-  </script> 
-  
-  <style>
-      .h-10-percent{
-          height: 10%;
-      }
-  
-      .h-70-percent{
-          height: 70%;
-      }
-  
-      .h-20-percent{
-          height: 20%;
-      }
-  </style>
+const csrfToken = '{{ csrf_token() }}'; // CSRF token value
+
+const login = () => form.post('register')
+
+const showModal = defineProps(['showRegisterModal']);
+const emits = defineEmits(['closeRegisterModal']);
+
+
+const closeRegModal = () => {
+  emits('closeRegisterModal');
+  // Emit an event if needed
+};
+
+//<button @click="close" class="">Close Content</button>
+
+</script> 
+
+<style>
+  .h-10-percent{
+      height: 10%;
+  }
+
+  .h-70-percent{
+      height: 70%;
+  }
+
+  .h-20-percent{
+      height: 20%;
+  }
+</style>
