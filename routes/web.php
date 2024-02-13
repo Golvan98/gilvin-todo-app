@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,10 @@ Route::get('/', function () {
 Route::get('/home' , [IndexController::class, 'index']);
 
 Route::get('/testpage' , [IndexController::class, 'test']);
+
+Route::post('/register' , [AuthController::class, 'register'])->name('register.test');
+
+Route::get('/logout' , [AuthController::class , 'logout']);
 
 
 

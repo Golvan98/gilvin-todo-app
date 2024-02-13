@@ -40,3 +40,7 @@ February 07
 - added projects controller, factory, model, and migration
 - added tasks cfm and table, with relationsip to projects table
 - created many-to-many relationship ProjectUser table
+- added factory for dem tables
+
+February 08
+- established route for register, syntax is new btw

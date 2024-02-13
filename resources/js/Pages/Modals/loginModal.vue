@@ -1,6 +1,6 @@
 <template>
   <div  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
-        <div class="bg-white w-1/4 h-2/5 flex flex-col items-center justify-center text-gray-600 border border-gray-900 ">
+        <form @submit.prevent="login" class="bg-white w-1/4 h-2/5 flex flex-col items-center justify-center text-gray-600 border border-gray-900 ">
 
             <div id="closeSection" class="w-full h-20-percent flex items-start justify-end"> 
                 <button @click="closeLogModal" class=" text-black hover:text-red-400 focus:outline-none">
@@ -19,12 +19,12 @@
             
             <input id="password" type="password" placeholder="password" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto mt-3 mb-2 text-xs"> 
 
-            <div class="w-4/5 flex items-center justify-center mt-1 mb-4"> Login  </div>
+            <div class="w-4/5 flex items-center justify-center mt-1 mb-4"> <button type="submit"> Login </button> </div>
            
 
            </div>
 
-        </div>
+        </form>
     </div>
 </template>
 
