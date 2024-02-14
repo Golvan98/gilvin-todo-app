@@ -22,9 +22,9 @@ class AuthController extends Controller
     public function register(Request $request)
     {
            $credentials =  $request->validate([
-                'name' => 'required',
-                'email' => 'required',
-                'password' => 'required',
+                'name' => 'required|min:4|max:50',
+                'email' => 'required|email|min:2|max:40',
+                'password' => 'required|min:8|max:25',
             ]);
 
             $newUser = User::create($credentials);
@@ -32,7 +32,7 @@ class AuthController extends Controller
 
             if (Auth::attempt($credentials))
             {
-                $user = auth()->user();
+                
                 return redirect()->intended('home')->with('success', 'registered');
             }
             else

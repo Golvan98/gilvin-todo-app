@@ -44,7 +44,11 @@ const form = useForm(
 
 const csrfToken = '{{ csrf_token() }}'; // CSRF token value
 
-const login = () => form.post('register')
+//const login = () => form.post('register')
+const login = async () => {
+  await form.post('register'); // Wait for the registration request to complete
+  closeRegModal(); // Close the modal after registration
+};
 
 const showModal = defineProps(['showRegisterModal']);
 const emits = defineEmits(['closeRegisterModal']);

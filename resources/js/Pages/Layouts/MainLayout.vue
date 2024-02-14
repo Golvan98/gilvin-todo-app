@@ -1,9 +1,5 @@
 <template>
-<div v-if="flashSuccess" 
-    x-data="{show: true}"
-       x-show="show"
-       x-init="setTimeout(() => show = false, 1000)"
-    class="alert fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+<div v-if="flashSuccess" class="alert fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
                {{ flashSuccess }}
   </div>
 
@@ -102,15 +98,24 @@
 <script setup>
 import loginModal from '@/Pages/Modals/loginModal.vue'
 import registerModal from '@/Pages/Modals/registerModal.vue'
-import { ref } from 'vue'
+import { ref, watch  } from 'vue'
 
 import { usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
 const page = usePage()
-const flashSuccess = computed(() => page.props.flash.success, )
+const flashSuccess = ref(page.props.flash.success)
 
 const user = computed( () => page.props.user)
 
 const showLoginModal = ref(false);
 const showRegisterModal = ref(false);
+
+watch(() => page.props.flash.success, (newValue) => {
+  flashSuccess.value = newValue;
+
+  // Automatically hide the flash message after 1000ms (1 second)
+  setTimeout(() => {
+    flashSuccess.value = '';
+  }, 1000);
+});
 </script>
