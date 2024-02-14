@@ -44,3 +44,6 @@ February 07
 
 February 08
 - established route for register, syntax is new btw
+- added backend for register, but having trouble with reflecting auth on layout page
+February 09
+- bruh, just watch those login back

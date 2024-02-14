@@ -32,7 +32,8 @@ class AuthController extends Controller
 
             if (Auth::attempt($credentials))
             {
-                return redirect()->route('home');
+                $user = auth()->user();
+                return redirect()->intended('home')->with('success', 'registered');
             }
             else
             {

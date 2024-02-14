@@ -1,10 +1,18 @@
 <template>
+<div v-if="flashSuccess" 
+    x-data="{show: true}"
+       x-show="show"
+       x-init="setTimeout(() => show = false, 1000)"
+    class="alert fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+               {{ flashSuccess }}
+  </div>
+
   <div id="container" class="w-full h-screen bg-white text-red-500 flex flex-col">
     <!-- Top Navbar -->
     <div id="topNavBar" class="bg-gray-900 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white">
       <div id="leftSection" class="col-span-1"></div>
       <div id="midSection" class="col-span-1 bg-reen-300 flex items-center justify-center space-x-2.5">
-        <div v-if="authenticated"> Positive Gilvz </div>
+        <div v-if="user"> Positive Gilvz{{ user.name }}  </div>
         <div> Home </div>
         <div> Projects </div>
         <div> Get Started </div>
@@ -95,6 +103,13 @@
 import loginModal from '@/Pages/Modals/loginModal.vue'
 import registerModal from '@/Pages/Modals/registerModal.vue'
 import { ref } from 'vue'
+
+import { usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
+const page = usePage()
+const flashSuccess = computed(() => page.props.flash.success, )
+
+const user = computed( () => page.props.user)
 
 const showLoginModal = ref(false);
 const showRegisterModal = ref(false);
