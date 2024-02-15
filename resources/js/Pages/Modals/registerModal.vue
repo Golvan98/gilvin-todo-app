@@ -15,11 +15,14 @@
               <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
               
               <label for="name"></label><input id="name" v-model="form.name" type="text" placeholder="name" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto text-xs"> 
+              <div v-if="form.errors.name" class="text-xs text-red-500 flex justify-start bg-red-300 w-full"> {{form.errors.name}}</div>
               <label for="email"></label><input id="email" v-model="form.email" type="text" placeholder="email" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto mt-3 mb-2 text-xs"> 
+              <div v-if="form.errors.email" class="text-xs text-red-500 flex justify-start bg-red-300 w-full"> {{form.errors.email}}</div>
               <label for="password"></label><input id="password" v-model="form.password" type="text" placeholder="password" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto mt-1 mb-2 text-xs"> 
-          
+              <div v-if="form.errors.password" class="text-xs text-red-500 flex justify-start bg-red-300 w-full"> {{form.errors.password}}</div>
               <div class=" flex items-center justify-center"> <button type="submit"> Register </button> </div>
   
+             
              </div>
   
             </form>
@@ -47,7 +50,13 @@ const csrfToken = '{{ csrf_token() }}'; // CSRF token value
 //const login = () => form.post('register')
 const login = async () => {
   await form.post('register'); // Wait for the registration request to complete
-  closeRegModal(); // Close the modal after registration
+  if (!form.errors.any()) {
+    // Close the registration modal by setting showRegisterModal to false
+    closeRegModal();
+  }
+  else{
+    window.location.reload();
+  }
 };
 
 const showModal = defineProps(['showRegisterModal']);

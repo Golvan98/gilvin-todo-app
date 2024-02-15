@@ -103,7 +103,7 @@ import { ref, watch  } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
 const page = usePage()
-const flashSuccess = ref(page.props.flash.success)
+const flashSuccess = computed(() => page.props.flash.success, )
 
 const user = computed( () => page.props.user)
 
