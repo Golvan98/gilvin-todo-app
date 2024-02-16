@@ -51,3 +51,8 @@ February 14
 
 February 15
 - added error input messages, keeps the register modal on the screen though. will need tweaking
+
+February 16
+- added logout feature
+- fixed register modal not closing after successfully registering after submitting field misinput
+- added a test@example.com in seeder for test purposes
