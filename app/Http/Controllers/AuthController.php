@@ -37,27 +37,27 @@ class AuthController extends Controller
             }
             else
             {
-                dd('sadge');
+              // nothing to be done here, const register form error on vuejs already prevents a misinput attempt on register, dd below exists just in case
+              dd('misinput bypassed form errors');
             }
 
     }
 
     public function login(Request $request)
-    {
-        
+    {      
 
         if (!Auth::attempt($request->validate([
             'email' => 'required|string|email',
-            'password' => 'required|string'
+            'password' => 'required|'
         ]), true)) {
             throw ValidationException::withMessages([
-                'email' => 'Authentication failed'
+                'email' => 'invalid username or password',
+                
             ]);
         }
 
         $request->session()->regenerate();
-
-        return redirect()->intended();
+        return redirect()->intended('home')->with('success', 'User Logged In');
 
 
     }
