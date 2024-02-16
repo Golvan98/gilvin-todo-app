@@ -49,10 +49,12 @@ const csrfToken = '{{ csrf_token() }}'; // CSRF token value
 
 //const login = () => form.post('register')
 const login = async () => {
-  await form.post('register'); // Wait for the registration request to complete
+ // Wait for the registration request to complete
+ form.post('register');
   if (!form.errors.any()) {
     // Close the registration modal by setting showRegisterModal to false
     closeRegModal();
+    
   }
   else{
     window.location.reload();

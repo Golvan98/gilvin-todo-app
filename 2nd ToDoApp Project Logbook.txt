@@ -47,4 +47,7 @@ February 08
 - added backend for register, but having trouble with reflecting auth on layout page
 
 February 14
-- bruh, just watch those login back
+- configured required inputs for register field, needs frontend message error to show when misinput occurs
+
+February 15
+- added error input messages, keeps the register modal on the screen though. will need tweaking

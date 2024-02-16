@@ -26,7 +26,7 @@ Route::get('/testpage' , [IndexController::class, 'test']);
 
 Route::post('/register' , [AuthController::class, 'register'])->name('register.test');
 
-Route::get('/logout' , [AuthController::class , 'logout']);
+Route::delete('/logout' , [AuthController::class , 'logout']);
 
 
 

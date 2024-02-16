@@ -13,11 +13,14 @@
         <div> Projects </div>
         <div> Get Started </div>
       </div>
-      <div id="rightSection" class="col-span-1 flex items-center justify-end mr-25-pct">
+      <div v-if="!user" id="rightSection" class="col-span-1 flex items-center justify-end mr-25-pct">
         <button @click="showLoginModal = true" class="mr-2">Login</button>
           <loginModal v-if="showLoginModal" :showLoginModal="showLoginModal" @closeLoginModal="showLoginModal = false"> </loginModal>
         <button @click="showRegisterModal = true"> Register </button> 
           <registerModal v-if="showRegisterModal" :showRegisterModal="showRegisterModal" @closeRegisterModal="showRegisterModal = false"> </registerModal>
+      </div>
+      <div v-if="user" id="rightSection" class="col-span-1 flex items-center justify-end mr-25-pct">
+        <Link href="logout" method="delete" as="button" > Logout</Link>
       </div>
    
     </div>
@@ -98,10 +101,9 @@
 <script setup>
 import loginModal from '@/Pages/Modals/loginModal.vue'
 import registerModal from '@/Pages/Modals/registerModal.vue'
-import { ref, watch  } from 'vue'
+import { ref, watch , computed  } from 'vue'
+import { Link, usePage } from '@inertiajs/vue3'
 
-import { usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
 const page = usePage()
 const flashSuccess = computed(() => page.props.flash.success, )
 
@@ -109,6 +111,9 @@ const user = computed( () => page.props.user)
 
 const showLoginModal = ref(false);
 const showRegisterModal = ref(false);
+
+
+
 
 watch(() => page.props.flash.success, (newValue) => {
   flashSuccess.value = newValue;
