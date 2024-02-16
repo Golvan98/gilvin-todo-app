@@ -42,6 +42,26 @@ class AuthController extends Controller
 
     }
 
+    public function login(Request $request)
+    {
+        
+
+        if (!Auth::attempt($request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string'
+        ]), true)) {
+            throw ValidationException::withMessages([
+                'email' => 'Authentication failed'
+            ]);
+        }
+
+        $request->session()->regenerate();
+
+        return redirect()->intended();
+
+
+    }
+
     public function logout(Request $request)
     {
 

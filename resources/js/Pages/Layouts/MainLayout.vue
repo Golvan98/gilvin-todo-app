@@ -20,7 +20,7 @@
           <registerModal v-if="showRegisterModal" :showRegisterModal="showRegisterModal" @closeRegisterModal="showRegisterModal = false"> </registerModal>
       </div>
       <div v-if="user" id="rightSection" class="col-span-1 flex items-center justify-end mr-25-pct">
-        <Link href="logout" method="delete" as="button" > Logout</Link>
+        <Link href="logout" method="delete" as="button" @click="showRegisterModal = false" > Logout</Link>
       </div>
    
     </div>
