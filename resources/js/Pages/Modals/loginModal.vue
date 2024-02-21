@@ -10,15 +10,15 @@
                 </button>
             </div>
 
-            <div class="w-full h-10-percent flex items-center justify-center sm:text-xs md:text-md lg:text-4xl"> 𝔾ℙ𝕄</div>
+            <div class="w-full h-10-percent flex items-center justify-center sm:text-xs md:text-md lg:text-4xl mb-4"> 𝔾ℙ𝕄</div>
            <div id="2ndBlock" class="w-4/5 h-70-percent flex flex-col items-center justify-center">
             
     
             <input id="email" v-model="form.email" type="text" placeholder="email@example.com" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto text-xs"> 
-            <div v-if="form.errors.email" class="text-xs text-red-500 flex justify-start bg-red-300 w-full"> {{form.errors.email}}</div>
+            <div v-if="form.errors.email" class="text-xs text-red-500 flex justify-start w-4/5 "> {{form.errors.email}}</div>
             
             <input id="password" v-model="form.password" type="password" placeholder="password" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto mt-3 mb-2 text-xs"> 
-            <div v-if="form.errors.password" class="text-xs text-red-500 flex justify-start bg-red-300 w-full"> {{form.errors.password}}</div>
+            <div v-if="form.errors.password" class="text-xs text-red-500 flex justify-start w-4/5"> {{form.errors.password}}</div>
             <div class="w-4/5 flex items-center justify-center mt-1 mb-4"> <button type="submit"> Login </button> </div>
            
 
