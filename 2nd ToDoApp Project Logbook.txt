@@ -56,3 +56,4 @@ February 16
 - added logout feature
 - fixed register modal not closing after successfully registering after submitting field misinput
 - added a test@example.com in db:seeder for test purposes
+- added complete login feature, to tweak its UI next session

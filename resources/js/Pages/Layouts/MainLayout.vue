@@ -105,7 +105,7 @@ import { ref, watch , computed  } from 'vue'
 import { Link, usePage } from '@inertiajs/vue3'
 
 const page = usePage()
-const flashSuccess = computed(() => page.props.flash.success, )
+const flashSuccess = ref(page.props.flash.success)
 
 const user = computed( () => page.props.user)
 
@@ -117,10 +117,10 @@ const showRegisterModal = ref(false);
 
 watch(() => page.props.flash.success, (newValue) => {
   flashSuccess.value = newValue;
-
-  // Automatically hide the flash message after 1000ms (1 second)
   setTimeout(() => {
     flashSuccess.value = '';
-  }, 1000);
-});
+  }, 1000); // Adjust the time (in milliseconds) as needed
+})
+  // Automatically hide the flash message after 1000ms (1 second)
+ // const computedFlashSuccess = computed(() => flashSuccess.value)
 </script>

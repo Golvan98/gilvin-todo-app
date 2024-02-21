@@ -1,0 +1,8 @@
+BUG 1:
+BUG - logging out reopens modal
+FIX - Changed const flashSuccess = computed into ref
+
+------------------------------------------------------
+BUG 2:
+- flash success not disappearing (it used to before)
+------------------------------------------------------
