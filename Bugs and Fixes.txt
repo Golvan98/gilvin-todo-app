@@ -1,8 +1,9 @@
-BUG 1:
-BUG - logging out reopens modal
-FIX - Changed const flashSuccess = computed into ref
+BUG 1:logging out reopens modal
+FIX - added another @click parameter in logout button to 
+reinsure all modals close.
+
 
 ------------------------------------------------------
-BUG 2:
-- flash success not disappearing (it used to before)
+BUG 2:flash success not disappearing (it used to before)
+FIX - Changed const flashSuccess = computed into ref
 ------------------------------------------------------

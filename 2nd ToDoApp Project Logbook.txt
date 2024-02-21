@@ -57,3 +57,7 @@ February 16
 - fixed register modal not closing after successfully registering after submitting field misinput
 - added a test@example.com in db:seeder for test purposes
 - added complete login feature, to tweak its UI next session
+
+February 21
+- fixed flash success not fading out after login/logout bug
+- fixed modals persisting after logging in/logging out
