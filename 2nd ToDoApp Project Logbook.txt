@@ -64,4 +64,4 @@ February 21
 - tweaked UI for modals a bit
 
 February 22
--
+- added column to projects table to distinguish project owner 
