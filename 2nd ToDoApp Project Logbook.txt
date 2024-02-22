@@ -61,3 +61,7 @@ February 16
 February 21
 - fixed flash success not fading out after login/logout bug
 - fixed modals persisting after logging in/logging out
+- tweaked UI for modals a bit
+
+February 22
+-

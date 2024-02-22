@@ -18,7 +18,8 @@ class ProjectFactory extends Factory
     {
         return [
           'project_name' => fake()->unique()->randomElement(['Phoenix', 'Thunderbolt','Aurora','Odyssey','Eclipse','Serenity','Chimera','Quantum','Titan','Horizon']),
-          'project_description' => fake()->sentence()
+          'project_description' => fake()->sentence(),
+          'ownerId' => 1
         ];
     }
 }
