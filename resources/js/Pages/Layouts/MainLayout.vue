@@ -9,8 +9,8 @@
       <div id="leftSection" class="col-span-1"></div>
       <div id="midSection" class="col-span-1 bg-reen-300 flex items-center justify-center space-x-2.5">
         <div v-if="user"> Positive Gilvz{{ user.name }}   </div>
-        <div> Home  </div>
-        <div> Projects </div>
+        <Link href="home"> <div> Home  </div> </Link>
+        <Link href="projects"> <div> Projects </div> </Link>
         <div> Get Started </div>
       </div>
       <div v-if="!user" id="rightSection" class="col-span-1 flex items-center justify-end mr-25-pct">
@@ -38,7 +38,7 @@
     </div>
 
     <!-- Footer -->
-    <footer id="footer" class="h-1/6 mt-8 mx-auto bg-gray-900 flex w-full">
+    <footer id="footer" class="h-10-percent mt-8 mx-auto bg-gray-900 flex w-full">
       <div id="leftFooter" class="h-full flex items-center justify-center">
         This is the Left Footer. This Remains on Top if it is zoomed in to an extent
       </div>
@@ -95,6 +95,12 @@
   .mr-25-pct {
     margin-right: 25%;
   }
+
+  .h-10-percent{
+      height: 10%;
+  }
+
+ 
 
 
 </style>

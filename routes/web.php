@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::post('/register' , [AuthController::class, 'register'])->name('register.t
 Route::delete('/logout' , [AuthController::class , 'logout'])->name('logout');
 
 Route::post('login', [AuthController::class, 'login'])->name('login');;
+
+Route::get('projects', [ProjectController::class, 'index'])->name('projects');
 
 
 

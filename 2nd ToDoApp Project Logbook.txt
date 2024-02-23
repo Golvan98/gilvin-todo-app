@@ -65,3 +65,7 @@ February 21
 
 February 22
 - added column to projects table to distinguish project owner 
+- adjusted form field sizes, found a password overlapping layout bug
+
+February 23
+-
