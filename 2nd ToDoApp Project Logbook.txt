@@ -73,3 +73,4 @@ February 23
 
 February 24
 - updated projects layout
+- added task factory for each project and define props for projects page, to test further

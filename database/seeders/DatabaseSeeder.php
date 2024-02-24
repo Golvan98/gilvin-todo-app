@@ -27,10 +27,33 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Project::factory(8)->create();
 
+
         \App\Models\User::factory(8)->create();
 
-        \App\Models\Task::factory(1)->create([
+        \App\Models\Task::factory(4)->create([
+            'project_id' => 1
+        ]);
+
+        \App\Models\Task::factory(4)->create([
+            'project_id' => 2
+        ]);
+        \App\Models\Task::factory(4)->create([
+            'project_id' => 3
+        ]);
+        \App\Models\Task::factory(4)->create([
             'project_id' => 4
+        ]);
+        \App\Models\Task::factory(4)->create([
+            'project_id' => 5
+        ]);
+        \App\Models\Task::factory(4)->create([
+            'project_id' => 6
+        ]);
+        \App\Models\Task::factory(4)->create([
+            'project_id' => 7
+        ]);
+        \App\Models\Task::factory(4)->create([
+            'project_id' => 8
         ]);
 
         \App\Models\ProjectUser::factory(1)->create([
