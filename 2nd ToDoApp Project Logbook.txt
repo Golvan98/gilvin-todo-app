@@ -68,4 +68,8 @@ February 22
 - adjusted form field sizes, found a password overlapping layout bug
 
 February 23
--
+- created route & template for projects page
+- finished layout/template for project page
+
+February 24
+- updated projects layout
