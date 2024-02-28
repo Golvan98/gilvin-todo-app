@@ -21,15 +21,16 @@
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
      <div v-for="project in projects" :key="projects.id" class="h-1/6">
       {{ project.project_name }}  
+      
+      <span v-if="task.project_id==project.id"> I am  {{ task.name }} for {{ project.project_name }}</span>
+      
      </div>
       
       
     </div>
 
     <div id="inProgressRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto">
-      <div v-for="task in tasks" :key="tasks.id" class="h-1/6">
-        {{ task.name }}
-      </div>
+      
     </div>
 
     <div id="completeRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
