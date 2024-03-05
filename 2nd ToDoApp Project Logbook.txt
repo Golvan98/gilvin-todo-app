@@ -74,3 +74,14 @@ February 23
 February 24
 - updated projects layout
 - added task factory for each project and define props for projects page, to test further
+
+February 28
+- added tasks Read Feature in projects page (CRUD)
+- added tasks if condition to show up for its assigned project, frontend needed
+- weirdshit bug, suddenly not showing props when it showed before. wtf.
+
+March 05
+- updated projects page UI
+
+March 06
+- assignment: query to grab project members
