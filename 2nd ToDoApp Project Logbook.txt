@@ -83,5 +83,9 @@ February 28
 March 05
 - updated projects page UI
 
-March 06
+
+March 07
+- 
+
+March 08
 - assignment: query to grab project members

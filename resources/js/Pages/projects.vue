@@ -20,9 +20,11 @@
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
 
      <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
+        <button @click="selectProject(project.id)" :class="{ 'bg-green-400': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
         <div class="mx-auto w-3/4 h-1/4 font-bold">  {{ project.project_name }}  </div>   
-        
+          {{ selectedProjectId }}
         <div id="projectDescription" class="mx-auto w-4/5 h-3/4 text-xs"> {{ project.project_description }}</div>
+        </button>
      </div>
     
     </div>
@@ -78,7 +80,17 @@ const props = defineProps ({
   projectUsers: Object
 })
 
-const selectedProject = ref(null);
+const selectedProjectId = ref(null);
+
+const selectProject = (projectId) => {
+selectedProjectId.value = projectId;
+}
+
+const isProjectSelected = (projectId) => {
+return selectedProjectId.value === projectId;
+}
+
+
 </script>
 
 <style>

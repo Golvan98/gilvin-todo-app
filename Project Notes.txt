@@ -39,3 +39,6 @@ NOTE 5:
 in the projects section, initial color for project boxes will be white, and then highlighted to blue when clicked, and only then will the tasks show
 
 This should also add the small - and + buttons for deleting and adding tasks/projects/members
+
+Note 5:
+---------------------------------------------------------
