@@ -30,8 +30,8 @@
     </div>
 
     <div id="inProgressRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto ">
-      <div v-for="user in users" :key="users.id">
-          {{ user.name }}
+      <div v-for="task in tasks" :key="tasks.id" >
+         <div v-if="selectedProjectId ==task.project_id "> {{ task.name }} </div>
       </div>      
     </div>
 

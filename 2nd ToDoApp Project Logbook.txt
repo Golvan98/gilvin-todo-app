@@ -85,7 +85,8 @@ March 05
 
 
 March 07
-- 
+- added button function to highlight currently selected project
 
 March 08
 - assignment: query to grab project members
+- assignment: query to grab task for selected project
