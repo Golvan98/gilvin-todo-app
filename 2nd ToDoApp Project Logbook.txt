@@ -86,7 +86,9 @@ March 05
 
 March 07
 - added button function to highlight currently selected project
+- finished assignment: query to grab task for selected project
 
 March 08
+- created a method to filter task props in project page
 - assignment: query to grab project members
-- assignment: query to grab task for selected project
+

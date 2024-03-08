@@ -1,4 +1,4 @@
-<template>
+<template v-for="task in tasks" :key="task.id">
 
 <MainLayout>
 
@@ -19,24 +19,42 @@
 
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
 
+
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        Projects
+      </div>  
+
      <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
-        <button @click="selectProject(project.id)" :class="{ 'bg-green-400': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
-        <div class="mx-auto w-3/4 h-1/4 font-bold">  {{ project.project_name }}  </div>   
-          {{ selectedProjectId }}
+        <button @click="selectProject(project.id)" :class="{ 'bg-red-400': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
+        <div class="mx-auto w-3/4 h-1/4 font-bold"> Project {{ project.project_name }}  </div>   
+        
         <div id="projectDescription" class="mx-auto w-4/5 h-3/4 text-xs"> {{ project.project_description }}</div>
         </button>
      </div>
     
     </div>
 
-    <div id="inProgressRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto ">
-      <div v-for="task in tasks" :key="tasks.id" >
-         <div v-if="selectedProjectId ==task.project_id "> {{ task.name }} </div>
+    <div id="tasksRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto ">
+
+
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        Project Tasks {{ selectedProjectId }} 
+
+      </div>
+
+
+      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
+      
+          {{ task.name }}
       </div>      
+      
     </div>
 
-    <div id="completeRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
+    <div id="membersRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        Project Members
 
+      </div>  
     </div>
 
 
@@ -77,10 +95,10 @@ const props = defineProps ({
   projects: Object,
   tasks: Object,
   users: Object,
-  projectUsers: Object
+  projectUsers: Object,
 })
 
-const selectedProjectId = ref(null);
+const selectedProjectId = ref(1);
 
 const selectProject = (projectId) => {
 selectedProjectId.value = projectId;
@@ -88,6 +106,10 @@ selectedProjectId.value = projectId;
 
 const isProjectSelected = (projectId) => {
 return selectedProjectId.value === projectId;
+}
+
+const filteredTasks = () => {
+  return props.tasks.filter(task => task.project_id === selectedProjectId.value);
 }
 
 
