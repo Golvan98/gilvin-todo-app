@@ -89,6 +89,6 @@ March 07
 - finished assignment: query to grab task for selected project
 
 March 08
-- created a method to filter task props in project page
+- created a method to filter task query/props in project page
 - assignment: query to grab project members
 

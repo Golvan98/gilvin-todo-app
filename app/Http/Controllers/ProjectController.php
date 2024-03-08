@@ -19,6 +19,7 @@ class ProjectController extends Controller
         $users = User::all();
         $projectUsers = ProjectUser::all();
         
+       
     
         return inertia('projects' ,
     [
