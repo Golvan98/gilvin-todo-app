@@ -17,11 +17,13 @@
 
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        Projects
+        <div> Projects </div>
+        <button class="ml-2 bg-red-300"> Add Project</button>
+        <addProjectModal> </addProjectModal>
       </div>  
 
       <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
-        <button @click="selectProject(project.id)" :class="{ 'bg-red-400': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
+        <button @click="selectProject(project.id)" :class="{ 'bg-green-300': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
         <div class="mx-auto w-3/4 h-1/4 font-bold"> Project {{ project.project_name }}  </div>   
         
         <div id="projectDescription" class="mx-auto w-4/5 h-3/4 text-xs"> {{ project.project_description }}</div>
@@ -73,6 +75,12 @@ const props = defineProps ({
   users: Object,
   projectUsers: Object,
 })
+
+
+const showAddProjectModal = ref(false);
+const showAddTaskModal = ref(false);
+const showAddMemberModal = ref(false);
+
 
 const selectedProjectId = ref(1);
 

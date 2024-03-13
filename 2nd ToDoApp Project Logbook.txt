@@ -90,5 +90,5 @@ March 07
 
 March 08
 - created a method to filter task query/props in project page
-- assignment: query to grab project members
+- added a frontend side query to grab currently selected project members
 
