@@ -33,6 +33,8 @@ Route::post('login', [AuthController::class, 'login'])->name('login');;
 
 Route::get('projects', [ProjectController::class, 'index'])->name('projects');
 
+Route::post('createProject', [ProjectController::class, 'create'])->name('createProject');
+
 
 
 

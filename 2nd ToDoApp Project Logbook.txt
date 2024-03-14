@@ -92,3 +92,6 @@ March 08
 - created a method to filter task query/props in project page
 - added a frontend side query to grab currently selected project members
 
+March 13
+- added projects button and fixed bug where selected project is not highlighted immediately
+- added add project button and addProjectModal in projects page

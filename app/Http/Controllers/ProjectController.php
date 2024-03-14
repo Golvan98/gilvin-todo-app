@@ -31,4 +31,20 @@ class ProjectController extends Controller
 
    
     }
+
+    public function create(Request $request)
+    {
+
+        
+        $projectInfo = $request->validate([
+            'project_name' => 'required',
+            'project_description' => 'required'
+        ]);
+
+        $newProject = Project::create($projectInfo);
+
+       
+
+      
+    }
 }
