@@ -95,3 +95,7 @@ March 08
 March 13
 - added projects button and fixed bug where selected project is not highlighted immediately
 - added add project button and addProjectModal in projects page
+
+March 14
+- added createProjects route and controller
+- added complete createProject function
