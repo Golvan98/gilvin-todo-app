@@ -43,6 +43,11 @@ class ProjectController extends Controller
 
         $newProject = Project::create($projectInfo);
 
+        $userId = auth()->user()->id;
+
+        $newProject->update(['ownerId' => $userId]);
+
+        dd($newProject);
        
 
       

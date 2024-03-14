@@ -13,10 +13,10 @@
               <div class="w-full h-10-percent flex items-center justify-center sm:text-xs md:text-md lg:text-4xl mb-4"> 𝔾ℙ𝕄</div>
              <div id="2ndBlock" class="w-4/5 h-70-percent flex flex-col items-center justify-center">
               
-              <input id="project_name" type="text" placeholder="Project Name" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto text-xs"> 
+              <input v-model="form.project_name" id="project_name" type="text" placeholder="Project Name" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto text-xs"> 
               
               
-              <input id="project_description" type="text" placeholder="Project Description" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto mt-3 mb-2 text-xs"> 
+              <input v-model="form.project_description" id="project_description" type="text" placeholder="Project Description" class="bg-gray-300 w-4/5 h-10-percent py-4 mx-auto mt-3 mb-2 text-xs"> 
             
 
               <div class="w-4/5 flex items-center justify-center mt-1 mb-4"> <button type="submit"> Login </button> </div>
