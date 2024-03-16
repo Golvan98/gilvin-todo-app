@@ -34,6 +34,9 @@
   <script setup>
 import { useForm } from '@inertiajs/vue3';
 import { defineProps, defineEmits, ref } from 'vue';
+import { Link, usePage } from '@inertiajs/vue3'
+
+const page = usePage()
 
 const form = useForm({
     project_name:null,
@@ -46,18 +49,7 @@ const emits = defineEmits(['closeAddProjectModal']);
 
 
 
-const createProject = async () => {
- // Wait for the registration request to complete
- form.post('createProject');
-  if (!form.errors.any()) {
-    // Close the registration modal by setting showRegisterModal to false
-    closeAddProjectModal();
-  }
-  else{
-    window.location.reload();
-  }
-};
-
+const createProject = () => form.post('createProject');
 const closeAddProjectModal = () => {
   emits('closeAddProjectModal');
   // Emit an event if needed

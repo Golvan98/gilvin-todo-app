@@ -9,3 +9,6 @@ FIX - Changed const flashSuccess = computed into ref
 ------------------------------------------------------
 BUG 3: upon relaunching the servers, projects page do not have
 a highlighted project
+------------------------------------------------------
+Bug 4: add project modal persists after clicking
+------------------------------------------------------

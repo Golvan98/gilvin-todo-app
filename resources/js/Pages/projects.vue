@@ -1,4 +1,4 @@
-<template v-for="task in tasks" :key="task.id">
+<template>
 
 <MainLayout>
 
@@ -103,9 +103,6 @@ const projectMembers = () => {
     .map(projectUser => projectUser.user_id);
   return props.users.filter(user => memberUserIds.includes(user.id));
 }
-
-
-
 
 </script>
 

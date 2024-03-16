@@ -100,3 +100,6 @@ March 14
 - added createProjects route and controller
 - added complete createProject function
 - changed highlighted project color to cyan, and select projectedId is defaulted to 0 at start
+
+March 16
+- added form errors for create project, needs tweaking, modal doesnt close when creating project successfully
