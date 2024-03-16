@@ -33,7 +33,7 @@
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
        <div> Project Tasks </div> 
        <button @click="showAddTaskModal = true" class="ml-2 bg-red-300"> Add Task </button>
-       <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
+       <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
       <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">

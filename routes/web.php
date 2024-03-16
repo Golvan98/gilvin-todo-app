@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,8 @@ Route::post('login', [AuthController::class, 'login'])->name('login');;
 Route::get('projects', [ProjectController::class, 'index'])->name('projects');
 
 Route::post('createProject', [ProjectController::class, 'create'])->name('createProject');
+
+Route::post('createTask', [TaskController::class, 'create'])->name('createTask');
 
 
 
