@@ -2,8 +2,6 @@
 
 <MainLayout>
 
-
-
 <div id="firstBlock" class="bg-white flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full">
 
  <div id="secondBlock" class="bg-inherit h-full w-full grid grid-cols-5 grid-rows-6 text-white">
@@ -33,8 +31,9 @@
 
     <div id="tasksRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto ">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        Project Tasks 
-
+       <div> Project Tasks </div> 
+       <button @click="showAddTaskModal = true" class="ml-2 bg-red-300"> Add Task </button>
+       <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
       <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
@@ -69,6 +68,7 @@
 
 
 import addProjectModal from '@/Pages/Modals/addProjectModal.vue'
+import addTaskModal from '@/Pages/Modals/addTaskModal.vue'
 import { ref, watch , computed  } from 'vue'
 import MainLayout from '@/Pages/Layouts/MainLayout.vue'
 const props = defineProps ({

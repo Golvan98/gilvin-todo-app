@@ -103,3 +103,4 @@ March 14
 
 March 16
 - added form errors for create project, needs tweaking, modal doesnt close when creating project successfully
+- trimmed register page, modal still does not close upon creating project 
