@@ -37,8 +37,8 @@ class ProjectController extends Controller
 
         
         $projectInfo = $request->validate([
-            'project_name' => 'required',
-            'project_description' => 'required'
+            'project_name' => 'required|min:4|max:20',
+            'project_description' => 'required|min:4|max:30'
         ]);
 
         $newProject = Project::create($projectInfo);
@@ -47,7 +47,7 @@ class ProjectController extends Controller
 
         $newProject->update(['ownerId' => $userId]);
 
-        dd($newProject);
+        return redirect()->intended('projects')->with('success', 'Project Created Successfully');
        
 
       
