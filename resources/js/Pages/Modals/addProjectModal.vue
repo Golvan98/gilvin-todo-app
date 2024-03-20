@@ -35,6 +35,10 @@
 import { useForm } from '@inertiajs/vue3';
 import { defineProps, defineEmits, ref } from 'vue';
 import { Link, usePage } from '@inertiajs/vue3'
+import { router } from '@inertiajs/vue3'
+import { computed } from 'vue'
+import { reactive } from 'vue'
+
 
 const page = usePage()
 

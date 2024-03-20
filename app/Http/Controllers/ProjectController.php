@@ -46,10 +46,19 @@ class ProjectController extends Controller
         $userId = auth()->user()->id;
 
         $newProject->update(['ownerId' => $userId]);
+        $newProject = Project::create($projectInfo);
 
-        return redirect()->intended('projects')->with('success', 'Project Created Successfully');
-       
+        if ($newProject) {
+            return redirect()->intended('projects')->with('success', 'Project created successfully');
+        } else {
+            // Handle the case where project creation fails
+            return redirect()->back()->with('error', 'Failed to create project');
+        }
+        
+    }
 
-      
+    public function addMember(Request $request)
+    {
+
     }
 }

@@ -62,11 +62,8 @@ const csrfToken = '{{ csrf_token() }}'; // CSRF token value
 
 //const login = () => form.post('register')
 const register = () => form.post('register');
-
 const showModal = defineProps(['showRegisterModal']);
 const emits = defineEmits(['closeRegisterModal']);
-
-
 const closeRegModal = () => {
   emits('closeRegisterModal');
   // Emit an event if needed

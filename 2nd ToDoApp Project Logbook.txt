@@ -95,7 +95,7 @@ March 08
 March 13
 - added projects button and fixed bug where selected project is not highlighted immediately
 - added add project button and addProjectModal in projects page
-
+s
 March 14
 - added createProjects route and controller
 - added complete createProject function
@@ -104,3 +104,5 @@ March 14
 March 16
 - added form errors for create project, needs tweaking, modal doesnt close when creating project successfully
 - trimmed register page, modal still does not close upon creating project 
+- added createTaskModal (frontend)
+- added Backend for creating task for current selected project

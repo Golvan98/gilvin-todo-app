@@ -16,7 +16,7 @@
                 <input v-model="form.name" id="name" type="text" class="w-3/4 h-1/2" placeholder="Task name here">     
             </div>
           
-          
+            
            </div>
            
 

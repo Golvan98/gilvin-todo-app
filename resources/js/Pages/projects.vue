@@ -17,7 +17,8 @@
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Projects </div>
         <button @click="showAddProjectModal = true" class="ml-2 bg-red-300"> Add Project</button>
-        <addProjectModal v-if="showAddProjectModal" :showAddProjectModal ="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"> </addProjectModal>
+        <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
+
       </div>  
 
       <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
@@ -43,7 +44,8 @@
 
     <div id="membersRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        Project Members
+        <div> Project Members</div> 
+         <button @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members </button>
 
       </div>  
 
@@ -71,6 +73,11 @@ import addProjectModal from '@/Pages/Modals/addProjectModal.vue'
 import addTaskModal from '@/Pages/Modals/addTaskModal.vue'
 import { ref, watch , computed  } from 'vue'
 import MainLayout from '@/Pages/Layouts/MainLayout.vue'
+import loginModal from '@/Pages/Modals/loginModal.vue'
+import registerModal from '@/Pages/Modals/registerModal.vue'
+import { Link, usePage } from '@inertiajs/vue3'
+
+
 const props = defineProps ({
   projects: Object,
   tasks: Object,
@@ -79,10 +86,13 @@ const props = defineProps ({
 })
 
 
-const showAddProjectModal = ref(false);
 const showAddTaskModal = ref(false);
 const showAddMemberModal = ref(false);
+const showAddProjectModal = ref(false);
 
+const closeAddProjectModal = () => {
+    showAddProjectModal.value = false;
+};
 
 const selectedProjectId = ref(0);
 

@@ -21,8 +21,7 @@ class TaskController extends Controller
 
         $createdTask = Task::create($newTask);
 
-        dd($createdTask);
-    
+        return redirect()->intended('projects')->with('success', 'Task Created');
     
         // Assign selectedProjectId to the $newTask array
       
