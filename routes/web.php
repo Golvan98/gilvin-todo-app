@@ -38,6 +38,8 @@ Route::post('createProject', [ProjectController::class, 'create'])->name('create
 
 Route::post('createTask', [TaskController::class, 'create'])->name('createTask');
 
+Route::post('addMember' , [ProjectController::class, 'addMember'])->name('addMember');
+
 
 
 

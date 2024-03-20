@@ -59,6 +59,6 @@ class ProjectController extends Controller
 
     public function addMember(Request $request)
     {
-
+        dd('add member here');
     }
 }

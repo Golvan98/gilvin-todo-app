@@ -45,8 +45,8 @@
     <div id="membersRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Project Members</div> 
-         <button @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members </button>
-
+         <button @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members  </button>
+         <addMemberModal v-if="showAddMemberModal" :showAddMemberModal="showAddMemberModal" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
       </div>  
 
       <div id="maintask" v-for="user in projectMembers()" :key="tasks.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
@@ -69,6 +69,7 @@
 <script setup>
 
 
+import addMemberModal from '@/Pages/Modals/addMemberModal.vue'
 import addProjectModal from '@/Pages/Modals/addProjectModal.vue'
 import addTaskModal from '@/Pages/Modals/addTaskModal.vue'
 import { ref, watch , computed  } from 'vue'
@@ -87,8 +88,12 @@ const props = defineProps ({
 
 
 const showAddTaskModal = ref(false);
-const showAddMemberModal = ref(false);
+
 const showAddProjectModal = ref(false);
+
+
+const showAddMemberModal = ref(false);
+
 
 const closeAddProjectModal = () => {
     showAddProjectModal.value = false;
