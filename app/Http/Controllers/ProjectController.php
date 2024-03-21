@@ -37,7 +37,7 @@ class ProjectController extends Controller
 
         
         $projectInfo = $request->validate([
-            'project_name' => 'required|min:4|max:20',
+            'project_name' => 'required|min:4|max:20|unique:projects,project_name',
             'project_description' => 'required|min:4|max:30'
         ]);
 
@@ -46,14 +46,9 @@ class ProjectController extends Controller
         $userId = auth()->user()->id;
 
         $newProject->update(['ownerId' => $userId]);
-        $newProject = Project::create($projectInfo);
+       
+        return redirect('projects')->with('success', 'Project created successfully')->with('hideAddProjectModal', true);
 
-        if ($newProject) {
-            return redirect()->intended('projects')->with('success', 'Project created successfully');
-        } else {
-            // Handle the case where project creation fails
-            return redirect()->back()->with('error', 'Failed to create project');
-        }
         
     }
 

@@ -106,3 +106,10 @@ March 16
 - trimmed register page, modal still does not close upon creating project 
 - added createTaskModal (frontend)
 - added Backend for creating task for current selected project
+
+March 20
+- completed backend for adding task, modal persisting bug persisting tho
+- created controller and route for addmembers
+
+March 21
+- added unique restraint for project creation

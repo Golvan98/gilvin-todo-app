@@ -15,7 +15,7 @@
 
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        <div> Projects </div>
+        <div> Projects</div>
         <button @click="showAddProjectModal = true" class="ml-2 bg-red-300"> Add Project</button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
@@ -72,11 +72,12 @@
 import addMemberModal from '@/Pages/Modals/addMemberModal.vue'
 import addProjectModal from '@/Pages/Modals/addProjectModal.vue'
 import addTaskModal from '@/Pages/Modals/addTaskModal.vue'
-import { ref, watch , computed  } from 'vue'
+import { ref, watch , computed } from 'vue'
 import MainLayout from '@/Pages/Layouts/MainLayout.vue'
 import loginModal from '@/Pages/Modals/loginModal.vue'
 import registerModal from '@/Pages/Modals/registerModal.vue'
-import { Link, usePage } from '@inertiajs/vue3'
+import { Link, usePage,  } from '@inertiajs/vue3'
+
 
 
 const props = defineProps ({
@@ -88,12 +89,14 @@ const props = defineProps ({
 
 
 const showAddTaskModal = ref(false);
-
 const showAddProjectModal = ref(false);
-
-
 const showAddMemberModal = ref(false);
 
+// Watch the value of hideAddProjectModal from the router's current route query
+watch(hideAddProjectModal, (newValue, oldValue) => {
+  // If hideAddProjectModal is true, set showAddProjectModal to false
+  showAddProjectModal.value = !newValue;
+});
 
 const closeAddProjectModal = () => {
     showAddProjectModal.value = false;
