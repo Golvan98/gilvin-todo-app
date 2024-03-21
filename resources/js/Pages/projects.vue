@@ -46,7 +46,7 @@
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Project Members</div> 
          <button @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members  </button>
-         <addMemberModal v-if="showAddMemberModal" :showAddMemberModal="showAddMemberModal" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
+         <addMemberModal v-if="showAddMemberModal" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
       </div>  
 
       <div id="maintask" v-for="user in projectMembers()" :key="tasks.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
@@ -93,10 +93,7 @@ const showAddProjectModal = ref(false);
 const showAddMemberModal = ref(false);
 
 // Watch the value of hideAddProjectModal from the router's current route query
-watch(hideAddProjectModal, (newValue, oldValue) => {
-  // If hideAddProjectModal is true, set showAddProjectModal to false
-  showAddProjectModal.value = !newValue;
-});
+
 
 const closeAddProjectModal = () => {
     showAddProjectModal.value = false;

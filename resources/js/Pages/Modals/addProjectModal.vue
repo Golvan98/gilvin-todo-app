@@ -66,8 +66,11 @@ const closeProjectModal = () => {
 };
 
 //const login = () => form.post('register')
+const createProject = () => {
+  form.post('createProject');
+  window.location.reload();
+};
 
-const createProject = () => form.post('createProject');
 
 
 

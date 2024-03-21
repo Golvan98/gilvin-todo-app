@@ -47,13 +47,17 @@ class ProjectController extends Controller
 
         $newProject->update(['ownerId' => $userId]);
        
-        return redirect('projects')->with('success', 'Project created successfully')->with('hideAddProjectModal', true);
+       return back()->with('success', 'Project created successfully');
 
         
     }
 
     public function addMember(Request $request)
     {
-        dd('add member here');
+        $newMember = $request->validate([
+            'name' => 'required'
+        ]);
+
+        dd($newMember);
     }
 }

@@ -112,4 +112,8 @@ March 20
 - created controller and route for addmembers
 
 March 21
-- added unique restraint for project creation
+- added unique restraint for project_name creation
+
+
+March 22
+- assignment: frontend query for them users who are not members of project, use .filter.map for this.
