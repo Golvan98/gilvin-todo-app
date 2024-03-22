@@ -55,9 +55,11 @@ class ProjectController extends Controller
     public function addMember(Request $request)
     {
         $newMember = $request->validate([
-            'name' => 'required'
+            'user_id' => 'required',
+            'project_id'=> 'required'
         ]);
+       $test =  ProjectUser::create($newMember);
+       return redirect()->route('home')->with('success', 'Member Added');
 
-        dd($newMember);
     }
 }

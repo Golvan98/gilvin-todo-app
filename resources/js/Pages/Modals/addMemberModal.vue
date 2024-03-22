@@ -11,15 +11,20 @@
                 </button>
             </div>
 
-            <div class="w-full h-10-percent flex items-center justify-center sm:text-xs md:text-md lg:text-4xl mb-4"> 𝔾ℙ𝕄 </div>
+            <div class="w-full h-10-percent flex items-center justify-center sm:text-xs md:text-md lg:text-4xl mb-4"> 𝔾ℙ𝕄 {{ selectedProjectId }} </div>
 
                 <div id="2ndBlock" class="w-4/5 h-70-percent flex flex-col items-center justify-center">
         
-                <select v-model="form.name" id="test" type="text" placeholder="Project Name" class="bg-gray-300 w-4/5 h-1/4 py-4 mx-auto text-xs"> 
-                <option v-for="user in nonProjectMembers()" :value="user.name"> {{user.name}} </option>
-               
-              
+                <select v-model="form.user_id" id="user_id" type="text" placeholder="Project Name" class="bg-gray-300 w-4/5 h-1/4 py-4 mx-auto text-xs"> 
+                <option v-for="user in nonProjectMembers()" :value="user.id"> {{user.name}} </option>   
                 </select>
+
+                <input type="hidden" v-model="form.project_id" id="project_id">
+
+        
+                
+              
+               
                 
                 <div class="w-4/5 flex items-center justify-center mt-1 mb-4"> <button type="submit"> Create Project  </button> </div>
             
@@ -40,17 +45,29 @@ import { router } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { reactive } from 'vue'
 import { Link, usePage } from '@inertiajs/vue3'
-
+import { watch } from 'vue';
 const page = usePage()
-const form = useForm ({
-    name:null,
-})
+
 
 const props = defineProps({
   users: Object,
   showAddMemberModal: Boolean, // Assuming showAddMemberModal is a boolean prop
-  nonProjectMembers:Object
+  nonProjectMembers:Object,
+  selectedProjectId:Number
 });
+const form = useForm ({
+    user_id:null,
+    project_id:props.selectedProjectId 
+})
+
+if (props.selectedProjectId) {
+  watch(() => props.selectedProjectId, (newValue) => {
+    form.project_id = newValue;
+  });
+}
+
+
+
 const addMember = () => form.post('addMember');
 
 

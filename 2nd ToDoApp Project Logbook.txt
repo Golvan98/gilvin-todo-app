@@ -117,4 +117,5 @@ March 21
 
 
 March 22
-- assignment: frontend query for them users who are not members of project, use .filter.map for this.
+- created frontend query for them users who are not members of selected project
+- created backend for adding member to a project
