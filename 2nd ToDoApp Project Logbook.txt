@@ -113,6 +113,7 @@ March 20
 
 March 21
 - added unique restraint for project_name creation
+- added loop for selecting users in add members modal
 
 
 March 22

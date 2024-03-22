@@ -57,7 +57,9 @@ const form = useForm({
     project_id:null
     
     
-});const { selectedProjectId, showAddTaskModal } = defineProps(['selectedProjectId', 'showAddTaskModal']);
+});
+
+const { selectedProjectId, showAddTaskModal } = defineProps(['selectedProjectId', 'showAddTaskModal']);
 
 const emits = defineEmits(['closeAddTaskModal']);
 

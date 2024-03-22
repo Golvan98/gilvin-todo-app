@@ -44,12 +44,12 @@
 
     <div id="membersRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        <div> Project Members</div> 
-         <button @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members  </button>
-         <addMemberModal v-if="showAddMemberModal" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
+        <div> Project Members </div> 
+         <button @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members {{ memberUserIds }}  </button>
+         <addMemberModal v-if="showAddMemberModal" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
       </div>  
 
-      <div id="maintask" v-for="user in projectMembers()" :key="tasks.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
+      <div id="membersList" v-for="user in projectMembers()" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
           {{ user.name }}
       </div>  
     </div>
@@ -118,6 +118,15 @@ const projectMembers = () => {
     .map(projectUser => projectUser.user_id);
   return props.users.filter(user => memberUserIds.includes(user.id));
 }
+
+const nonProjectMembers = () => {
+  const memberUserIds = props.projectUsers
+    .filter(projectUser => projectUser.project_id === selectedProjectId.value)
+    .map(projectUser => projectUser.user_id);
+  
+  // Filter users who are not in projectMembers
+  return props.users.filter(user => !memberUserIds.includes(user.id));
+};
 
 </script>
 

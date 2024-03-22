@@ -16,7 +16,7 @@
                 <div id="2ndBlock" class="w-4/5 h-70-percent flex flex-col items-center justify-center">
         
                 <select v-model="form.name" id="test" type="text" placeholder="Project Name" class="bg-gray-300 w-4/5 h-1/4 py-4 mx-auto text-xs"> 
-                <option v-for="user in users" :value="user.name"> {{user.name}} </option>
+                <option v-for="user in nonProjectMembers()" :value="user.name"> {{user.name}} </option>
                
               
                 </select>
@@ -49,6 +49,7 @@ const form = useForm ({
 const props = defineProps({
   users: Object,
   showAddMemberModal: Boolean, // Assuming showAddMemberModal is a boolean prop
+  nonProjectMembers:Object
 });
 const addMember = () => form.post('addMember');
 
