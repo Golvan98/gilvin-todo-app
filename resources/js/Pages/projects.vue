@@ -23,7 +23,12 @@
 
       <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
         <button @click="selectProject(project.id)" :class="{ 'bg-cyan-200': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
-        <div class="mx-auto w-3/4 h-1/4 font-bold"> Project {{ project.project_name }}  </div>   
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
+          <div class="w-3/4"> Project {{ project.project_name }} {{ showEditProjectModal }}  </div>
+          <button @click="showEditProjectModal = true" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
+          <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
+        </div>   
+        
         
         <div id="projectDescription" class="mx-auto w-4/5 h-3/4 text-xs"> {{ project.project_description }}</div>
         </button>
@@ -71,6 +76,7 @@
 
 import addMemberModal from '@/Pages/Modals/addMemberModal.vue'
 import addProjectModal from '@/Pages/Modals/addProjectModal.vue'
+import editProjectModal from '@/Pages/Modals/editProjectModal.vue'
 import addTaskModal from '@/Pages/Modals/addTaskModal.vue'
 import { ref, watch , computed } from 'vue'
 import MainLayout from '@/Pages/Layouts/MainLayout.vue'
@@ -91,6 +97,7 @@ const props = defineProps ({
 const showAddTaskModal = ref(false);
 const showAddProjectModal = ref(false);
 const showAddMemberModal = ref(false);
+const showEditProjectModal = ref(false);
 
 // Watch the value of hideAddProjectModal from the router's current route query
 
@@ -137,6 +144,37 @@ const nonProjectMembers = () => {
   .ml-5-pct{
     margin-left:5%;
   }
+
+
+  .pen-icon {
+    background: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.pen-icon:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 2px;
+    height: 40px;
+    background-color: black;
+}
+
+.pen-icon:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 2px;
+    background-color: black;
+}
 
 
 </style>

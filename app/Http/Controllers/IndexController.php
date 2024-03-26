@@ -17,4 +17,10 @@ class IndexController extends Controller
     return inertia('testpage');
     }
 
+
+    public function fakehome()
+    {
+        return redirect()->route('projects');
+    }
+
 }
