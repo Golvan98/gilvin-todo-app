@@ -15,7 +15,7 @@
 
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        <div> Projects</div>
+        <div> Projects  </div>
         <button @click="showAddProjectModal = true" class="ml-2 bg-red-300"> Add Project</button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
@@ -26,7 +26,7 @@
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           <div class="w-3/4"> Project {{ project.project_name }} {{ showEditProjectModal }}  </div>
           <button @click="showEditProjectModal = true" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
-          <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
+          <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"  @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
         </div>   
         
         
@@ -134,6 +134,16 @@ const nonProjectMembers = () => {
   // Filter users who are not in projectMembers
   return props.users.filter(user => !memberUserIds.includes(user.id));
 };
+
+
+ const currentProjectInfo = () => {
+  // Find the currently selected project
+  const currentProject = props.projects.find(project => project.id == selectedProjectId.value);
+  // Return the information of the current project
+  return currentProject;
+};
+
+
 
 </script>
 
