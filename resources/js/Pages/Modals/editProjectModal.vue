@@ -28,6 +28,8 @@
                       <div class="flex h-20-percent items-center justify-center mb-8">
                           <button type="submit"> Create Project</button>
                       </div>
+
+                      <input type="hidden" v-model="form.project_id" id="project_id">
                 </div>
   
           </form>
@@ -50,10 +52,14 @@ const page = usePage()
 
 const form = useForm ({
     project_name:null,
-    project_description:null
+    project_description:null,
+    project_id:null 
 })
 
-const editProject = () => form.post('editProject');
+const editProject = () => {
+    form.project_id = projectId;
+    form.post('editProject');
+}
 
 const props = defineProps({
   showEditProjectModal: Boolean, // Assuming showAddMemberModal is a boolean prop

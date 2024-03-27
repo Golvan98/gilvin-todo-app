@@ -56,7 +56,7 @@ class ProjectController extends Controller
     {
         $newMember = $request->validate([
             'user_id' => 'required',
-            'project_id'=> 'required'
+            'project_id'=> 'required',
         ]);
        $test =  ProjectUser::create($newMember);
        return redirect()->route('fakeHome');
@@ -65,6 +65,16 @@ class ProjectController extends Controller
 
     public function editProject(Request $request)
     {
-        dd('ello edit project here');
+       
+
+        $editRequest = $request->validate([
+            'project_name' => 'required|min:2|max:24',
+            'project_description' => 'required|min:2|max:24',
+            'project_id' => 'required'
+        ]);
+
+        $targetProject = Project::find($editRequest['project_id']);
+        $targetProject->update($editRequest);
+        dd($targetProject);
     }
 }
