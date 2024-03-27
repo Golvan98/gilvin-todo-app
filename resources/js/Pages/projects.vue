@@ -136,13 +136,12 @@ const nonProjectMembers = () => {
 };
 
 
- const currentProjectInfo = () => {
+const currentProjectInfo = computed(() => {
   // Find the currently selected project
-  const currentProject = props.projects.find(project => project.id == selectedProjectId.value);
+  const currentProject = props.projects.find(project => project.id === selectedProjectId.value);
   // Return the information of the current project
   return currentProject;
-};
-
+});
 
 
 </script>

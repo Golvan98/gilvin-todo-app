@@ -123,3 +123,7 @@ March 22
 
 March 26
 - added a pen button for editing project
+- added editproject modal, has bugs tho
+
+March 27
+- project name no

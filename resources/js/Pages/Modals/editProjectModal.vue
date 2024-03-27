@@ -10,7 +10,7 @@
                   </button>
               </div>
   
-              <div v-for="project in currentProjectInfo" id="logo" class="w-full h-20-percent flex items-center justify-center sm:text-xs md:text-2xl lg:text-4xl mb-1"> 𝔾ℙ𝕄  {{ project.project_name }}</div>
+              <div  id="logo" class="w-full h-20-percent flex items-center justify-center sm:text-xs md:text-2xl lg:text-4xl mb-1"> 𝔾ℙ𝕄  {{ currentProjectInfo.project_name }}</div>
               
               <div id="2ndBlock" class="w-4/5 flex flex-col items-center justify-center h-70-percent">
                       <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
@@ -45,6 +45,7 @@ import { computed } from 'vue'
 import { reactive } from 'vue'
 import { Link, usePage } from '@inertiajs/vue3'
 import { watch } from 'vue';
+
 const page = usePage()
 
 
@@ -52,7 +53,8 @@ const page = usePage()
 const props = defineProps({
   showEditProjectModal: Boolean, // Assuming showAddMemberModal is a boolean prop
   projects:Object,
-  currentProjectInfo:Object
+  currentProjectInfo:Object,
+  selectedProjectId:Number
 });
 
 const emits = defineEmits(['closeEditProjectModal']);
