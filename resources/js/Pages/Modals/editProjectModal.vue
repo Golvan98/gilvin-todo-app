@@ -10,19 +10,19 @@
                   </button>
               </div>
   
-              <div  id="logo" class="w-full h-20-percent flex items-center justify-center sm:text-xs md:text-2xl lg:text-4xl mb-1"> 𝔾ℙ𝕄  {{ currentProjectInfo.project_name }}</div>
+              <div  id="logo" class="w-full h-20-percent flex items-center justify-center sm:text-xs md:text-2xl lg:text-4xl mb-1"> 𝔾ℙ𝕄  {{ projectName}} {{ projectId }}</div>
               
               <div id="2ndBlock" class="w-4/5 flex flex-col items-center justify-center h-70-percent">
                       <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
 
                       <div id="nameSection" class="h-20-percent my-4">
-                          <label for="name"> </label>
-                          <input id="name" type="text" placeholder="project name" class="lg:p-4 md:p-0.5">
-                      </div>
+                          <label for="project_name"> </label>
+                          <input v-model="form.project_name" id="project_name" type="text" :placeholder="projectName" class="lg:p-4 md:p-0.5">
+           </div>
 
-                      <div id="emailSection" class="h-20-percent my-4">
-                          <label for="email"></label>
-                          <input id="email" type="text" placeholder="email" class="lg:p-4 md:p-0.5">
+                      <div id="description" class="h-20-percent my-4">
+                          <label for="project_description"></label>
+                          <input v-model="form.project_description" id="project_description" type="text" placeholder="email" class="lg:p-4 md:p-0.5">
                       </div>
 
                       <div class="flex h-20-percent items-center justify-center mb-8">
@@ -48,7 +48,12 @@ import { watch } from 'vue';
 
 const page = usePage()
 
+const form = useForm ({
+    project_name:null,
+    project_description:null
+})
 
+const editProject = () => form.post('editProject');
 
 const props = defineProps({
   showEditProjectModal: Boolean, // Assuming showAddMemberModal is a boolean prop
@@ -56,6 +61,11 @@ const props = defineProps({
   currentProjectInfo:Object,
   selectedProjectId:Number
 });
+
+const { currentProjectInfo } = props;
+
+const projectName = currentProjectInfo.project_name;
+const projectId = currentProjectInfo.id
 
 const emits = defineEmits(['closeEditProjectModal']);
 

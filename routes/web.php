@@ -40,6 +40,8 @@ Route::post('createTask', [TaskController::class, 'create'])->name('createTask')
 
 Route::post('addMember' , [ProjectController::class, 'addMember'])->name('addMember');
 
+Route::post('editProject' , [ProjectController::class, 'editProject'])->name('editProject');
+
 Route::get('/fakeHome', [IndexController::class, 'fakeHome'])->name('fakeHome');
 
 

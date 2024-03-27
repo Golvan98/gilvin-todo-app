@@ -24,7 +24,7 @@
       <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
         <button @click="selectProject(project.id)" :class="{ 'bg-cyan-200': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
-          <div class="w-3/4"> Project {{ project.project_name }} {{ showEditProjectModal }}  </div>
+          <div class="w-3/4"> Project {{ project.project_name }}  </div>
           <button @click="showEditProjectModal = true" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
           <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"  @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
         </div>   

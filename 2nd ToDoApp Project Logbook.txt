@@ -126,4 +126,4 @@ March 26
 - added editproject modal, has bugs tho
 
 March 27
-- project name no
+- edit project modal now shows which current project is selected 

@@ -62,4 +62,9 @@ class ProjectController extends Controller
        return redirect()->route('fakeHome');
 
     }
+
+    public function editProject(Request $request)
+    {
+        dd('ello edit project here');
+    }
 }
