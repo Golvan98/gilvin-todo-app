@@ -70,8 +70,8 @@ const props = defineProps({
 
 const { currentProjectInfo } = props;
 
-const projectName = currentProjectInfo.project_name;
-const projectId = currentProjectInfo.id
+const projectName = currentProjectInfo?.project_name;
+const projectId = currentProjectInfo?.id
 
 const emits = defineEmits(['closeEditProjectModal']);
 

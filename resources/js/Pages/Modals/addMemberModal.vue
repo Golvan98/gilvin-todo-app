@@ -21,12 +21,9 @@
 
                 <input type="hidden" v-model="form.project_id" id="project_id">
 
-        
-                
-              
                
                 
-                <div class="w-4/5 flex items-center justify-center mt-1 mb-4"> <button type="submit"> Create Project  </button> </div>
+                <div class="w-4/5 flex items-center justify-center mt-1 mb-4"> <button type="submit"> Add Member </button> </div>
             
             </div>
 

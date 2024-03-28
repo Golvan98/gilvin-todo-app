@@ -128,4 +128,5 @@ March 26
 March 27
 - edit project modal now shows which current project is selected 
 - created a workaround on selectedprojectid changing value when clicking modal
+- added complete backend for editProject
 - created route and controller for edit project
