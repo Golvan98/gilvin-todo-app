@@ -47,3 +47,6 @@ with this modal persisting bug shit
 : Fix for this might revolve on adding close
 function on create button with a work around on form.error
 ---------------------------------------------------------
+Note 7:
+possible fix for ur modal problem would be to find another way to render modal
+just for this

@@ -44,6 +44,8 @@ Route::post('editProject' , [ProjectController::class, 'editProject'])->name('ed
 
 Route::get('/fakeHome', [IndexController::class, 'fakeHome'])->name('fakeHome');
 
+Route::get('/deleteProject', [ProjectController::class, 'deleteProject'])->name('deleteProject');
+
 
 
 

@@ -75,6 +75,12 @@ class ProjectController extends Controller
 
         $targetProject = Project::find($editRequest['project_id']);
         $targetProject->update($editRequest);
-        dd($targetProject);
+        return redirect()->intended('home')->with('success' , 'project edited');
+    }
+
+
+    public function deleteProject(Request $request)
+    {
+        dd('hello there');
     }
 }

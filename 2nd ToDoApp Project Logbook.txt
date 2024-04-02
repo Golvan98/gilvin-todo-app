@@ -130,3 +130,6 @@ March 27
 - created a workaround on selectedprojectid changing value when clicking modal
 - added complete backend for editProject
 - created route and controller for edit project
+
+March 28
+- fixed issue where editproject modal doesn't happen if there's no selected project

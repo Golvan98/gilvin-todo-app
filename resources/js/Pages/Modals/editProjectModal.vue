@@ -25,9 +25,18 @@
                           <input v-model="form.project_description" id="project_description" type="text" placeholder="email" class="lg:p-4 md:p-0.5">
                       </div>
 
-                      <div class="flex h-20-percent items-center justify-center mb-8">
-                          <button type="submit"> Create Project</button>
+                      <div class="flex w-full h-20-percent items-center justify-between mb-8 ">
+                          <div class="w-1/2"> 
+                            <button class="w-1/2" type="submit"> Edit Project </button>
+                          </div>
+
+                          <div class="w-1/2" type="delete"> 
+                          
+                            <a href="/deleteProject"> Delete </a>
+                          </div>
                       </div>
+
+                      
 
                       <input type="hidden" v-model="form.project_id" id="project_id">
                 </div>
@@ -86,3 +95,18 @@ const closeModal = () => {
 };
 
 </script>
+
+<style>
+#closeSection button,
+[type="delete"] {
+  cursor: pointer; /* Set cursor to pointer for clickable elements */
+}
+
+/* Add this CSS to explicitly set cursor to default for non-clickable elements */
+#logo,
+#2ndBlock,
+#nameSection,
+#description {
+  cursor: default;
+}
+</style>
