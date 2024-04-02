@@ -133,3 +133,7 @@ March 27
 
 March 28
 - fixed issue where editproject modal doesn't happen if there's no selected project
+
+April 2
+- added deleteProject button, controller and route
+- added delete backend

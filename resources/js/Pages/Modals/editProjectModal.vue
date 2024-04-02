@@ -32,7 +32,7 @@
 
                           <div class="w-1/2" type="delete"> 
                           
-                            <a href="/deleteProject"> Delete </a>
+                            <a :href="`/deleteProject/${projectId}`">Delete</a>
                           </div>
                       </div>
 

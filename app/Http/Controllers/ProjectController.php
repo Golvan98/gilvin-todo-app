@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\ProjectUser;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -79,8 +80,13 @@ class ProjectController extends Controller
     }
 
 
-    public function deleteProject(Request $request)
+    public function deleteProject(Request $request, $id)
     {
-        dd('hello there');
+
+        $userdelete =  DB::table('projects')->where('id', $id)->delete();
+        
+
+        return redirect()->intended('home')->with('success', 'project deleted');
+
     }
 }
