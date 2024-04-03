@@ -26,4 +26,25 @@ class TaskController extends Controller
         // Assign selectedProjectId to the $newTask array
       
     }
+
+    public function editTask(Request $request)
+    {
+        $editedTask = $request->validate([
+            'name' => 'required',
+            'status' => 'required',
+            'task_id' => 'required'
+        ]);
+
+        $targetTask = Task::find($editedTask['task_id']);
+        $targetTask->update($editedTask);
+
+        return redirect()->intended('home')->with('success', 'Task Edited');
+
+
+    }
+
+    public function deleteTask(Request $request)
+    {
+        dd('ello');
+    }
 }

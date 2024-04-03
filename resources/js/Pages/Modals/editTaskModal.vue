@@ -24,7 +24,7 @@
 
            <div class="w-full h-1/2 bg-inherit">
 
-            <div class="h-1/4 flex items-start justify-center"> Task Status</div>
+            <div class="h-1/4 flex items-start justify-center"> Task Status {{ taskId }}</div>
             <div class="h-1/4 flex items-start justify-center">
                 <select v-model="form.status" id="status">
                     <option value="Pending" selected>Pending</option>
@@ -32,10 +32,12 @@
                     <option value="Complete">Complete</option>   
                 </select>
             </div>
+
+            <input type="hidden" v-model="form.task_id" id="task_id">
             
 
             <div class="h-1/2 flex items-center justify-center"> 
-                <button class="p-1 bg-gray-300"> Create Task </button>
+                <button class="p-1 bg-gray-300" type="submit"> Edit  Task </button>
             </div>  
 
            </div>
@@ -56,16 +58,14 @@ const page = usePage()
 const form = useForm({
     name:null,
     status:null,
-    project_id:null
-    
-    
+    task_id:null
 });
 
 const props = defineProps({
   showEditTaskModal: Boolean, // Assuming showAddMemberModal is a boolean prop
   task:Object,
+  taskId:Number
 });
-
 
 const emits = defineEmits(['closeEditTaskModal']);
 
@@ -73,6 +73,12 @@ const closeModal = () => {
   emits('closeEditTaskModal');
   // Emit an event if needed
 };
+
+const editTask = () => {
+    
+   form.task_id = props.taskId;
+    form.post('editTask');
+}
 
 
 

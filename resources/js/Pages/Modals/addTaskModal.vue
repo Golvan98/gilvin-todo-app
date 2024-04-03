@@ -33,7 +33,7 @@
             
 
             <div class="h-1/2 flex items-center justify-center"> 
-                <button class="p-1 bg-gray-300"> Edit Task </button>
+                <button class="p-1 bg-gray-300"> Create Task </button>
             </div>  
 
            </div>

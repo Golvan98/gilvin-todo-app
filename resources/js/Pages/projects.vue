@@ -47,7 +47,7 @@
           <div class="w-1/6">
             <div class="h-1/2"> 
               <button @click="showEditTaskModal = true"> Edit </button>
-              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :task="task" @closeEditTaskModal="showEditTaskModal = false"> </editTaskModal>
+              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :task="task" @closeEditTaskModal="showEditTaskModal = false" :taskId="task.id"> </editTaskModal>
             </div>
 
             <div class="h-1/2"> 
