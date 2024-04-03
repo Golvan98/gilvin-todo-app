@@ -136,4 +136,4 @@ March 28
 
 April 2
 - added deleteProject button, controller and route
-- added delete backend
+- added deleteProject backend

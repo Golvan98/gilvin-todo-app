@@ -42,9 +42,21 @@
        <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
-      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
-          {{ task.name }}
+      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex w-full bg-white text-black mx-auto mt-2 rounded-lg">
+          <div class="w-5/6"> {{ task.name }} </div>
+          <div class="w-1/6">
+            <div class="h-1/2"> 
+              <button @click="showEditTaskModal = true"> Edit </button>
+              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :task="task" @closeEditTaskModal="showEditTaskModal = false"> </editTaskModal>
+            </div>
+
+            <div class="h-1/2"> 
+              <button> Delete </button>
+            </div>
+
+          </div>
       </div>      
+      
     </div>
 
     <div id="membersRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
@@ -83,6 +95,7 @@ import MainLayout from '@/Pages/Layouts/MainLayout.vue'
 import loginModal from '@/Pages/Modals/loginModal.vue'
 import registerModal from '@/Pages/Modals/registerModal.vue'
 import { Link, usePage,  } from '@inertiajs/vue3'
+import editTaskModal from '@/Pages/Modals/editTaskModal.vue'
 
 
 
@@ -98,6 +111,7 @@ const showAddTaskModal = ref(false);
 const showAddProjectModal = ref(false);
 const showAddMemberModal = ref(false);
 const showEditProjectModal = ref(false);
+const showEditTaskModal = ref(false);
 
 // Watch the value of hideAddProjectModal from the router's current route query
 
