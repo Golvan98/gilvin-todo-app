@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -43,8 +44,11 @@ class TaskController extends Controller
 
     }
 
-    public function deleteTask(Request $request)
+    public function deleteTask(Request $request, $id)
     {
-        dd('ello');
+        $userdelete =  DB::table('tasks')->where('id', $id)->delete();
+        
+
+        return redirect()->intended('home')->with('success', 'task deleted');
     }
 }

@@ -51,7 +51,8 @@
             </div>
 
             <div class="h-1/2"> 
-              <button> Delete </button>
+              <button @click="showDeleteTaskModal = true"> Delete </button>
+              <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :task="task" :taskId="task.id"> </deleteTaskModal>
             </div>
 
           </div>
@@ -96,6 +97,7 @@ import loginModal from '@/Pages/Modals/loginModal.vue'
 import registerModal from '@/Pages/Modals/registerModal.vue'
 import { Link, usePage,  } from '@inertiajs/vue3'
 import editTaskModal from '@/Pages/Modals/editTaskModal.vue'
+import deleteTaskModal from '@/Pages/Modals/deleteTaskModal.vue'
 
 
 
@@ -112,6 +114,7 @@ const showAddProjectModal = ref(false);
 const showAddMemberModal = ref(false);
 const showEditProjectModal = ref(false);
 const showEditTaskModal = ref(false);
+const showDeleteTaskModal = ref(false);
 
 // Watch the value of hideAddProjectModal from the router's current route query
 

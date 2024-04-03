@@ -48,6 +48,8 @@ Route::get('/deleteProject/{id}', [ProjectController::class, 'deleteProject'])->
 
 Route::post('/editTask', [TaskController::class, 'editTask'])->name('editTask');
 
+Route::get('/deleteTask/{id}', [TaskController::class, 'deleteTask'])->name('deleteTask');
+
 
 
 
