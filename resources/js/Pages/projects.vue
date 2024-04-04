@@ -46,8 +46,8 @@
           <div class="w-5/6"> {{ task.name }} </div>
           <div class="w-1/6">
             <div class="h-1/2"> 
-              <button @click="showEditTaskModal = true"> Edit </button>
-              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :task="task" @closeEditTaskModal="showEditTaskModal = false" :taskId="task.id"> </editTaskModal>
+              <button @click="selectTaskAndOpenEditTaskModal(task)"> Edit </button>
+              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
 
             <div class="h-1/2"> 
@@ -123,6 +123,13 @@ const selectProjectAndOpenEditModal = (projectId) => {
     selectedProjectId.value = projectId;
     // Show the edit project modal
     showEditProjectModal.value = true;
+}
+
+const selectedTask = ref(0);
+
+const selectTaskAndOpenEditTaskModal = (taskInfo) => {
+  selectedTask.value = taskInfo
+  showEditTaskModal.value = true;
 }
 
 

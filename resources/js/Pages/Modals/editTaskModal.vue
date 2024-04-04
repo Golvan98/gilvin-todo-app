@@ -11,10 +11,10 @@
                       </svg>
                   </button>
               </div>
-            <div class="h-1/2 flex items-end justify-center"> Task {{ task.name }} </div>
+            <div class="h-1/2 flex items-end justify-center"> Task  </div>
             <div class="h-1/2 flex items-center justify-center">
                  
-                <input v-model="form.name" id="name" type="text" class="w-3/4 h-1/2" :placeholder="task.name">
+                <input v-model="form.name" id="name" type="text" class="w-3/4 h-1/2" :placeholder="selectedTask.name">
 
             </div>
           
@@ -24,7 +24,7 @@
 
            <div class="w-full h-1/2 bg-inherit">
 
-            <div class="h-1/4 flex items-start justify-center"> Task Status {{ taskId }}</div>
+            <div class="h-1/4 flex items-start justify-center"> Task Status {{ selectedTask.status }}</div>
             <div class="h-1/4 flex items-start justify-center">
                 <select v-model="form.status" id="status">
                     <option value="Pending" selected>Pending</option>
@@ -63,9 +63,9 @@ const form = useForm({
 
 const props = defineProps({
   showEditTaskModal: Boolean, // Assuming showAddMemberModal is a boolean prop
-  task:Object,
-  taskId:Number
+  selectedTask:Object
 });
+
 
 const emits = defineEmits(['closeEditTaskModal']);
 
@@ -74,12 +74,12 @@ const closeModal = () => {
   // Emit an event if needed
 };
 
+
+
 const editTask = () => {
-    
-   form.task_id = props.taskId;
+    form.task_id = props.selectedTask.id; // Corrected line
     form.post('editTask');
 }
-
 
 
 
