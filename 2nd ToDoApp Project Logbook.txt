@@ -142,3 +142,13 @@ April 3
 - added edit task modal
 - added working route and controller for editing task
 - added delete task modal, controller, and route but this and edit task has bugs
+
+April 4
+- fixed edit project leading to wrong id if clicked without selecting box first
+- fixed edited task bug leading to wrong id
+- fixed delete task deleting the wrong id 
+- add member button now only appears if a project is selected
+- added remove member modal (frontend only)
+
+April 5
+- Assignment: backend to remove a member from a project, this tinkers with projectuser model

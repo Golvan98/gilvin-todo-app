@@ -65,10 +65,18 @@
         <div> Project Members </div> 
          <button v-if="selectedProjectId" @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members {{ memberUserIds }}  </button>
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
-      </div>  
+        </div>  
 
-      <div id="membersList" v-for="user in projectMembers()" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
-          {{ user.name }}
+      <div id="membersList" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-lg">
+        
+          <div class="w-5/6 h-full bg-inherit flex justify-center"> 
+           <div class="w-3/4 h-full bg-white rounded-lg">  {{ user.name }} </div>
+          </div>
+
+          <div class="w-1/6 h-full bg-indigo-300 flex justify-start">  
+                <button @click="showRemoveMemberModal = true" class="items-start flex h-1/6"> X </button>
+                <removeMemberModal v-if="showRemoveMemberModal" :showRemoveMemberModal="showRemoveMemberModal" @closeRemoveMemberModal="showRemoveMemberModal=false">  </removeMemberModal>
+          </div>
       </div>  
     </div>
 
@@ -98,6 +106,7 @@ import registerModal from '@/Pages/Modals/registerModal.vue'
 import { Link, usePage,  } from '@inertiajs/vue3'
 import editTaskModal from '@/Pages/Modals/editTaskModal.vue'
 import deleteTaskModal from '@/Pages/Modals/deleteTaskModal.vue'
+import removeMemberModal from '@/Pages/Modals/removeMemberModal.vue'
 
 
 
@@ -115,6 +124,7 @@ const showAddMemberModal = ref(false);
 const showEditProjectModal = ref(false);
 const showEditTaskModal = ref(false);
 const showDeleteTaskModal = ref(false);
+const showRemoveMemberModal = ref(false);
 
 // Watch the value of hideAddProjectModal from the router's current route query
 
