@@ -74,7 +74,8 @@ const props = defineProps({
   showEditProjectModal: Boolean, // Assuming showAddMemberModal is a boolean prop
   projects:Object,
   currentProjectInfo:Object,
-  selectedProjectId:Number
+  selectedProjectId:Number,
+  projectId:Number
 });
 
 const { currentProjectInfo } = props;

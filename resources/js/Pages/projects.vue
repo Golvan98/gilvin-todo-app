@@ -25,8 +25,8 @@
         <button @click="selectProject(project.id)" :class="{ 'bg-cyan-200': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           <div class="w-3/4"> Project {{ project.project_name }}  </div>
-          <button @click="showEditProjectModal = true" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
-          <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"  @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
+          <button @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
+          <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"   @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
         </div>   
         
         
@@ -117,6 +117,13 @@ const showEditTaskModal = ref(false);
 const showDeleteTaskModal = ref(false);
 
 // Watch the value of hideAddProjectModal from the router's current route query
+
+const selectProjectAndOpenEditModal = (projectId) => {
+    // Set the selectedProjectId to the projectId of the current iteration
+    selectedProjectId.value = projectId;
+    // Show the edit project modal
+    showEditProjectModal.value = true;
+}
 
 
 const closeAddProjectModal = () => {

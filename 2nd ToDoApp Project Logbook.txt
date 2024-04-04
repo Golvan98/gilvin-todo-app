@@ -137,3 +137,8 @@ March 28
 April 2
 - added deleteProject button, controller and route
 - added deleteProject backend
+
+April 3
+- added edit task modal
+- added working route and controller for editing task
+- added delete task modal, controller, and route but this and edit task has bugs
