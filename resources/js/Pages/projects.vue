@@ -63,7 +63,7 @@
     <div id="membersRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Project Members </div> 
-         <button @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members {{ memberUserIds }}  </button>
+         <button v-if="selectedProjectId" @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members {{ memberUserIds }}  </button>
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
       </div>  
 
