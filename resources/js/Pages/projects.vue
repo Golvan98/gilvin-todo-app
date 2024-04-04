@@ -51,8 +51,8 @@
             </div>
 
             <div class="h-1/2"> 
-              <button @click="showDeleteTaskModal = true"> Delete </button>
-              <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :task="task" :taskId="task.id"> </deleteTaskModal>
+              <button @click="selectTaskAndOpenDeleteTaskModal(task)"> Delete </button>
+              <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :selectedTask="selectedTask"> </deleteTaskModal>
             </div>
 
           </div>
@@ -130,6 +130,11 @@ const selectedTask = ref(0);
 const selectTaskAndOpenEditTaskModal = (taskInfo) => {
   selectedTask.value = taskInfo
   showEditTaskModal.value = true;
+}
+
+const selectTaskAndOpenDeleteTaskModal = (taskInfo) => {
+  selectedTask.value = taskInfo
+  showDeleteTaskModal.value = true;
 }
 
 

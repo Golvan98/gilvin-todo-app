@@ -14,12 +14,12 @@
               </div>
             <div class="h-1/2 flex items-end justify-center"> Are you sure you want to delete this task? </div>
             <div class="h-1/2 flex items-center justify-center">
-                <div> Task: {{task.name}} </div>
+                <div> Task: {{ selectedTask.name }} </div>
             </div>
 
             <div class="h-1/2 flex items-center justify-between mx-25-pct">
 
-                <Link :href="`/deleteTask/${taskId}`"> <button class="bg-red-300 px-4 py-1 rounded-sm"> Yes </button> </Link>
+                <Link :href="`/deleteTask/${selectedTask.id}`"> <button class="bg-red-300 px-4 py-1 rounded-sm"> Yes </button> </Link>
               
                 <button @click="closeModal" class="bg-indigo-300 px-4 py-1 rounded-sm"> No </button>
             </div>
@@ -44,8 +44,7 @@ import { Link, usePage } from '@inertiajs/vue3'
 
 const props = defineProps({
   showDeleteTaskModal: Boolean, // Assuming showAddMemberModal is a boolean prop
-  task:Object,
-  taskId:Number
+  selectedTask:Object
 
 });
 
