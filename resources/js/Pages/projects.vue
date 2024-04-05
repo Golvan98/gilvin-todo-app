@@ -25,7 +25,7 @@
         <button @click="selectProject(project.id)" :class="{ 'bg-cyan-200': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           <div class="w-3/4"> Project {{ project.project_name }}  </div>
-          <button @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
+          <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
           <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"   @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
         </div>   
         
@@ -38,7 +38,7 @@
     <div id="tasksRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto ">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
        <div> Project Tasks </div> 
-       <button @click="showAddTaskModal = true" class="ml-2 bg-red-300"> Add Task </button>
+       <button v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
        <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
@@ -108,7 +108,9 @@ import editTaskModal from '@/Pages/Modals/editTaskModal.vue'
 import deleteTaskModal from '@/Pages/Modals/deleteTaskModal.vue'
 import removeMemberModal from '@/Pages/Modals/removeMemberModal.vue'
 
+const page = usePage()
 
+const currentUser = computed(() => page.props.user )
 
 const props = defineProps ({
   projects: Object,

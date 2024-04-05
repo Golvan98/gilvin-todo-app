@@ -19,6 +19,9 @@ class ProjectController extends Controller
         $tasks = Task::all();
         $users = User::all();
         $projectUsers = ProjectUser::all();
+
+      //  $authId = auth()->user()->id; alternative to pass as prop to get currently authenticated user
+      
         
        
     
@@ -27,7 +30,7 @@ class ProjectController extends Controller
         'projects' => $projects,
         'tasks' => $tasks,
         'users' => $users,
-        'projectUsers' => $projectUsers
+        'projectUsers' => $projectUsers,
     ]);
 
    
