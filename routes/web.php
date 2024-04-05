@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectUserController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,8 @@ Route::get('/deleteProject/{id}', [ProjectController::class, 'deleteProject'])->
 Route::post('/editTask', [TaskController::class, 'editTask'])->name('editTask');
 
 Route::get('/deleteTask/{id}', [TaskController::class, 'deleteTask'])->name('deleteTask');
+
+Route::post('/removeMember', [ProjectUserController::class, 'removeMember'])->name('removeMember');
 
 
 

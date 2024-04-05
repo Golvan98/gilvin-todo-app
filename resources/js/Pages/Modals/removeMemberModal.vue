@@ -43,7 +43,7 @@ const form = useForm ({
     project_id:null
 })
 
-const removeModal = () => {
+const removeMember = () => {
     form.project_id=props.selectedProjectId
     form.member_id=props.selectedMember.id
     form.post('/removeMember');
