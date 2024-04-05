@@ -18,6 +18,9 @@ class IndexController extends Controller
     }
 
 
-
+    public function fakehome()
+    {
+        return redirect()->route('projects');
+    }
 
 }

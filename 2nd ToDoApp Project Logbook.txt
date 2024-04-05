@@ -152,3 +152,9 @@ April 4
 
 April 5
 - Assignment: backend to remove a member from a project, this tinkers with projectuser model
+- added the necessary props to removemember modal, needs further testing
+- added complete backend for removing member from project
+- added if condition so that only the project owner can edit a project
+
+April 8
+- Assignment: when creating a project, it should immediately create the first member which is the currently logged in user.

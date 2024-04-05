@@ -15,14 +15,14 @@
 
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        <div> Projects  </div>
-        <button @click="showAddProjectModal = true" class="ml-2 bg-red-300"> Add Project</button>
+        <div> Projects </div>
+        <button @click="showAddProjectModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
       </div>  
 
       <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
-        <button @click="selectProject(project.id)" :class="{ 'bg-cyan-200': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
+        <button @click="selectProject(project)" :class="{ 'bg-cyan-200': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           <div class="w-3/4"> Project {{ project.project_name }}  </div>
           <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
@@ -63,7 +63,7 @@
     <div id="membersRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Project Members </div> 
-         <button v-if="selectedProjectId" @click="showAddMemberModal = true" class="ml-2 bg-red-300"> Add Members {{ memberUserIds }}  </button>
+         <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
         </div>  
 
@@ -74,7 +74,7 @@
           </div>
 
           <div class="w-1/6 h-full bg-indigo-300 flex justify-start">  
-                <button @click="selectAndRemoveMemberModal(user)" class="items-start flex h-1/6"> X </button>
+                <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="selectAndRemoveMemberModal(user)" class="items-start flex h-1/6"> X </button>
                 <removeMemberModal v-if="showRemoveMemberModal" :showRemoveMemberModal="showRemoveMemberModal" :selectedProjectId="selectedProjectId" :selectedMember="selectedMember" @closeRemoveMemberModal="showRemoveMemberModal=false">  </removeMemberModal>
           </div>
       </div>  
@@ -120,6 +120,9 @@ const props = defineProps ({
 })
 
 
+const selectedProjectId = ref(null);
+const projectOwnerId = ref(0);
+
 const showAddTaskModal = ref(false);
 const showAddProjectModal = ref(false);
 const showAddMemberModal = ref(false);
@@ -162,10 +165,10 @@ const closeAddProjectModal = () => {
     showAddProjectModal.value = false;
 };
 
-const selectedProjectId = ref(0);
 
-const selectProject = (projectId) => {
-selectedProjectId.value = projectId;
+const selectProject = (project) => {
+  projectOwnerId.value = project.ownerId;
+selectedProjectId.value = project.id;
 }
 const isProjectSelected = (projectId) => {
 return selectedProjectId.value === projectId;
