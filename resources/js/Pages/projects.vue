@@ -74,8 +74,8 @@
           </div>
 
           <div class="w-1/6 h-full bg-indigo-300 flex justify-start">  
-                <button @click="showRemoveMemberModal = true" class="items-start flex h-1/6"> X </button>
-                <removeMemberModal v-if="showRemoveMemberModal" :showRemoveMemberModal="showRemoveMemberModal" @closeRemoveMemberModal="showRemoveMemberModal=false">  </removeMemberModal>
+                <button @click="selectAndRemoveMemberModal(user)" class="items-start flex h-1/6"> X </button>
+                <removeMemberModal v-if="showRemoveMemberModal" :showRemoveMemberModal="showRemoveMemberModal" :selectedProjectId="selectedProjectId" :selectedMember="selectedMember" @closeRemoveMemberModal="showRemoveMemberModal=false">  </removeMemberModal>
           </div>
       </div>  
     </div>
@@ -126,6 +126,10 @@ const showEditTaskModal = ref(false);
 const showDeleteTaskModal = ref(false);
 const showRemoveMemberModal = ref(false);
 
+
+const selectedTask = ref(0);
+const selectedMember = ref(0);
+
 // Watch the value of hideAddProjectModal from the router's current route query
 
 const selectProjectAndOpenEditModal = (projectId) => {
@@ -135,7 +139,6 @@ const selectProjectAndOpenEditModal = (projectId) => {
     showEditProjectModal.value = true;
 }
 
-const selectedTask = ref(0);
 
 const selectTaskAndOpenEditTaskModal = (taskInfo) => {
   selectedTask.value = taskInfo
@@ -145,6 +148,11 @@ const selectTaskAndOpenEditTaskModal = (taskInfo) => {
 const selectTaskAndOpenDeleteTaskModal = (taskInfo) => {
   selectedTask.value = taskInfo
   showDeleteTaskModal.value = true;
+}
+
+const selectAndRemoveMemberModal = (member) => {
+  selectedMember.value = member;
+  showRemoveMemberModal.value = true;
 }
 
 

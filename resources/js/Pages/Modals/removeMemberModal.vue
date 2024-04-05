@@ -1,7 +1,7 @@
 <template>
     <div  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
 
-          <form @submit.prevent="destroyTask" class="bg-white w-1/4 h-2/5 flex-nowrap text-gray-600 border border-gray-900 ">
+          <form @submit.prevent="removeMember" class="bg-white w-1/4 h-2/5 flex-nowrap text-gray-600 border border-gray-900 ">
   
            <div class="w-full h-1/2">
             <div id="closeSection" class="w-full flex items-start justify-end"> 
@@ -11,14 +11,16 @@
                       </svg>
                   </button>
               </div>
-            <div class="h-1/2 flex items-end justify-center"> Are you sure you want to Remove  this Member? </div>
+            <div class="h-1/2 flex items-end justify-center"> Are you sure you want to remove {{ selectedMember.name }} from this project?  </div>
             <div class="h-1/2 flex items-center justify-center">
                 <div> Task:  </div>
             </div>
 
             <div class="h-1/2 flex items-center justify-between mx-25-pct">
 
-                <button class="bg-red-300 px-4 py-1 rounded-sm"> Yes </button> 
+                <button type="submit" class="bg-red-300 px-4 py-1 rounded-sm"> Yes </button> 
+                <input type="hidden" v-model="form.project_id" id="project_id">
+                <input type="hidden" v-model="form.member_id" id="member_id">
               
                 <button @click="closeModal" class="bg-indigo-300 px-4 py-1 rounded-sm"> No </button>
             </div>
@@ -36,10 +38,22 @@ import { useForm } from '@inertiajs/vue3';
 import { defineProps, defineEmits, ref } from 'vue';
 import { Link, usePage } from '@inertiajs/vue3'
 
+const form = useForm ({
+    member_id:null,
+    project_id:null
+})
+
+const removeModal = () => {
+    form.project_id=props.selectedProjectId
+    form.member_id=props.selectedMember.id
+    form.post('/removeMember');
+}
+
 
 const props = defineProps ({
     showRemoveMemberModal:Boolean,
     selectedMember:Object,
+    selectedProjectId:Number,
 })
 
 const emits = defineEmits(['closeRemoveMemberModal']);
