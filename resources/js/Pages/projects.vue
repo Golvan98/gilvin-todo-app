@@ -7,11 +7,7 @@
  <div id="secondBlock" class="bg-inherit h-full w-full grid grid-cols-5 grid-rows-6 text-white">
 
 
-    <div id="projectNavBarContainer" class="col-start-2 col-end-5 bg-inherit row-start-1 grid grid-cols-6 mt-2 row-span-1">
-        <div id="projectNavBar" class="bg-indigo-300 col-start-2 col-end-6 rounded-lg mb-2">
-                  
-        </div>      
-    </div>
+   
 
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">

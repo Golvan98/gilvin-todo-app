@@ -50,8 +50,13 @@ class ProjectController extends Controller
         $userId = auth()->user()->id;
 
         $newProject->update(['ownerId' => $userId]);
+
+        $testprojectuser = ProjectUser::create([
+            'project_id' => $newProject->id,
+            'user_id' => $userId
+        ]);
        
-       return back()->with('success', 'Project created successfully');
+      return back()->with('success', 'Project created successfully');
 
         
     }

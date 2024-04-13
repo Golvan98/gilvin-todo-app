@@ -159,3 +159,7 @@ April 5
 
 April 8
 - Assignment: when creating a project, it should immediately create the first member which is the currently logged in user.
+
+April 13
+- hid/removed left navbar from mainlayout
+- removed project top navbar from projects page
