@@ -15,10 +15,25 @@ class ProjectController extends Controller
     public function index()
     {
 
-        $projects = Project::all(); //havent tested this query yet
+     //   $projects = Project::all(); //havent tested this query yet
         $tasks = Task::all();
         $users = User::all();
         $projectUsers = ProjectUser::all();
+
+        $currentUserId = auth()->user()->id;
+
+       
+
+        //$projectsOfUser = all projectusers where user_id = aut()->id->pluck('project_id');
+
+        $projectsOfUser = ProjectUser::where('user_id' , $currentUserId)->pluck('project_id')->unique();
+        $projects = Project::whereIn('id', $projectsOfUser)->get();
+
+        //    dd($allProjectsOfCurrentUser);
+    
+        // AllProjects = Projects::where('id', == $projectsofUser)
+
+
 
       //  $authId = auth()->user()->id; alternative to pass as prop to get currently authenticated user
       
