@@ -30,7 +30,7 @@
     <div id="body content" class="flex-grow bg-white flex">
       <!-- Left Navbar -->
       <div id="leftNavBar" class="w-20 h-full bg-gray-300 text-red-700">
-        Hello, this is the navbar, this will not be shown when zoomed in 
+    
       </div>
 
       <!-- Main Content -->
@@ -81,6 +81,10 @@
       flex: none;
       color:white ;
     }
+
+    #leftNavBar{
+        display:none;
+      }
    
     #leftFooter, #rightFooter {
       font-size: 24px;

@@ -155,6 +155,7 @@ April 5
 - added the necessary props to removemember modal, needs further testing
 - added complete backend for removing member from project
 - added if condition so that only the project owner can edit a project
+- added if condition so that only project owner can remove/add members
 
 April 8
 - Assignment: when creating a project, it should immediately create the first member which is the currently logged in user.

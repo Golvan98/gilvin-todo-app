@@ -9,7 +9,7 @@
 
     <div id="projectNavBarContainer" class="col-start-2 col-end-5 bg-inherit row-start-1 grid grid-cols-6 mt-2 row-span-1">
         <div id="projectNavBar" class="bg-indigo-300 col-start-2 col-end-6 rounded-lg mb-2">
-
+                  
         </div>      
     </div>
 
