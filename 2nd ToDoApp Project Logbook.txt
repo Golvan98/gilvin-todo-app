@@ -164,8 +164,14 @@ April 13
 - hid/removed left navbar from mainlayout
 - removed project top navbar from projects page 
 - creating project now automatically creates the current logged in user as member
+- projects page now only shows projects the current user is involved
 
 April 14
 - Assignment: query to view projects only the current logged in user belongs to
 - Assignment: frontend test page for manage project page
 - Assignment: Main projects page dashboard content: Other Projects & My Projects (Manage Project will have no dashboad but a back button to my projects)
+
+
+April 17
+- query to view projects only the current logged in user belongs 
+- added dashboard and navbar on projects page

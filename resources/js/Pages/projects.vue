@@ -4,12 +4,26 @@
 
 <div id="firstBlock" class="bg-white flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full">
 
- <div id="secondBlock" class="bg-inherit h-full w-full grid grid-cols-5 grid-rows-6 text-white">
+ <div id="secondBlock" class="bg-inherit h-full w-full grid grid-cols-6 grid-rows-6 text-white">
 
 
-   
+    <div id="projectHeader" class="bg-white row-start-1 row-span-1 col-start-2 col-span-4"> 
+      <div class="w-full h-1/5 bg-white"> hehe </div>
+      <div class="w-full h-4/5 bg-indigo-300 font-bold text-6xl flex justify-between items-center"> 
+       <div>  Project Management UI </div>
+       <div class="text-2xl flex items-center justify-center"> Designed by Gilvin</div>
+      </div>
 
-    <div id="toDoRow" class="row-start-2 row-span-5 col-start-2 bg-indigo-300 rounded-sm overflow-y-auto">
+      
+    </div>
+
+    <div id="projectNavBar" class="bg-indigo-300 row-start-2 row-span-5 col-start-2 col-span-1 ">
+      <div class="mainNavButton flex justify-center"> Project NavBar</div>
+      <div class="navButton flex justify-center"> Project NavBar</div>
+      <div class="navButton flex justify-center"> Project NavBar</div>
+    </div>
+
+    <div id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Projects </div>
         <button @click="showAddProjectModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
@@ -31,7 +45,7 @@
       </div>
     </div>
 
-    <div id="tasksRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto ">
+    <div id="tasksRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto ">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
        <div> Project Tasks </div> 
        <button v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
@@ -56,7 +70,7 @@
       
     </div>
 
-    <div id="membersRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto">
+    <div id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-indigo-300 rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Project Members </div> 
          <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
@@ -240,5 +254,25 @@ const currentProjectInfo = computed(() => {
     background-color: black;
 }
 
+
+
+  .m-10-pct {
+    margin-left:10%;
+    margin-right:10%;
+    margin-top:10%;
+    margin-bottom: 10%;
+    margin: 10%;
+  }
+
+  .mainNavButton {
+    height: 10%;
+    width: 100%;
+    margin-top:10%
+  }
+
+  .navButton {
+    margin-top:5%;
+    width: 100%;
+  }
 
 </style>
