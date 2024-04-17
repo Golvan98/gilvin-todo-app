@@ -2,13 +2,13 @@
 
 <MainLayout>
 
-<div id="firstBlock" class="bg-white flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full">
+<div id="firstBlock" class="bg-indigo-300 flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full">
 
  <div id="secondBlock" class="bg-inherit h-full w-full grid grid-cols-6 grid-rows-6 text-white">
 
 
-    <div id="projectHeader" class="bg-white row-start-1 row-span-1 col-start-2 col-span-4"> 
-      <div class="w-full h-1/5 bg-white"> hehe </div>
+    <div id="projectHeader" class="bg-white row-start-1 row-span-1 col-start-2 col-span-4 rounded-l-sm"> 
+      <div class="w-full h-1/5 bg-indigo-300">  </div>
       <div class="w-full h-4/5 bg-indigo-300 font-bold text-6xl flex justify-between items-center"> 
        <div>  Project Management UI </div>
        <div class="text-2xl flex items-center justify-center"> Designed by Gilvin</div>
@@ -17,13 +17,13 @@
       
     </div>
 
-    <div id="projectNavBar" class="bg-indigo-300 row-start-2 row-span-5 col-start-2 col-span-1 ">
-      <div class="mainNavButton flex justify-center"> Project NavBar</div>
-      <div class="navButton flex justify-center"> Project NavBar</div>
-      <div class="navButton flex justify-center"> Project NavBar</div>
+    <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black ">
+      <div class="mainNavButton flex justify-center"> My Projects</div>
+      <div class="navButton flex justify-center"> Other Projects</div>
+      <div class="navButton flex justify-center"> Urgent Tasks </div>
     </div>
 
-    <div id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-indigo-300 rounded-sm overflow-y-auto">
+    <div id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Projects </div>
         <button @click="showAddProjectModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
@@ -31,8 +31,8 @@
 
       </div>  
 
-      <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 bg-white text-black mx-auto mt-2 rounded-lg">
-        <button @click="selectProject(project)" :class="{ 'bg-cyan-200': selectedProjectId == project.id }" class="bg-white rounded-lg w-full h-full">
+      <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg">
+        <button @click="selectProject(project)" :class="{ 'bg-gray-400': selectedProjectId == project.id }" class="bg-gray-300 rounded-lg w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           <div class="w-3/4"> Project {{ project.project_name }}  </div>
           <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
@@ -45,14 +45,14 @@
       </div>
     </div>
 
-    <div id="tasksRow" class="row-start-2 row-span-5 col-start-4 bg-indigo-300 rounded-sm overflow-y-auto ">
+    <div id="tasksRow" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto ">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
        <div> Project Tasks </div> 
        <button v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
        <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
-      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex w-full bg-white text-black mx-auto mt-2 rounded-lg">
+      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex w-full bg-gray-300  text-black mx-auto mt-2 rounded-lg">
           <div class="w-5/6"> {{ task.name }} </div>
           <div class="w-1/6">
             <div class="h-1/2"> 
@@ -70,8 +70,8 @@
       
     </div>
 
-    <div id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-indigo-300 rounded-sm overflow-y-auto">
-      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+    <div id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-sm overflow-y-auto">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit  text-black font-bold flex items-center justify-center">
         <div> Project Members </div> 
          <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
@@ -80,10 +80,10 @@
       <div id="membersList" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-lg">
         
           <div class="w-5/6 h-full bg-inherit flex justify-center"> 
-           <div class="w-3/4 h-full bg-white rounded-lg">  {{ user.name }} </div>
+           <div class="w-3/4 h-full bg-gray-300 rounded-lg">  {{ user.name }} </div>
           </div>
 
-          <div class="w-1/6 h-full bg-indigo-300 flex justify-start">  
+          <div class="w-1/6 h-full bg-white flex justify-start">  
                 <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="selectAndRemoveMemberModal(user)" class="items-start flex h-1/6"> X </button>
                 <removeMemberModal v-if="showRemoveMemberModal" :showRemoveMemberModal="showRemoveMemberModal" :selectedProjectId="selectedProjectId" :selectedMember="selectedMember" @closeRemoveMemberModal="showRemoveMemberModal=false">  </removeMemberModal>
           </div>
