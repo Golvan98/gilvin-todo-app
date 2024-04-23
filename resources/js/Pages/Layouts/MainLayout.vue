@@ -5,7 +5,7 @@
 
   <div id="container" class="w-full h-screen bg-white text-red-500 flex flex-col">
     <!-- Top Navbar -->
-    <div id="topNavBar" class="bg-gray-900 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white">
+    <div id="topNavBar" class="bg-green-300 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white">
       <div id="leftSection" class="col-span-1"></div>
       <div id="midSection" class="col-span-1 bg-reen-300 flex items-center justify-center space-x-2.5">
         <div v-if="user">{{ user.name }}   </div>
@@ -38,11 +38,11 @@
     </div>
 
     <!-- Footer -->
-    <footer id="footer" class="h-10-percent mt-8 mx-auto bg-gray-900 flex w-full">
+    <footer id="footer" class="h-10-percent mx-auto bg-indigo-300 flex w-full">
       <div id="leftFooter" class="h-full flex items-center justify-center">
         This is the Left Footer. This Remains on Top if it is zoomed in to an extent
       </div>
-      <div id="rightFooter" class="bg-gray-900 h-full flex items-center justify-center">
+      <div id="rightFooter" class="bg-indigo-300 h-full flex items-center justify-center">
         This is the Right Footer. This Remains Below if it is zoomed in to an extent
       </div>
     </footer>

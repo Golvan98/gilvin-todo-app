@@ -18,9 +18,9 @@
     </div>
 
     <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black ">
-      <div class="mainNavButton flex justify-center"> My Projects</div>
-      <div class="navButton flex justify-center"> Other Projects</div>
-      <div class="navButton flex justify-center"> Urgent Tasks </div>
+      <div class="mainNavButton flex justify-center"> <span class="bg-red-300 h-1/2 flex items-center justify-center w-1/2"> My Projects </span></div>
+      <div class="navButton flex justify-center"> <span class="bg-white h-1/2 flex items-center justify-center w-1/2"> Other Projects </span></div>
+      <div class="navButton flex justify-center"> <span class="bg-white h-1/2 flex items-center justify-center w-1/2"> My Projects </span> </div>
     </div>
 
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
