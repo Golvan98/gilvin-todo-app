@@ -11,16 +11,25 @@
       <div class="w-full h-1/5 bg-indigo-300">  </div>
       <div class="w-full h-4/5 bg-indigo-300 font-bold text-6xl flex justify-between items-center"> 
        <div>  Project Management UI </div>
-       <div class="text-2xl flex items-center justify-center"> Designed by Gilvin</div>
+       <div class="text-2xl flex items-center justify-center"> Designed by Gilvin {{ selectedTab }}</div>
       </div>
 
       
     </div>
 
     <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black ">
-      <div class="mainNavButton flex justify-center"> <span class="bg-red-300 h-1/2 flex items-center justify-center w-1/2"> My Projects </span></div>
-      <div class="navButton flex justify-center"> <span class="bg-white h-1/2 flex items-center justify-center w-1/2"> Other Projects </span></div>
-      <div class="navButton flex justify-center"> <span class="bg-white h-1/2 flex items-center justify-center w-1/2"> My Projects </span> </div>
+
+      <div class="mainNavButton flex justify-center"> 
+        <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class="h-1/2 flex items-center justify-center w-1/2"> My Projects </button>
+      </div>
+
+      <div class="navButton flex justify-center"> 
+        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="h-1/2 flex items-center justify-center w-1/2"> Other Projects </button>
+      </div>
+
+      <div class="navButton flex justify-center"> 
+        <button @click="setSelectedTab('myTasks')" :class="{ 'bg-indigo-300': selectedTab === 'myTasks', 'bg-white': selectedTab !== 'myTasks' }" class="h-1/2 flex items-center justify-center w-1/2"> My Tasks </button>
+      </div>
     </div>
 
     <div id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
@@ -32,7 +41,7 @@
       </div>  
 
       <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg">
-        <button @click="selectProject(project)" :class="{ 'bg-gray-400': selectedProjectId == project.id }" class="bg-gray-300 rounded-lg w-full h-full">
+        <button @click="selectProject(project)" :class="{ 'bg-green-400': selectedProjectId == project.id }" class="bg-gray-300 rounded-lg w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           <div class="w-3/4"> Project {{ project.project_name }}  </div>
           <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
@@ -128,6 +137,14 @@ const props = defineProps ({
   users: Object,
   projectUsers: Object,
 })
+
+
+const selectedTab = ref('myProjects')
+
+const setSelectedTab = (tab) =>
+{
+  selectedTab.value = tab;
+}
 
 
 const selectedProjectId = ref(null);

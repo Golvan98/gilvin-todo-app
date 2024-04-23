@@ -176,3 +176,6 @@ April 17
 - query to view projects only the current logged in user belongs 
 - added dashboard and navbar on projects page
 - did some frontend improvements on projects page, mainly color theme
+
+April 23
+- made some changes to layout and footer (mostly colors)
