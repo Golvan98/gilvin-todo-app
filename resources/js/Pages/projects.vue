@@ -2,9 +2,9 @@
 
 <MainLayout>
 
-<div id="firstBlock" class="bg-indigo-300 flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full">
+<div id="secondBlock" class="bg-indigo-300 flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full">
 
- <div id="secondBlock" class="bg-inherit h-full w-full grid grid-cols-6 grid-rows-6 text-white">
+ <div id="thirdBlock" class="bg-inherit h-full w-full grid grid-cols-6 grid-rows-6 text-white">
 
 
     <div id="projectHeader" class="bg-white row-start-1 row-span-1 col-start-2 col-span-4 rounded-l-sm"> 
@@ -40,8 +40,21 @@
 
       </div>  
 
-      <div v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg">
+      <div v-if="selectedTab === 'myProjects'" v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg">
         <button @click="selectProject(project)" :class="{ 'bg-green-400': selectedProjectId == project.id }" class="bg-gray-300 rounded-lg w-full h-full">
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
+          <div class="w-3/4"> Project {{ project.project_name }}  </div>
+          <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
+          <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"   @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
+        </div>   
+        
+        
+        <div id="projectDescription" class="mx-auto w-4/5 h-3/4 text-xs"> {{ project.project_description }}</div>
+        </button>
+      </div>
+
+      <div v-if="selectedTab === 'otherProjects'" v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg">
+        <button @click="selectProject(project)" :class="{ 'bg-green-400': selectedProjectId == project.id }" class="bg-red-300 rounded-lg w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           <div class="w-3/4"> Project {{ project.project_name }}  </div>
           <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
@@ -136,6 +149,7 @@ const props = defineProps ({
   tasks: Object,
   users: Object,
   projectUsers: Object,
+  otherProjects:Object
 })
 
 
