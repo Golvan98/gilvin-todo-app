@@ -23,7 +23,7 @@
         <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class="h-1/2 flex items-center justify-center w-1/2"> My Projects </button>
       </div>
 
-      <div class="navButton flex justify-center"> 
+       <div class="navButton flex justify-center"> 
         <button @click="setSelectedTab('myTasks')" :class="{ 'bg-indigo-300': selectedTab === 'myTasks', 'bg-white': selectedTab !== 'myTasks' }" class="h-1/2 flex items-center justify-center w-1/2"> My Tasks </button>
       </div>
 
@@ -34,7 +34,7 @@
      
     </div>
 
-    <div id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
+    <div v-if="selectedTab === 'myProjects'" id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Projects </div>
         <button @click="showAddProjectModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
@@ -53,6 +53,27 @@
         
         <div id="projectDescription" class="mx-auto w-4/5 h-3/4 text-xs"> {{ project.project_description }}</div>
         </button>
+      </div>
+
+      
+    </div>
+
+    <div v-if="selectedTab === 'myTasks'" id="inProgressTasks" class="row-start-2 row-span-5 col-start-3 overflow-y-auto bg-white">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        <div> In Progress </div>
+      </div>  
+
+      <div v-for="inProgressTasksOfUser in inProgressTasksOfUsers" :key="inProgressTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
+       
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
+          <div class="w-3/4 h-1/2">  {{ inProgressTasksOfUser.name }}   </div>          
+        </div>   
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
+          <div class="w-3/4 h-1/2">  Project: {{ inProgressTasksOfUser.project.project_name }} </div>          
+        </div>  
+        
+        
+        
       </div>
 
       
@@ -140,7 +161,7 @@ const props = defineProps ({
   tasks: Object,
   users: Object,
   projectUsers: Object,
-  otherProjects:Object
+  inProgressTasksOfUsers:Object
 })
 
 

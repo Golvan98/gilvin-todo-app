@@ -29,7 +29,15 @@ class ProjectController extends Controller
         $projectsOfUser = ProjectUser::where('user_id' , $currentUserId)->pluck('project_id')->unique();
         $projects = Project::whereIn('id', $projectsOfUser)->get();
 
-      
+        //$inProgressTasksOfUsers =Task::whereIn('project_id' , $projectsOfUser)->where('status' , 'In Progress')->with('project:project_name')->get();
+        $inProgressTasksOfUsers = DB::table('tasks')
+    ->whereIn('tasks.project_id', $projectsOfUser) // Specify tasks.project_id
+    ->where('tasks.status', 'In Progress') // Specify tasks.status
+    ->join('projects', 'tasks.project_id', '=', 'projects.id')
+    ->select('tasks.*', 'projects.project_name')
+    ->get();
+
+      dd($inProgressTasksOfUsers);
       
 
         //    dd($allProjectsOfCurrentUser);
@@ -49,6 +57,7 @@ class ProjectController extends Controller
         'tasks' => $tasks,
         'users' => $users,
         'projectUsers' => $projectUsers,
+        'inProgressTasksOfUsers' => $inProgressTasksOfUsers
     ]);
 
    
