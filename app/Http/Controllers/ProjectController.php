@@ -29,8 +29,7 @@ class ProjectController extends Controller
         $projectsOfUser = ProjectUser::where('user_id' , $currentUserId)->pluck('project_id')->unique();
         $projects = Project::whereIn('id', $projectsOfUser)->get();
 
-        $otherProjects = Project::whereNotIn('id', $projectsOfUser)->get();
-
+      
       
 
         //    dd($allProjectsOfCurrentUser);
@@ -50,7 +49,6 @@ class ProjectController extends Controller
         'tasks' => $tasks,
         'users' => $users,
         'projectUsers' => $projectUsers,
-        'otherProjects' => $otherProjects
     ]);
 
    

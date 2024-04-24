@@ -179,3 +179,5 @@ April 17
 
 April 23
 - made some changes to layout and footer (mostly colors)
+- created buttons for project navbar 
+- created an if condition for "myProjects" page, otherProjects ToDo
