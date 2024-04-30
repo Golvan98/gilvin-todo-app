@@ -17,7 +17,7 @@
       
     </div>
 
-    <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black ">
+    <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black rounded-l-lg ">
 
       <div class="mainNavButton flex justify-center"> 
         <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class="h-1/2 flex items-center justify-center w-1/2"> My Projects </button>
@@ -28,7 +28,7 @@
       </div>
 
       <div class="navButton flex justify-center"> 
-        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="h-1/2 flex items-center justify-center w-1/2"> Other Projects </button>
+        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="h-1/2 flex items-center justify-center w-1/2"> Extras </button>
       </div>
 
      
@@ -37,7 +37,7 @@
     <div v-if="selectedTab === 'myProjects'" id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Projects </div>
-        <button @click="showAddProjectModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
+        <button @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
       </div>  
@@ -104,12 +104,12 @@
 
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
        <div> Project Tasks </div> 
-       <button v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
+       <button v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
        <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
-      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex w-full bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
-        <div class="w-5/6"> {{ task.name }} </div>
+      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex  w-full bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
+        <div class="w-5/6 flex justify-center"> {{ task.name }} </div>
           <div class="w-1/6 flex">
             <div class="h-auto"> 
               <button @click="selectTaskAndOpenEditTaskModal(task)"> 🖊️</button>
@@ -119,14 +119,14 @@
               <button @click="selectTaskAndOpenDeleteTaskModal(task)"> 🗑️ </button>
               <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :selectedTask="selectedTask"> </deleteTaskModal>
             </div>
-          </div>
+          </div>  
       </div>      
       
     </div>
 
     
 
-    <div v-if="selectedTab === 'myTasks'" id="completedTasks" class="row-start-2 row-span-5 col-start-5 overflow-y-auto bg-indigo-100">
+    <div v-if="selectedTab === 'myTasks'" id="completedTasks" class="row-start-2 row-span-5 col-start-5 overflow-y-auto bg-indigo-100 rounded-r-lg">
       
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Completed </div>
@@ -143,10 +143,10 @@
       
     </div>
 
-    <div v-if="selectedTab === 'myProjects'" id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-sm overflow-y-auto">
+    <div v-if="selectedTab === 'myProjects'" id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-r-lg overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit  text-black font-bold flex items-center justify-center">
         <div> Project Members </div> 
-         <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
+         <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
         </div>  
 

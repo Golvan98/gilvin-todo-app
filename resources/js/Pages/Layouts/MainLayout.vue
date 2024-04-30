@@ -5,7 +5,7 @@
 
   <div id="container" class="w-full h-screen bg-white text-red-500 flex flex-col">
     <!-- Top Navbar -->
-    <div id="topNavBar" class="bg-green-400 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white">
+    <div id="topNavBar" class="bg-indigo-500 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white">
       <div id="leftSection" class="col-span-1"></div>
       <div id="midSection" class="col-span-1 bg-reen-300 flex items-center justify-center space-x-2.5">
         <div v-if="user">{{ user.name }}   </div>
