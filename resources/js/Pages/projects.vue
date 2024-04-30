@@ -128,12 +128,12 @@
         <div> Completed </div>
       </div>  
 
-      <div v-for="pendingTasksOfUser in pendingTasksOfUsers" :key="pendingTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
+      <div v-for="completedTasksOfUser in completedTasksOfUsers" :key="completedTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
-          <div class="w-3/4 h-1/2">  Task: {{ pendingTasksOfUser.name }}   </div>          
+          <div class="w-3/4 h-1/2">  Task: {{ completedTasksOfUser.name }}   </div>          
         </div>   
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
-          <div class="w-3/4 h-1/2">  Project: {{ pendingTasksOfUser.project_name }} </div>          
+          <div class="w-3/4 h-1/2">  Project: {{ completedTasksOfUser.project_name }} </div>          
         </div>  
       </div>
       
@@ -197,7 +197,8 @@ const props = defineProps ({
   users: Object,
   projectUsers: Object,
   inProgressTasksOfUsers:Object,
-  pendingTasksOfUsers:Object
+  pendingTasksOfUsers:Object,
+  completedTasksOfUsers:Object
 })
 
 

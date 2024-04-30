@@ -45,6 +45,13 @@ class ProjectController extends Controller
     ->select('tasks.*', 'projects.project_name')
     ->get();
     
+    $completedTasksOfUsers = DB::table('tasks')
+    ->whereIn('tasks.project_id', $projectsOfUser) // Specify tasks.project_id
+    ->where('tasks.status', 'Complete') // Specify tasks.status
+    ->join('projects', 'tasks.project_id', '=', 'projects.id')
+    ->select('tasks.*', 'projects.project_name')
+    ->get();
+    
     
         //    dd($allProjectsOfCurrentUser);
         // AllProjects = Projects::where('id', == $projectsofUser)
@@ -60,7 +67,8 @@ class ProjectController extends Controller
         'users' => $users,
         'projectUsers' => $projectUsers,
         'inProgressTasksOfUsers' => $inProgressTasksOfUsers,
-        'pendingTasksOfUsers' => $pendingTasksOfUsers
+        'pendingTasksOfUsers' => $pendingTasksOfUsers,
+        'completedTasksOfUsers' => $completedTasksOfUsers
     ]);
 
    
