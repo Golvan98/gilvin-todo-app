@@ -37,15 +37,17 @@ class ProjectController extends Controller
     ->select('tasks.*', 'projects.project_name')
     ->get();
 
-      dd($inProgressTasksOfUsers);
-      
 
-        //    dd($allProjectsOfCurrentUser);
+    $pendingTasksOfUsers = DB::table('tasks')
+    ->whereIn('tasks.project_id', $projectsOfUser) // Specify tasks.project_id
+    ->where('tasks.status', 'Pending') // Specify tasks.status
+    ->join('projects', 'tasks.project_id', '=', 'projects.id')
+    ->select('tasks.*', 'projects.project_name')
+    ->get();
     
+    
+        //    dd($allProjectsOfCurrentUser);
         // AllProjects = Projects::where('id', == $projectsofUser)
-
-
-
       //  $authId = auth()->user()->id; alternative to pass as prop to get currently authenticated user
       
         
@@ -57,7 +59,8 @@ class ProjectController extends Controller
         'tasks' => $tasks,
         'users' => $users,
         'projectUsers' => $projectUsers,
-        'inProgressTasksOfUsers' => $inProgressTasksOfUsers
+        'inProgressTasksOfUsers' => $inProgressTasksOfUsers,
+        'pendingTasksOfUsers' => $pendingTasksOfUsers
     ]);
 
    

@@ -181,3 +181,11 @@ April 23
 - made some changes to layout and footer (mostly colors)
 - created buttons for project navbar 
 - created an if condition for "myProjects" page, otherProjects ToDo
+
+April 24
+- removed otherprojects feature as showing other projects provides no value, to be replaced with project members and mytasks UI
+- added eager loading to project tasks query and added tasks section to display which project it belongs to
+
+
+April 30
+- added pending tasks section for my tasks tab

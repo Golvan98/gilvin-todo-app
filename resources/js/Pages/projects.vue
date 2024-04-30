@@ -58,7 +58,7 @@
       
     </div>
 
-    <div v-if="selectedTab === 'myTasks'" id="inProgressTasks" class="row-start-2 row-span-5 col-start-3 overflow-y-auto bg-white">
+    <div v-if="selectedTab === 'myTasks'" id="inProgressTasks" class="row-start-2 row-span-5 col-start-4 overflow-y-auto bg-white">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> In Progress </div>
       </div>  
@@ -66,10 +66,10 @@
       <div v-for="inProgressTasksOfUser in inProgressTasksOfUsers" :key="inProgressTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
        
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
-          <div class="w-3/4 h-1/2">  {{ inProgressTasksOfUser.name }}   </div>          
+          <div class="w-3/4 h-1/2">  Task: {{ inProgressTasksOfUser.name }}   </div>          
         </div>   
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
-          <div class="w-3/4 h-1/2">  Project: {{ inProgressTasksOfUser.project.project_name }} </div>          
+          <div class="w-3/4 h-1/2">  Project: {{ inProgressTasksOfUser.project_name }} </div>          
         </div>  
         
         
@@ -79,7 +79,8 @@
       
     </div>
 
-    <div id="tasksRow" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto ">
+    <div v-if="selectedTab === 'myProjects'" id="tasksRow" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto ">
+
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
        <div> Project Tasks </div> 
        <button v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
@@ -104,7 +105,41 @@
       
     </div>
 
-    <div id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-sm overflow-y-auto">
+    <div v-if="selectedTab === 'myTasks'" id="pendingTasks" class="row-start-2 row-span-5 col-start-3 overflow-y-auto bg-white">
+      
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        <div> Pending </div>
+      </div>  
+
+      <div v-for="pendingTasksOfUser in pendingTasksOfUsers" :key="pendingTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
+          <div class="w-3/4 h-1/2">  Task: {{ pendingTasksOfUser.name }}   </div>          
+        </div>   
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
+          <div class="w-3/4 h-1/2">  Project: {{ pendingTasksOfUser.project_name }} </div>          
+        </div>  
+      </div>
+
+    </div>
+
+    <div v-if="selectedTab === 'myTasks'" id="completedTasks" class="row-start-2 row-span-5 col-start-5 overflow-y-auto bg-white">
+      
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        <div> Completed </div>
+      </div>  
+
+      <div v-for="pendingTasksOfUser in pendingTasksOfUsers" :key="pendingTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
+          <div class="w-3/4 h-1/2">  Task: {{ pendingTasksOfUser.name }}   </div>          
+        </div>   
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
+          <div class="w-3/4 h-1/2">  Project: {{ pendingTasksOfUser.project_name }} </div>          
+        </div>  
+      </div>
+      
+    </div>
+
+    <div v-if="selectedTab === 'myProjects'" id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-sm overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit  text-black font-bold flex items-center justify-center">
         <div> Project Members </div> 
          <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-green-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
@@ -161,7 +196,8 @@ const props = defineProps ({
   tasks: Object,
   users: Object,
   projectUsers: Object,
-  inProgressTasksOfUsers:Object
+  inProgressTasksOfUsers:Object,
+  pendingTasksOfUsers:Object
 })
 
 
