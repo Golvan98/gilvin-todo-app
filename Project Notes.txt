@@ -50,3 +50,7 @@ function on create button with a work around on form.error
 Note 7:
 possible fix for ur modal problem would be to find another way to render modal
 just for this
+
+---------------------------------------------------------
+Note 8:
+anyone can create pages, functional and shit, u have proved that in ur recent projects, now make do with UI for a presentable project

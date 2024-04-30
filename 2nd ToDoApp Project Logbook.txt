@@ -188,4 +188,10 @@ April 24
 
 
 April 30
-- added pending tasks section for my tasks tab
+- added pending tasks section for 'my tasks' tab
+- added completed tasks section for 'my tasks' tab
+- made some UI changes, edit button is now •••
+
+May 1
+- Assignment: convert the button into ••• icon
+- Assignment: Convert delete button into trash icon🗑 

@@ -43,10 +43,12 @@
       </div>  
 
       <div v-if="selectedTab === 'myProjects'" v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg">
-        <button @click="selectProject(project)" :class="{ 'bg-green-400': selectedProjectId == project.id }" class="bg-gray-300 rounded-lg w-full h-full">
+        <button @click="selectProject(project)" :class="{ 'bg-indigo-400': selectedProjectId == project.id }" class="bg-indigo-100 rounded-lg w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
-          <div class="w-3/4"> Project {{ project.project_name }}  </div>
-          <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="flex items-center justify-center w-1/4 h-full bg-cover text-black bg-white font-bold">🖊</button>
+          <div class="w-5/6"> Project {{ project.project_name }}  </div>
+            <div class="flex items-center justify-end w-1/6 h-full"> 
+              <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="bg-cover text-black bg-inherit font-bold">•••</button>
+            </div>
           <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"   @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
         </div>   
         
@@ -58,12 +60,31 @@
       
     </div>
 
-    <div v-if="selectedTab === 'myTasks'" id="inProgressTasks" class="row-start-2 row-span-5 col-start-4 overflow-y-auto bg-white">
+    <div v-if="selectedTab === 'myTasks'" id="pendingTasks" class="row-start-2 row-span-5 col-start-3 overflow-y-auto bg-indigo-100">
+      
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center bg-gray-100">
+        <div> Pending </div>
+      </div>  
+
+      <div v-for="pendingTasksOfUser in pendingTasksOfUsers" :key="pendingTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-white">
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
+          <div class="w-3/4 h-1/2">  Task: {{ pendingTasksOfUser.name }}   </div>          
+        </div>   
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
+          <div class="w-3/4 h-1/2">  Project: {{ pendingTasksOfUser.project_name }} </div>          
+        </div>  
+      </div>
+
+    </div>
+
+
+
+    <div v-if="selectedTab === 'myTasks'" id="inProgressTasks" class="row-start-2 row-span-5 col-start-4 overflow-y-auto bg-indigo-100">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> In Progress </div>
       </div>  
 
-      <div v-for="inProgressTasksOfUser in inProgressTasksOfUsers" :key="inProgressTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
+      <div v-for="inProgressTasksOfUser in inProgressTasksOfUsers" :key="inProgressTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-white">
        
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
           <div class="w-3/4 h-1/2">  Task: {{ inProgressTasksOfUser.name }}   </div>          
@@ -87,7 +108,7 @@
        <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
-      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex w-full bg-gray-300  text-black mx-auto mt-2 rounded-lg">
+      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex w-full bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
           <div class="w-5/6"> {{ task.name }} </div>
           <div class="w-1/6">
             <div class="h-1/2"> 
@@ -105,30 +126,15 @@
       
     </div>
 
-    <div v-if="selectedTab === 'myTasks'" id="pendingTasks" class="row-start-2 row-span-5 col-start-3 overflow-y-auto bg-white">
-      
-      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        <div> Pending </div>
-      </div>  
+    
 
-      <div v-for="pendingTasksOfUser in pendingTasksOfUsers" :key="pendingTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
-        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
-          <div class="w-3/4 h-1/2">  Task: {{ pendingTasksOfUser.name }}   </div>          
-        </div>   
-        <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
-          <div class="w-3/4 h-1/2">  Project: {{ pendingTasksOfUser.project_name }} </div>          
-        </div>  
-      </div>
-
-    </div>
-
-    <div v-if="selectedTab === 'myTasks'" id="completedTasks" class="row-start-2 row-span-5 col-start-5 overflow-y-auto bg-white">
+    <div v-if="selectedTab === 'myTasks'" id="completedTasks" class="row-start-2 row-span-5 col-start-5 overflow-y-auto bg-indigo-100">
       
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Completed </div>
       </div>  
 
-      <div v-for="completedTasksOfUser in completedTasksOfUsers" :key="completedTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-yellow-300">
+      <div v-for="completedTasksOfUser in completedTasksOfUsers" :key="completedTasksOfUsers.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg bg-white">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/2 font-bold"> 
           <div class="w-3/4 h-1/2">  Task: {{ completedTasksOfUser.name }}   </div>          
         </div>   
@@ -149,7 +155,7 @@
       <div id="membersList" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-lg">
         
           <div class="w-5/6 h-full bg-inherit flex justify-center"> 
-           <div class="w-3/4 h-full bg-gray-300 rounded-lg">  {{ user.name }} </div>
+           <div class="w-3/4 h-full bg-indigo-100 rounded-lg">  {{ user.name }} </div>
           </div>
 
           <div class="w-1/6 h-full bg-white flex justify-start">  
