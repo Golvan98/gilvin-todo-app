@@ -109,18 +109,16 @@
       </div>
 
       <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex w-full bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
-          <div class="w-5/6"> {{ task.name }} </div>
-          <div class="w-1/6">
-            <div class="h-1/2"> 
-              <button @click="selectTaskAndOpenEditTaskModal(task)"> Edit </button>
+        <div class="w-5/6"> {{ task.name }} </div>
+          <div class="w-1/6 flex">
+            <div class="h-auto"> 
+              <button @click="selectTaskAndOpenEditTaskModal(task)"> 🖊️</button>
               <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
-
-            <div class="h-1/2"> 
-              <button @click="selectTaskAndOpenDeleteTaskModal(task)"> Delete </button>
+            <div class="h-auto"> 
+              <button @click="selectTaskAndOpenDeleteTaskModal(task)"> 🗑️ </button>
               <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :selectedTask="selectedTask"> </deleteTaskModal>
             </div>
-
           </div>
       </div>      
       
