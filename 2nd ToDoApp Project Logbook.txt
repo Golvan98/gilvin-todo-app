@@ -192,8 +192,12 @@ April 30
 - added completed tasks section for 'my tasks' tab
 - made UI changes  in myprojects tab 
 - made further UI changes in myprojects tab
+- made even more changes to my projects, mytasks tab and main layout
 
 May 1
-- Assignment: convert the button into ••• icon
-- Assignment: Convert delete button into trash icon🗑 
+- Assignment: convert the button into ••• icon - done
+- Assignment: Convert delete button into trash icon🗑  - done
 - Assignment: find out wtf to do with task
+
+May 2
+- created another section in project navbar to reflect each projects owned by user.

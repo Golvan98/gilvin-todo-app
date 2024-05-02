@@ -51,6 +51,10 @@ class ProjectController extends Controller
     ->join('projects', 'tasks.project_id', '=', 'projects.id')
     ->select('tasks.*', 'projects.project_name')
     ->get();
+
+    $projectsOwnedByUsers = Project::where('ownerId' , $currentUserId)->get();
+
+
     
     
         //    dd($allProjectsOfCurrentUser);
@@ -68,7 +72,8 @@ class ProjectController extends Controller
         'projectUsers' => $projectUsers,
         'inProgressTasksOfUsers' => $inProgressTasksOfUsers,
         'pendingTasksOfUsers' => $pendingTasksOfUsers,
-        'completedTasksOfUsers' => $completedTasksOfUsers
+        'completedTasksOfUsers' => $completedTasksOfUsers,
+        'projectsOwnedByUsers' => $projectsOwnedByUsers
     ]);
 
    

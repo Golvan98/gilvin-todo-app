@@ -20,16 +20,18 @@
     <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black rounded-l-lg ">
 
       <div class="mainNavButton flex justify-center"> 
-        <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class="h-1/2 flex items-center justify-center w-1/2"> My Projects </button>
+        <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class=" flex items-center justify-center w-1/2 "> My Projects </button>
       </div>
-
+      
        <div class="navButton flex justify-center"> 
-        <button @click="setSelectedTab('myTasks')" :class="{ 'bg-indigo-300': selectedTab === 'myTasks', 'bg-white': selectedTab !== 'myTasks' }" class="h-1/2 flex items-center justify-center w-1/2"> My Tasks </button>
+        <button @click="setSelectedTab('myTasks')" :class="{ 'bg-indigo-300': selectedTab === 'myTasks', 'bg-white': selectedTab !== 'myTasks' }" class=" flex items-center justify-center w-1/2 "> My Tasks </button>
       </div>
 
-      <div class="navButton flex justify-center"> 
-        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="h-1/2 flex items-center justify-center w-1/2"> Extras </button>
+      <div class="navButton marginTenPercent flex justify-center"> 
+        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2"> Your Projects </button>
       </div>
+
+      <div v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> {{ projectsOwnedByUser.project_name }} </div>
 
      
     </div>
@@ -202,7 +204,8 @@ const props = defineProps ({
   projectUsers: Object,
   inProgressTasksOfUsers:Object,
   pendingTasksOfUsers:Object,
-  completedTasksOfUsers:Object
+  completedTasksOfUsers:Object,
+  projectsOwnedByUsers:Object
 })
 
 
@@ -349,7 +352,7 @@ const currentProjectInfo = computed(() => {
   }
 
   .mainNavButton {
-    height: 10%;
+    
     width: 100%;
     margin-top:10%
   }
@@ -357,6 +360,10 @@ const currentProjectInfo = computed(() => {
   .navButton {
     margin-top:5%;
     width: 100%;
+  }
+
+  .marginTenPercent {
+    margin-top: 10%;
   }
 
 </style>

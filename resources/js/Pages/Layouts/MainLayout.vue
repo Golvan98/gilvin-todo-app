@@ -38,11 +38,11 @@
     </div>
 
     <!-- Footer -->
-    <footer id="footer" class="h-10-percent mx-auto bg-indigo-300 flex w-full">
+    <footer id="footer" class="h-10-percent mx-auto bg-indigo-500 flex w-full">
       <div id="leftFooter" class="h-full flex items-center justify-center">
         This is the Left Footer. This Remains on Top if it is zoomed in to an extent
       </div>
-      <div id="rightFooter" class="bg-indigo-300 h-full flex items-center justify-center">
+      <div id="rightFooter" class="bg-indigo-500 h-full flex items-center justify-center">
         This is the Right Footer. This Remains Below if it is zoomed in to an extent
       </div>
     </footer>
