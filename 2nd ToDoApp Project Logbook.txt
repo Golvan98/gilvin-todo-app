@@ -200,4 +200,5 @@ May 1
 - Assignment: find out wtf to do with task
 
 May 2
-- created another section in project navbar to reflect each projects owned by user.
+- created another section in project navbar to reflect each projects owned by user. changed footer color as well
+- Assignment: intertwine selectedTab and selectProject in one @click using a method in script setup.

@@ -11,7 +11,7 @@
       <div class="w-full h-1/5 bg-indigo-300">  </div>
       <div class="w-full h-4/5 bg-indigo-300 font-bold text-6xl flex justify-between items-center"> 
        <div>  Project Management UI </div>
-       <div class="text-2xl flex items-center justify-center"> Designed by Gilvin {{ selectedTab }}</div>
+       <div class="text-2xl flex items-center justify-center"> Current Tab: {{ selectedTab }}</div>
       </div>
 
       
@@ -31,10 +31,13 @@
         <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2"> Your Projects </button>
       </div>
 
-      <div v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> {{ projectsOwnedByUser.project_name }} </div>
+      <div v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> 
+        <button @click="setSelectedTab(projectsOwnedByUser.project_name)" :class="{ 'bg-indigo-300': selectedTab === projectsOwnedByUser.project_name, 'bg-white': selectedTab !== projectsOwnedByUser.project_name }"> {{ projectsOwnedByUser.project_name }} </button>
+      </div>
 
      
     </div>
+
 
     <div v-if="selectedTab === 'myProjects'" id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
@@ -164,6 +167,9 @@
           </div>
       </div>  
     </div>
+
+    
+    
 
 
   
