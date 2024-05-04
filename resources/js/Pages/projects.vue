@@ -11,7 +11,7 @@
       <div class="w-full h-1/5 bg-indigo-300">  </div>
       <div class="w-full h-4/5 bg-indigo-300 font-bold text-6xl flex justify-between items-center"> 
        <div>  Project Management UI </div>
-       <div class="text-2xl flex items-center justify-center"> Current Tab: {{ selectedTab }}</div>
+       <div class="text-2xl flex items-center justify-center"> Current Tab: {{ selectedTab }} {{ selectedProjectId }}</div>
       </div>
 
       
@@ -32,13 +32,26 @@
       </div>
 
       <div v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> 
-        <button @click="setSelectedTab(projectsOwnedByUser.project_name)" :class="{ 'bg-indigo-300': selectedTab === projectsOwnedByUser.project_name, 'bg-white': selectedTab !== projectsOwnedByUser.project_name }"> {{ projectsOwnedByUser.project_name }} </button>
+        <button @click="setTabAndProject(projectsOwnedByUser)" :class="{ 'bg-indigo-300': selectedTab === projectsOwnedByUser.project_name, 'bg-white': selectedTab !== projectsOwnedByUser.project_name }"> {{ projectsOwnedByUser.project_name }} </button>
       </div>
 
      
     </div>
 
+    <div  id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        <div v-if="selectedProject"> Test Column {{ selectedProject.project_name }}  </div>
+      </div>  
+      
+       <div v-for="task in inProgressTasks()" :key=task.id class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
+          
+            <div class="w-full bg-red-300 h-full"> 
+              Project {{ task.name }} 
+            </div>
+       </div>   
 
+    </div>
+   
     <div v-if="selectedTab === 'myProjects'" id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Projects </div>
@@ -113,7 +126,7 @@
        <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
-      <div id="maintask" v-for="task in filteredTasks()" :key="tasks.id" class="h-1/5 flex  w-full bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
+      <div id="maintask" v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex  w-full bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
         <div class="w-5/6 flex justify-center"> {{ task.name }} </div>
           <div class="w-1/6 flex">
             <div class="h-auto"> 
@@ -221,7 +234,15 @@ const setSelectedTab = (tab) =>
 {
   selectedTab.value = tab;
 }
+ 
+const selectedProject = ref(null);
 
+const setTabAndProject = (project) =>
+{
+  selectedTab.value = project.project_name;
+  selectedProjectId.value = project.id;
+  selectedProject.value = project
+}
 
 const selectedProjectId = ref(null);
 const projectOwnerId = ref(0);
@@ -280,7 +301,9 @@ return selectedProjectId.value === projectId;
 const filteredTasks = () => {
   return props.tasks.filter(task => task.project_id === selectedProjectId.value);
 }
-
+const inProgressTasks = () => {
+  return props.tasks.filter(task => task.project_id === selectedProjectId.value && task.status === 'In Progress');
+}
 const projectMembers = () => {
   const memberUserIds = props.projectUsers
     .filter(projectUser => projectUser.project_id === selectedProjectId.value)

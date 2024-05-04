@@ -201,4 +201,9 @@ May 1
 
 May 2
 - created another section in project navbar to reflect each projects owned by user. changed footer color as well
+- project navBar now reflects all projected owned by user, backend is to be completed next session
 - Assignment: intertwine selectedTab and selectProject in one @click using a method in script setup.
+
+
+May 4
+- added in Progress tasks tab
