@@ -66,6 +66,20 @@
        </div>   
 
     </div>
+
+    <div  id="selectedInProgressTasks" class="row-start-2 row-span-5 col-start-5 bg-white overflow-y-auto">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        <div v-if="selectedProject"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
+      </div>  
+      
+       <div v-for="task in completedTasks()" :key=task.id class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
+          
+            <div class="w-full bg-indigo-300 h-3/4 rounded-lg"> 
+               {{ task.name }} {{ task.status }}
+            </div>
+       </div>   
+
+    </div>
    
     <div v-if="selectedTab === 'myProjects'" id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
@@ -322,6 +336,10 @@ const inProgressTasks = () => {
 
 const pendingTasks = () => {
   return props.tasks.filter(task => task.project_id === selectedProjectId.value && task.status === 'Pending');
+}
+
+const completedTasks = () => {
+  return props.tasks.filter(task => task.project_id === selectedProjectId.value && task.status === 'Complete');
 }
 
 const projectMembers = () => {
