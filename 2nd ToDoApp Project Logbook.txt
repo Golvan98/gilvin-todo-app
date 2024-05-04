@@ -209,3 +209,7 @@ May 4
 - added in Progress tasks tab for myProjects section
 - added in Pending tasks tab for myProjects section
 - added in Complete tasks tab for myProjects section
+- added a non working button for edit task in selectProject section
+
+May 5
+- Assignment: add edit modal to selectProject section

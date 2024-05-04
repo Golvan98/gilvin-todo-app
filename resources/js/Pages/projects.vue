@@ -41,42 +41,48 @@
     
     <div  id="selectedPendingTasks" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        <div v-if="selectedProject"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
+        <div v-if="selectedProject"> Pending Tasks of {{ selectedProject.project_name }}  </div>
       </div>  
       
        <div v-for="task in pendingTasks()" :key=task.id class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div class="w-full bg-indigo-300 h-3/4 rounded-lg"> 
-               {{ task.name }} {{ task.status }}
+            <div class="w-full flex bg-indigo-300 h-3/4 rounded-lg"> 
+               <div class="w-5/6"> {{ task.name }} </div>
+               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> •••</div>
             </div>
        </div>   
 
     </div>
 
     <div  id="selectedInProgressTasks" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto">
+      
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div v-if="selectedProject"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
       </div>  
       
        <div v-for="task in inProgressTasks()" :key=task.id class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div class="w-full bg-indigo-300 h-3/4 rounded-lg"> 
-               {{ task.name }} {{ task.status }}
+            <div class="w-full flex bg-indigo-300 h-3/4 rounded-lg"> 
+               <div class="w-5/6"> {{ task.name }} </div>
+               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> •••</div>
             </div>
+
        </div>   
 
     </div>
 
     <div  id="selectedInProgressTasks" class="row-start-2 row-span-5 col-start-5 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        <div v-if="selectedProject"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
+        <div v-if="selectedProject"> Completed Tasks of {{ selectedProject.project_name }}  </div>
       </div>  
       
        <div v-for="task in completedTasks()" :key=task.id class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div class="w-full bg-indigo-300 h-3/4 rounded-lg"> 
-               {{ task.name }} {{ task.status }}
+            <div class="w-full flex bg-indigo-300 h-3/4 rounded-lg"> 
+               <div class="w-5/6"> {{ task.name }} </div>
+               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> •••</div>
             </div>
+
        </div>   
 
     </div>
@@ -435,6 +441,15 @@ const currentProjectInfo = computed(() => {
 
   .margin10Bottom{
     margin-bottom: 10%;
+  }
+
+  .width90Percent
+  {
+    width:90%;
+  }
+
+  .width10Percent{
+    width:10%;
   }
 
 </style>
