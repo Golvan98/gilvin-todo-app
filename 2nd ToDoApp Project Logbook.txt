@@ -206,4 +206,5 @@ May 2
 
 
 May 4
-- added in Progress tasks tab
+- added in Progress tasks tab for myProjects section
+- added in Pending tasks tab for myProjects section

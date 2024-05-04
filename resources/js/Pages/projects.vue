@@ -38,15 +38,30 @@
      
     </div>
 
-    <div  id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
+    
+    <div  id="selectedPendingTasks" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-        <div v-if="selectedProject"> Test Column {{ selectedProject.project_name }}  </div>
+        <div v-if="selectedProject"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
+      </div>  
+      
+       <div v-for="task in pendingTasks()" :key=task.id class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
+          
+            <div class="w-full bg-indigo-300 h-3/4 rounded-lg"> 
+               {{ task.name }} {{ task.status }}
+            </div>
+       </div>   
+
+    </div>
+
+    <div  id="selectedInProgressTasks" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+        <div v-if="selectedProject"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
       </div>  
       
        <div v-for="task in inProgressTasks()" :key=task.id class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div class="w-full bg-red-300 h-full"> 
-              Project {{ task.name }} 
+            <div class="w-full bg-indigo-300 h-3/4 rounded-lg"> 
+               {{ task.name }} {{ task.status }}
             </div>
        </div>   
 
@@ -304,6 +319,11 @@ const filteredTasks = () => {
 const inProgressTasks = () => {
   return props.tasks.filter(task => task.project_id === selectedProjectId.value && task.status === 'In Progress');
 }
+
+const pendingTasks = () => {
+  return props.tasks.filter(task => task.project_id === selectedProjectId.value && task.status === 'Pending');
+}
+
 const projectMembers = () => {
   const memberUserIds = props.projectUsers
     .filter(projectUser => projectUser.project_id === selectedProjectId.value)
@@ -393,6 +413,10 @@ const currentProjectInfo = computed(() => {
 
   .marginTenPercent {
     margin-top: 10%;
+  }
+
+  .margin10Bottom{
+    margin-bottom: 10%;
   }
 
 </style>
