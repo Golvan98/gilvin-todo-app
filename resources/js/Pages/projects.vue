@@ -13,7 +13,6 @@
        <div>  Project Management UI </div>
        <div class="text-2xl flex items-center justify-center"> Current Tab: {{ selectedTab }} {{ selectedProjectId }}</div>
       </div>
-
       
     </div>
 
@@ -48,7 +47,8 @@
           
             <div class="w-full flex bg-indigo-300 h-3/4 rounded-lg"> 
                <div class="w-5/6"> {{ task.name }} </div>
-               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> •••</div>
+               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> <button @click="selectTaskAndOpenEditTaskModal(task)">••• </button> </div>
+              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
        </div>   
 
@@ -64,7 +64,8 @@
           
             <div class="w-full flex bg-indigo-300 h-3/4 rounded-lg"> 
                <div class="w-5/6"> {{ task.name }} </div>
-               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> •••</div>
+               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> <button @click="selectTaskAndOpenEditTaskModal(task)">••• </button> </div>
+              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
 
        </div>   
@@ -80,7 +81,8 @@
           
             <div class="w-full flex bg-indigo-300 h-3/4 rounded-lg"> 
                <div class="w-5/6"> {{ task.name }} </div>
-               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> •••</div>
+               <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> <button @click="selectTaskAndOpenEditTaskModal(task)">••• </button> </div>
+              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
 
        </div>   
