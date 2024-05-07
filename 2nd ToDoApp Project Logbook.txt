@@ -216,4 +216,5 @@ May 5
 
 
 May 7
-- 
+- Added Edit buttons for selectProject section
+- integrated the delete modal into edit task modal 

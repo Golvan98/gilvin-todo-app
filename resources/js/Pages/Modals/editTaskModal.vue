@@ -36,8 +36,14 @@
             <input type="hidden" v-model="form.task_id" id="task_id">
             
 
-            <div class="h-1/2 flex items-center justify-center"> 
-                <button class="p-1 bg-gray-300" type="submit"> Edit  Task </button>
+            <div class="h-1/2 flex items-center justify-center "> 
+               <div class="flex justify-between w-4/5">
+                <button class="w-1/5 h-auto bg-gray-300" type="submit"> Edit  Task </button>
+                <button  @click="selectTaskAndOpenDeleteTaskModal(task)" class="w-1/5 h-auto bg-red-300"> Delete  Task </button>
+                <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :selectedTask="selectedTask"> </deleteTaskModal>
+               </div>
+               
+                
             </div>  
 
            </div>
@@ -52,6 +58,8 @@
 import { useForm } from '@inertiajs/vue3';
 import { defineProps, defineEmits, ref } from 'vue';
 import { Link, usePage } from '@inertiajs/vue3'
+import deleteTaskModal from '@/Pages/Modals/deleteTaskModal.vue'
+const showDeleteTaskModal = ref(false);
 
 const page = usePage()
 
@@ -66,6 +74,12 @@ const props = defineProps({
   selectedTask:Object
 });
 
+
+
+const selectTaskAndOpenDeleteTaskModal = (taskInfo) => {
+  props.selectedTask = taskInfo
+  showDeleteTaskModal.value = true;
+}
 
 const emits = defineEmits(['closeEditTaskModal']);
 
