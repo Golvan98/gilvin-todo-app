@@ -75,7 +75,8 @@
     }
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 769px) 
+  {
     /* Adjust styles for different zoom levels */
     #footer {
       flex: none;
@@ -84,7 +85,7 @@
 
     #leftNavBar{
         display:none;
-      }
+    }
    
     #leftFooter, #rightFooter {
       font-size: 24px;
