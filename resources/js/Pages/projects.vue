@@ -39,7 +39,7 @@
 
     
     <div  id="selectedPendingTasks" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
-      <div id="tasksHeader" class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center h-1/6 bg-red-300 mb-2">
+      <div id="tasksHeader" class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center h-1/6 mb-2">
         <div v-if="selectedProject" class="text-black"> Pending Tasks of {{ selectedProject.project_name }} </div>
           <button id="pendingPlusButton" v-if="selectedProjectId" @click="showAddTaskModal = true" class="text-2xl ml-2 text-indigo-500">+</button>
         <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>    
@@ -59,7 +59,7 @@
 
     <div  id="selectedInProgressTasks" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto">
       
-      <div id="tasksHeader"  class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center h-1/6 bg-red-300 mb-2">
+      <div id="tasksHeader"  class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center h-1/6 mb-2">
         <div v-if="selectedProject"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
         <button id="pendingPlusButton" v-if="selectedProjectId" @click="showAddTaskModal = true" class="text-2xl ml-2 text-indigo-500">+</button>
         <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>    
@@ -79,7 +79,7 @@
     </div>
 
     <div  id="selectedCompletedTasks" class="row-start-2 row-span-5 col-start-5 bg-white overflow-y-auto">
-      <div id="tasksHeader"  class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center h-1/6 bg-red-300 mb-2">
+      <div id="tasksHeader"  class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center h-1/6 mb-2">
         <div v-if="selectedProject"> Completed Tasks of {{ selectedProject.project_name }}  </div>
         <button id="pendingPlusButton" v-if="selectedProjectId" @click="showAddTaskModal = true" class="text-2xl ml-2 text-indigo-500">+</button>
         <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>    
@@ -397,7 +397,7 @@ const currentProjectInfo = computed(() => {
 @media screen and (max-width: 600px) {
 
   #taskPlacer{
-    font-size: 6px;
+    font-size: 4px;
     height: 25%;
     width: 100%;
     padding: 12px;

@@ -222,3 +222,6 @@ May 7
 
 May 8
 - start of UI revamp
+- added screen size conditions for selectedProject section
+- further tweaked screen size conditions for selectedProject section
+- fixed taskplacer section's font, to tweak its row problems next session 
