@@ -48,7 +48,7 @@
       
        <div id="mainTaskPlacer" v-for="task in pendingTasks()" :key=task.id class="flex items-start justify-center mx-auto w-full h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex justify-center bg-red-300 h-3/4 rounded-lg"> 
+            <div id="taskPlacer" class="w-full flex justify-center bg-indigo-300 h-3/4 rounded-lg"> 
                 <div class="w-5/6 flex justify-center"> 
                     <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
                 </div>
@@ -70,7 +70,7 @@
       
        <div id="mainTaskPlacer" v-for="task in inProgressTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex justify-center bg-red-300 h-3/4 rounded-lg"> 
+            <div id="taskPlacer" class="w-full flex justify-center bg-indigo-300 h-3/4 rounded-lg"> 
                 <div class="w-5/6 flex justify-center"> 
                     <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
                 </div>
@@ -92,7 +92,7 @@
       
        <div id="mainTaskPlacer" v-for="task in completedTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex justify-center bg-red-300 h-3/4 rounded-lg"> 
+            <div id="taskPlacer" class="w-full flex justify-center  bg-indigo-300 h-3/4 rounded-lg"> 
                 <div class="w-5/6 flex justify-center"> 
                     <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
                 </div>
@@ -402,27 +402,31 @@ const currentProjectInfo = computed(() => {
 
 <style>
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 760px) {
  
  
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 759px) {
 
+
+  
 
    #mainTaskPlacer{
     width:80%;
+    height: 80px;
+
     
    }
 
 
   #taskPlacer{
-    font-size: 3px;
-    height: 20%;
-    width: 100%;
-    padding: 12px;
+    font-size: 4px;
+    height: 60px;
+    width: 90%;
     color:red;
+    border-radius: 1px;
   }
 
   #tasksHeader
