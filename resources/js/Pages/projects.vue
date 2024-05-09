@@ -46,10 +46,12 @@
         
       </div>  
       
-       <div  v-for="task in pendingTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
+       <div id="mainTaskPlacer" v-for="task in pendingTasks()" :key=task.id class="flex items-start justify-center mx-auto w-full h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex bg-indigo-300 h-3/4 rounded-lg"> 
-               <div class="w-5/6"> {{ task.name }} </div>
+            <div id="taskPlacer" class="w-full flex justify-center bg-red-300 h-3/4 rounded-lg"> 
+                <div class="w-5/6 flex justify-center"> 
+                    <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
+                </div>
                <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> <button @click="selectTaskAndOpenEditTaskModal(task)">••• </button> </div>
               <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
@@ -66,10 +68,12 @@
       
       </div>  
       
-       <div v-for="task in inProgressTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
+       <div id="mainTaskPlacer" v-for="task in inProgressTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex bg-indigo-300 h-3/4 rounded-lg"> 
-               <div class="w-5/6"> {{ task.name }} </div>
+            <div id="taskPlacer" class="w-full flex justify-center bg-red-300 h-3/4 rounded-lg"> 
+                <div class="w-5/6 flex justify-center"> 
+                    <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
+                </div>
                <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> <button @click="selectTaskAndOpenEditTaskModal(task)">••• </button> </div>
               <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
@@ -86,10 +90,12 @@
       
       </div>  
       
-       <div v-for="task in completedTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
+       <div id="mainTaskPlacer" v-for="task in completedTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex items-start bg-indigo-300 h-3/4 rounded-lg"> 
-               <div class="w-5/6"> {{ task.name }} </div>
+            <div id="taskPlacer" class="w-full flex justify-center bg-red-300 h-3/4 rounded-lg"> 
+                <div class="w-5/6 flex justify-center"> 
+                    <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
+                </div>
                <div class="w-1/6 h-1/6 rounded-r-lg text-black flex justify-center"> <button @click="selectTaskAndOpenEditTaskModal(task)">••• </button> </div>
               <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
@@ -273,6 +279,14 @@ const props = defineProps ({
   projectsOwnedByUsers:Object
 })
 
+const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...'; // Add ellipses (...) to indicate truncation
+    } else {
+      return text;
+    }
+  }
+
 
 const selectedTab = ref('myProjects')
 
@@ -396,11 +410,19 @@ const currentProjectInfo = computed(() => {
 
 @media screen and (max-width: 600px) {
 
+
+   #mainTaskPlacer{
+    width:80%;
+    
+   }
+
+
   #taskPlacer{
-    font-size: 4px;
-    height: 25%;
+    font-size: 3px;
+    height: 20%;
     width: 100%;
     padding: 12px;
+    color:red;
   }
 
   #tasksHeader
