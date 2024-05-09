@@ -19,19 +19,21 @@
     <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black rounded-l-lg ">
 
       <div class="mainNavButton flex justify-center"> 
-        <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class=" flex items-center justify-center w-1/2 "> Projects Overview</button>
+        <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class=" flex items-center justify-center w-1/2 " style="white-space: nowrap;"> Projects Overview</button>
       </div>
       
        <div class="navButton flex justify-center"> 
         <button @click="setSelectedTab('myTasks')" :class="{ 'bg-indigo-300': selectedTab === 'myTasks', 'bg-white': selectedTab !== 'myTasks' }" class=" flex items-center justify-center w-1/2 "> My Tasks </button>
       </div>
 
-      <div class="navButton marginTenPercent flex justify-center"> 
-        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2"> Your Projects </button>
+      <div id="yourProjects" class="navButton marginTenPercent flex justify-center"> 
+        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2" style="white-space: nowrap;"> Your Projects </button>
       </div>
 
-      <div v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> 
-        <button @click="setTabAndProject(projectsOwnedByUser)" :class="{ 'bg-indigo-300': selectedTab === projectsOwnedByUser.project_name, 'bg-white': selectedTab !== projectsOwnedByUser.project_name }"> {{ projectsOwnedByUser.project_name }} </button>
+      <div id="listofProjectsByUser" v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> 
+        <button @click="setTabAndProject(projectsOwnedByUser)" :class="{ 'bg-indigo-300': selectedTab === projectsOwnedByUser.project_name, 'bg-white': selectedTab !== projectsOwnedByUser.project_name }"> 
+          <span class="truncate-text">{{ truncateText(projectsOwnedByUser.project_name, 8) }} </span>
+        </button>
       </div>
 
      
@@ -426,6 +428,19 @@ const currentProjectInfo = computed(() => {
 
 @media screen and (max-width: 768px) {
 
+  #listofProjectsByUser{
+    
+    font-size:8px;
+  }
+
+  #projectNavBar{
+    font-size:4px;
+    color:red
+  }
+
+  #yourProjects{
+    font-size:6px;
+  }
 
    #projectHeader{
     height:80%;
