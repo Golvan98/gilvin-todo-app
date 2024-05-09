@@ -7,11 +7,11 @@
  <div id="thirdBlock" class="bg-inherit h-full w-full grid grid-cols-6 grid-rows-6 text-white">
 
 
-    <div id="projectHeader" class="bg-white row-start-1 row-span-1 col-start-2 col-span-4 rounded-l-sm"> 
+    <div id="projectHeader" class="bg-white row-start-1 row-span-1 col-start-2 col-span-4 rounded-l-sm border-b border-white"> 
       <div class="w-full h-1/5 bg-indigo-300">  </div>
-      <div class="w-full h-4/5 bg-indigo-300 font-bold text-6xl flex justify-between items-center"> 
-       <div>  Project Management UI </div>
-       <div class="text-2xl flex items-center justify-center"> Current Tab: {{ selectedTab }} {{ selectedProjectId }}</div>
+      <div class="w-full h-4/5 bg-indigo-300 font-bold flex justify-between items-center"> 
+       <div id="projectHeaderText">  Project Management UI </div>
+       <div id="projectHeaderText" class=" flex items-center justify-center"> Current Tab: {{ selectedTab }} {{ selectedProjectId }}</div>
       </div>
       
     </div>
@@ -48,7 +48,7 @@
       
        <div id="mainTaskPlacer" v-for="task in pendingTasks()" :key=task.id class="flex items-start justify-center mx-auto w-full h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex justify-center bg-indigo-300 h-3/4 rounded-lg"> 
+            <div id="taskPlacer" class="w-3/4 flex justify-center bg-indigo-300 h-3/4 rounded-lg"> 
                 <div class="w-5/6 flex justify-center"> 
                     <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
                 </div>
@@ -402,38 +402,62 @@ const currentProjectInfo = computed(() => {
 
 <style>
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 769px) {
  
- 
+  #projectHeader{
+    height:80%;
+    color: white;
+    font-size: 20px;
+   }
+
+   #tasksHeader
+  {
+    height: 15%;
+    font-size: 10px;
+  }
+
+  #taskPlacer{
+    font-size:15px;
+  }
 }
 
 
-@media screen and (max-width: 759px) {
 
 
-  
+@media screen and (max-width: 768px) {
+
+
+   #projectHeader{
+    height:80%;
+    color:white
+   }
+
+  #projectHeaderText{
+    font-size: 8px;
+    line-height: 2;
+  }
 
    #mainTaskPlacer{
     width:80%;
     height: 80px;
-
-    
    }
 
 
   #taskPlacer{
-    font-size: 4px;
+    font-size: 5px;
     height: 60px;
     width: 90%;
-    color:red;
+
     border-radius: 1px;
   }
 
   #tasksHeader
   {
-    height: 3%;
+    height: 15%;
     font-size: 5px;
   }
+
+
 
   #projectNavBar{
   font-size: 6px;

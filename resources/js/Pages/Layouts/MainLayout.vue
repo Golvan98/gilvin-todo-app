@@ -5,7 +5,7 @@
 
   <div id="container" class="w-full h-screen bg-white text-red-500 flex flex-col">
     <!-- Top Navbar -->
-    <div id="topNavBar" class="bg-indigo-500 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white">
+    <div id="topNavBar" class="bg-indigo-500 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white ">
       <div id="leftSection" class="col-span-1"></div>
       <div id="midSection" class="col-span-1 bg-reen-300 flex items-center justify-center space-x-2.5">
         <div v-if="user">{{ user.name }}   </div>
@@ -59,9 +59,14 @@
     }
 
     #leftFooter, #rightFooter{
-      font-size: 10px;
+      font-size: 5px;
       width: 100%;
       height: 100%;
+    }
+
+    #topNavBar{
+      font-size:13px;
+   
     }
    
     #leftNavBar{
@@ -77,6 +82,11 @@
 
   @media screen and (min-width: 769px) 
   {
+
+    #topNavBar{
+      font-size: 14px;
+    }
+
     /* Adjust styles for different zoom levels */
     #footer {
       flex: none;
@@ -88,7 +98,7 @@
     }
    
     #leftFooter, #rightFooter {
-      font-size: 24px;
+      font-size: 16px;
       width: 50% ;
       height: 100%;
       font:green;
