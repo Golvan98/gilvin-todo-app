@@ -16,7 +16,7 @@
       
     </div>
 
-    <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black rounded-l-lg ">
+    <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black  ">
 
       <div class="mainNavButton flex justify-center"> 
         <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class=" flex items-center justify-center w-1/2 " style="white-space: nowrap;"> Projects Overview</button>
@@ -404,6 +404,15 @@ const currentProjectInfo = computed(() => {
 
 <style>
 
+#selectedCompletedTasks{
+    border-top-right-radius: 4px;
+ 
+  }
+
+  #projectNavBar{
+    border-top-left-radius: 4px;
+  }
+
 @media screen and (min-width: 769px) {
  
   #projectHeader{
@@ -421,6 +430,8 @@ const currentProjectInfo = computed(() => {
   #taskPlacer{
     font-size:15px;
   }
+
+
 }
 
 

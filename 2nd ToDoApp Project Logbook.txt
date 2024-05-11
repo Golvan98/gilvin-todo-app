@@ -230,6 +230,11 @@ May 9
 - set a truncate for selectProject section to fix texts overlapping issue
 - set height settings for taskplacer for a more visible task definition when zoomed
 - made further changes to mainlayout's footer and topnavbar ,selectedproject section now auto adjusts on zoom levels
+- added truncate and whitespace to projectnavbar components
 
 May 10
 - Assignment: My Projects section
+
+
+May 11
+- 
