@@ -120,7 +120,7 @@
           <div class="w-5/6"> Project {{ project.project_name }}  </div>
             <div class="flex items-center justify-end w-1/6 h-full"> 
               <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="bg-cover text-black bg-inherit font-bold">•••</button>
-            </div>
+              </div>
           <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"   @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
         </div>   
         
@@ -130,6 +130,26 @@
       </div>
 
       
+    </div>
+
+    <div v-if="selectedTab === 'myProjects'" id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-r-lg overflow-y-auto">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit  text-black font-bold flex items-center justify-center">
+        <div> Project Members </div> 
+         <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
+         <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
+        </div>  
+
+      <div id="membersList" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-lg">
+        
+          <div class="w-5/6 h-full bg-inherit flex justify-center"> 
+           <div class="w-3/4 h-full bg-indigo-100 rounded-lg">  {{ user.name }} </div>
+          </div>
+
+          <div class="w-1/6 h-full bg-white flex justify-start">  
+                <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="selectAndRemoveMemberModal(user)" class="items-start flex h-1/6"> X </button>
+                <removeMemberModal v-if="showRemoveMemberModal" :showRemoveMemberModal="showRemoveMemberModal" :selectedProjectId="selectedProjectId" :selectedMember="selectedMember" @closeRemoveMemberModal="showRemoveMemberModal=false">  </removeMemberModal>
+          </div>
+      </div>  
     </div>
 
     <div v-if="selectedTab === 'myTasks'" id="pendingTasks" class="row-start-2 row-span-5 col-start-3 overflow-y-auto bg-indigo-100">
@@ -215,25 +235,7 @@
       
     </div>
 
-    <div v-if="selectedTab === 'myProjects'" id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-r-lg overflow-y-auto">
-      <div class="h-10-percent w-3/4 mx-auto bg-inherit  text-black font-bold flex items-center justify-center">
-        <div> Project Members </div> 
-         <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
-         <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
-        </div>  
-
-      <div id="membersList" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-lg">
-        
-          <div class="w-5/6 h-full bg-inherit flex justify-center"> 
-           <div class="w-3/4 h-full bg-indigo-100 rounded-lg">  {{ user.name }} </div>
-          </div>
-
-          <div class="w-1/6 h-full bg-white flex justify-start">  
-                <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="selectAndRemoveMemberModal(user)" class="items-start flex h-1/6"> X </button>
-                <removeMemberModal v-if="showRemoveMemberModal" :showRemoveMemberModal="showRemoveMemberModal" :selectedProjectId="selectedProjectId" :selectedMember="selectedMember" @closeRemoveMemberModal="showRemoveMemberModal=false">  </removeMemberModal>
-          </div>
-      </div>  
-    </div>
+    
 
     
     
@@ -404,6 +406,11 @@ const currentProjectInfo = computed(() => {
 
 <style>
 
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  /*this registers if pixels is 0-999 */
+}
+
 #selectedCompletedTasks{
     border-top-right-radius: 4px;
  
@@ -412,6 +419,8 @@ const currentProjectInfo = computed(() => {
   #projectNavBar{
     border-top-left-radius: 4px;
   }
+
+  
 
 @media screen and (min-width: 769px) {
  
@@ -438,6 +447,11 @@ const currentProjectInfo = computed(() => {
 
 
 @media screen and (max-width: 768px) {
+
+  #toDoRow{
+    background-color: red;
+  }
+
 
   #listofProjectsByUser{
     
