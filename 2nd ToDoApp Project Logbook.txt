@@ -239,3 +239,11 @@ May 10
 May 11
 - added borders for selectProjects section. I think this one's complete
 - made template for myProjects section
+
+May 14:
+- tweaked fonts and button sizes in myprojects page
+- made further tweaks to myProjects page, seems good for now
+
+May 15:
+Assignment: reflect current selected project in myProjects page in current Tab
+Assignment: UI Size tweaks for myTasks page, should be easy now

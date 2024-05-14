@@ -2,7 +2,7 @@
 
 <MainLayout>
 
-<div id="secondBlock" class="bg-indigo-300 flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full">
+<div id="secondBlock" class="bg-indigo-300 flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full ">
 
  <div id="thirdBlock" class="bg-inherit h-full w-full grid grid-cols-6 grid-rows-6 text-white">
 
@@ -11,7 +11,7 @@
       <div class="w-full h-1/5 bg-indigo-300">  </div>
       <div class="w-full h-4/5 bg-indigo-300 font-bold flex justify-between items-center"> 
        <div id="projectHeaderText">  Project Management UI </div>
-       <div id="projectHeaderText" class=" flex items-center justify-center"> Current Tab: {{ selectedTab }} {{ selectedProjectId }}</div>
+       <div id="projectHeaderText" class=" flex items-center justify-center"> <div v-if="selectedTab !== 'myProjects'"> Current Tab: {{ selectedTab }}</div> <div v-if="selectedTab === 'myProjects'"> Project ID:{{ selectedProjectId }}  </div></div>
       </div>
       
     </div>
@@ -107,25 +107,25 @@
     </div>
    
     <div v-if="selectedTab === 'myProjects'" id="myProjectsRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
-      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black  flex items-center justify-center">
         <div> Projects </div>
         <button id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
       </div>  
 
-      <div v-if="selectedTab === 'myProjects'" v-for="project in projects" :key="projects.id" class="h-1/5 w-3/4 text-black mx-auto mt-2 rounded-lg">
+      <div id="projectRectangles" v-if="selectedTab === 'myProjects'" v-for="project in projects" :key="projects.id" class="h-1/6 w-3/4 text-black mx-auto mt-2 rounded-lg">
         <button @click="selectProject(project)" :class="{ 'bg-indigo-400': selectedProjectId == project.id }" class="bg-indigo-100 rounded-lg w-full h-full">
-        <div class="flex items-center justify-center mx-auto w-3/4 h-1/4 font-bold"> 
-          <div class="w-5/6"> Project {{ project.project_name }}  </div>
+        <div class="flex items-center justify-center mx-auto w-3/4 h-1/4"> 
+          <div class="w-5/6 font-bold"> Project:  {{ truncateNecessary(project.project_name , 4) }}  </div>
             <div class="flex items-center justify-end w-1/6 h-full"> 
               <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="bg-cover text-black bg-inherit font-bold">•••</button>
               </div>
           <editProjectModal v-if="showEditProjectModal" :showEditProjectModal="showEditProjectModal" :currentProjectInfo="currentProjectInfo" :projects="projects"   @closeEditProjectModal="showEditProjectModal = false"></editProjectModal>
         </div>   
         
-        
-        <div id="projectDescription" class="mx-auto w-4/5 h-3/4 text-xs"> {{ project.project_description }}</div>
+      
+        <div id="projectDescription" class="mx-auto w-4/5 h-3/4 truncate-text"> {{ truncateText(project.project_description , 35) }}</div>
         </button>
       </div>
 
@@ -139,10 +139,10 @@
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
         </div>  
 
-      <div id="membersList" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-lg">
+      <div id="projectRectangles" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-lg">
         
           <div class="w-5/6 h-full bg-inherit flex justify-center"> 
-           <div class="w-3/4 h-full bg-indigo-100 rounded-lg">  {{ user.name }} </div>
+           <div class="w-3/4 h-full bg-indigo-100 rounded-sm">  {{ user.name }} </div>
           </div>
 
           <div class="w-1/6 h-full bg-white flex justify-start">  
@@ -160,7 +160,7 @@
       <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
-      <div id="maintask" v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex justify-between  w-3/4 bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
+      <div id="projectRectangles"  v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex justify-between  w-3/4 bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
         
         <div class="w-4/6 ml-2 "> 
           <div > {{ task.name }}</div> 
@@ -299,6 +299,14 @@ const truncateText = (text, maxLength) => {
   }
 
 
+  const truncateNecessary = (text, maxLength) => {
+    if (text.length > 8) {
+      return text.substring(0, maxLength) + '...'; // Add ellipses (...) to indicate truncation
+    } else {
+      return text;
+    }
+  }
+
 const selectedTab = ref('myProjects')
 
 const setSelectedTab = (tab) =>
@@ -413,16 +421,35 @@ const currentProjectInfo = computed(() => {
 
 <style>
 
-
-@media screen and (min-width: 1px) and (max-width: 900px) {
-  /*this registers if pixels is 1-900 */
-
-  #myProjectsRow{
-    background-color: red;
+@media screen and (min-width: 1px) and (max-width: 400px) {
+ /*this registers if pixels is 1-400 */
+  /* this section is fixated on myProjects Section */
+  #myProjectsRow, #tasksRow, #membersRow{
+    
+    font-size: 3px;
+  }
+  #projectRectangles{
+    font-size:5px;
   }
 
-  #myProjectsRow, #tasksRow, #membersRow{
-    font-size: 4px;
+  #addButton {
+    padding-left:1x;
+    border-radius: 0%;
+ 
+  
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 900px) {
+  /*this registers if pixels is 400-900 */
+  /* this section is fixated on myProjects Section */
+
+  #myProjectsRow{
+    
+    font-size: 5px;
+  }
+ #tasksRow, #membersRow{
+    font-size: 5px;
     color:blue
   }
 
@@ -432,8 +459,22 @@ const currentProjectInfo = computed(() => {
     padding-right: 8px;
   }
 
- 
+  #projectRectangles{
+    height: 10%;
+    width: 90%;
+  
+  }
+  
 }
+@media screen and (min-width: 901px) and (max-width: 1968px) {
+    /*this registers if pixels is 901-1968px */
+  /* this section is fixated on myProjects Section */
+  #secondBlock, #thirdBlock {
+    font-size: 12px;
+  }
+}
+
+
 
 #selectedCompletedTasks{
     border-top-right-radius: 4px;
@@ -471,8 +512,6 @@ const currentProjectInfo = computed(() => {
 
 
 @media screen and (max-width: 768px) {
-
- 
 
 
   #listofProjectsByUser{
