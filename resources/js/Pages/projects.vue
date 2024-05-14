@@ -106,10 +106,10 @@
 
     </div>
    
-    <div v-if="selectedTab === 'myProjects'" id="toDoRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
+    <div v-if="selectedTab === 'myProjects'" id="myProjectsRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
         <div> Projects </div>
-        <button @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
+        <button id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
       </div>  
@@ -135,7 +135,7 @@
     <div v-if="selectedTab === 'myProjects'" id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-r-lg overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit  text-black font-bold flex items-center justify-center">
         <div> Project Members </div> 
-         <button v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
+         <button id="addButton" v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
         </div>  
 
@@ -151,6 +151,35 @@
           </div>
       </div>  
     </div>
+
+    <div v-if="selectedTab === 'myProjects'" id="tasksRow" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto ">
+
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
+      <div> Project Tasks </div> 
+      <button id="addButton" v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
+      <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
+      </div>
+
+      <div id="maintask" v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex justify-between  w-3/4 bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
+        
+        <div class="w-4/6 ml-2 "> 
+          <div > {{ task.name }}</div> 
+        </div>
+
+          <div class="w-2/6 flex">
+            <div class="h-auto"> 
+              <button @click="selectTaskAndOpenEditTaskModal(task)"> 🖊️</button>
+              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
+            </div>
+            <div class="h-auto"> 
+              <button @click="selectTaskAndOpenDeleteTaskModal(task)"> 🗑️ </button>
+              <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :selectedTask="selectedTask"> </deleteTaskModal>
+            </div>
+          </div>  
+          
+      </div>      
+
+      </div>
 
     <div v-if="selectedTab === 'myTasks'" id="pendingTasks" class="row-start-2 row-span-5 col-start-3 overflow-y-auto bg-indigo-100">
       
@@ -192,29 +221,7 @@
       
     </div>
 
-    <div v-if="selectedTab === 'myProjects'" id="tasksRow" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto ">
-
-      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
-       <div> Project Tasks </div> 
-       <button v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
-       <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
-      </div>
-
-      <div id="maintask" v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex  w-full bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
-        <div class="w-5/6 flex justify-center"> {{ task.name }} </div>
-          <div class="w-1/6 flex">
-            <div class="h-auto"> 
-              <button @click="selectTaskAndOpenEditTaskModal(task)"> 🖊️</button>
-              <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
-            </div>
-            <div class="h-auto"> 
-              <button @click="selectTaskAndOpenDeleteTaskModal(task)"> 🗑️ </button>
-              <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :selectedTask="selectedTask"> </deleteTaskModal>
-            </div>
-          </div>  
-      </div>      
-      
-    </div>
+    
 
     
 
@@ -407,8 +414,25 @@ const currentProjectInfo = computed(() => {
 <style>
 
 
-@media screen and (min-width: 600px) and (max-width: 1000px) {
-  /*this registers if pixels is 0-999 */
+@media screen and (min-width: 1px) and (max-width: 900px) {
+  /*this registers if pixels is 1-900 */
+
+  #myProjectsRow{
+    background-color: red;
+  }
+
+  #myProjectsRow, #tasksRow, #membersRow{
+    font-size: 4px;
+    color:blue
+  }
+
+  #addButton{
+    font-size: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+ 
 }
 
 #selectedCompletedTasks{
@@ -448,9 +472,7 @@ const currentProjectInfo = computed(() => {
 
 @media screen and (max-width: 768px) {
 
-  #toDoRow{
-    background-color: red;
-  }
+ 
 
 
   #listofProjectsByUser{
