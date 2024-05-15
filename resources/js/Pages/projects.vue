@@ -27,7 +27,7 @@
       </div>
 
       <div id="yourProjects" class="navButton marginTenPercent flex justify-center"> 
-        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2" style="white-space: nowrap;"> Your Projects </button>
+        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2 font-bold" style="white-space: nowrap;"> Your Projects </button>
       </div>
 
       <div id="listofProjectsByUser" v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> 
@@ -64,7 +64,7 @@
     <div  id="selectedInProgressTasks" class="row-start-2 row-span-5 col-start-4 bg-white overflow-y-auto">
       
       <div id="tasksHeader"  class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center h-1/6 mb-2">
-        <div v-if="selectedProject"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
+        <div v-if="selectedProject" class="font-bold"> In Progress Tasks of {{ selectedProject.project_name }}  </div>
         <button id="pendingPlusButton" v-if="selectedProjectId" @click="showAddTaskModal = true" class="text-2xl ml-2 text-indigo-500">+</button>
         <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>    
       
@@ -422,38 +422,72 @@ const currentProjectInfo = computed(() => {
 <style>
 
 
-@media screen and (min-width: 1200px) {
-
-#pendingTasks, #inProgressTasks, #completedTasks{
-  color: black;
-  font-size: 10px;
+@media screen and (min-width: 1200px) and (max-width:1281px)
+{
+  /*150% */
+  #pendingTasks, #inProgressTasks, #completedTasks{
+ 
+color: indigo;
+font-size: 10px;
+}
 }
 
+@media screen and (min-width: 1282px) and (max-width:1540px)
+{/*125% */
+  #pendingTasks, #inProgressTasks, #completedTasks{
+
+color: indigo;
+font-size: 13px;
 }
+}
+@media screen and (min-width: 1541px) and (max-width:1750px)
+{
+  /*110% */
+  #pendingTasks, #inProgressTasks, #completedTasks{
+
+color: indigo;
+font-size: 14px;
+}
+}
+
+@media screen and (min-width: 1751px) and (max-width:999999px)
+{/*100% */
+  #pendingTasks, #inProgressTasks, #completedTasks{
+
+color: indigo;
+font-size: 16px;
+}
+}
+
+
+
+
+
 
 @media screen and (min-width: 900px) and (max-width: 1199px) {
 
 #pendingTasks, #inProgressTasks, #completedTasks{
-  color: green;
-  font-size: 7px;
+
+  font-size: 8px;
+  color: indigo;
 }
 
-}
+} 
 
 
 @media screen and (min-width: 400px) and (max-width: 899px) {
 
 #pendingTasks, #inProgressTasks, #completedTasks{
-  color: red;
-  font-size:4px;
+  color: indigo;
+  font-size:5px;
 }
 }
 
 @media screen and (max-width: 399px)  {
 
 #pendingTasks, #inProgressTasks, #completedTasks{
-  color: red;
-  font-size:3px;
+  font-size:5px;
+  color: indigo;
 }
 
 }
@@ -561,7 +595,7 @@ const currentProjectInfo = computed(() => {
 
   #projectNavBar{
     font-size:4px;
-    color:red
+    
   }
 
   #yourProjects{
