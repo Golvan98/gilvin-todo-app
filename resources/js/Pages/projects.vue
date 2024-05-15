@@ -11,7 +11,7 @@
       <div class="w-full h-1/5 bg-indigo-300">  </div>
       <div class="w-full h-4/5 bg-indigo-300 font-bold flex justify-between items-center"> 
        <div id="projectHeaderText">  Project Management UI </div>
-       <div id="projectHeaderText" class=" flex items-center justify-center"> <div v-if="selectedTab !== 'myProjects'"> Current Tab: {{ selectedTab }}</div> <div v-if="selectedTab === 'myProjects'"> Project ID:{{ selectedProjectId }}  </div></div>
+       <div id="projectHeaderText" class=" flex items-center justify-center"> <div v-if="selectedTab !== 'myProjects'"> Current Tab: {{ selectedTab }}</div> <div v-if="selectedTab === 'myProjects'">  <span v-if="selectedProjectName"> Project: {{ selectedProjectName }} , Project ID:{{ selectedProjectId }}</span>  </div></div>
       </div>
       
     </div>
@@ -338,6 +338,8 @@ const showRemoveMemberModal = ref(false);
 const selectedTask = ref(0);
 const selectedMember = ref(0);
 
+const selectedProjectName = ref(null);
+
 // Watch the value of hideAddProjectModal from the router's current route query
 
 const selectProjectAndOpenEditModal = (projectId) => {
@@ -372,6 +374,7 @@ const closeAddProjectModal = () => {
 const selectProject = (project) => {
   projectOwnerId.value = project.ownerId;
 selectedProjectId.value = project.id;
+selectedProjectName.value = project.project_name
 }
 const isProjectSelected = (projectId) => {
 return selectedProjectId.value === projectId;

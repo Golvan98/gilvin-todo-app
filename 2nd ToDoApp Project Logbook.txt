@@ -247,3 +247,10 @@ May 14:
 May 15:
 Assignment: reflect current selected project in myProjects page in current Tab
 Assignment: UI Size tweaks for myTasks page, should be easy now
+
+- done Assignment: UI Size tweaks for myTasks page, should be easy now
+- further tweaked UI elements for screen sizes in myTasks Page, with important comments on <style>
+- done Assignment: reflect current selected project in myProjects page in current Tab
+
+May 16:
+- ToDo: modal UI tweaks
