@@ -253,4 +253,4 @@ Assignment: UI Size tweaks for myTasks page, should be easy now
 - done Assignment: reflect current selected project in myProjects page in current Tab
 
 May 16:
-- ToDo: modal UI tweaks
+- ToDo: modal UI tweakssw
