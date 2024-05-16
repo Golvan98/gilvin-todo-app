@@ -89,9 +89,7 @@ const createProject = () => {
     #addProjectModal{
         font-size: 4px;
     }
-
     #formLabel, #emailSection, #nameSection{
-  
         font-size: 16px;
     }
 
@@ -108,13 +106,32 @@ const createProject = () => {
     font-size: 0.50rem; /* Equivalent to text-lg */
 }
 
-   
-
 }
 
-.custom-placeholder::placeholder {
-    font-size: 1.25rem; /* Equivalent to text-lg */
-  }
+@media screen and (min-width:400px) and (max-width:480px){
+    /* 400 px */
+   
+   #emailSection, #nameSection{
+        font-size: 16px;
+    }
+
+    #formLabel{
+        display:none;
+    }
+
+    #createProjectButton{
+        font-size:6px;
+        width:100%;
+    }
+
+    #logo {
+        font-size:36px;
+    }
+
+    #emailSection input::placeholder, #nameSection input::placeholder, #createProjectButton input::placeholder {
+    font-size: 0.35rem; /* Equivalent to text-lg */
+}
+}
 
 
 </style>
