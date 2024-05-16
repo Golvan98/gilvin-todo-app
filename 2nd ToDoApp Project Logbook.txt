@@ -254,3 +254,11 @@ Assignment: UI Size tweaks for myTasks page, should be easy now
 
 May 16:
 - ToDo: modal UI tweakssw
+- created tweaks to addproject modal, and created another cancel button
+- tweaked addprojectmodal to accomodate 250-300% screen size.
+- tweaked addprojectmodal to accomodate 400% screen size.
+- tweaked addprojectmodal to accomodate 500% screen size.
+
+May 17:
+Assignment: fix addprojectmodal's input size for 300-500% screensize and
+then use this as basis for all other modals

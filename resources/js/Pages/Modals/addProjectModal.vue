@@ -133,5 +133,46 @@ const createProject = () => {
 }
 }
 
+@media screen and (min-width:0px) and (max-width:400px){
+    /* 400 px */
+   
+   #emailSection, #nameSection{
+        
+        font-size: 1px;
+    }
+
+    #project_description{
+        font-size:1px;
+        color:red;
+    }
+
+    #nameSection{
+        margin-bottom: 4px;
+    }
+
+    #formLabel{
+        display:none;
+    }
+
+    #createProjectButton{
+        font-size:5px;
+        width:100%;
+    }
+
+    #logo {
+        font-size:26px;
+    }
+
+    #emailSection input::placeholder, #nameSection input::placeholder, #createProjectButton input::placeholder {
+    font-size: 0.25rem; /* Equivalent to text-lg */
+}
+
+#emailSection input::placeholder,
+    #nameSection input::placeholder,
+    #createProjectButton input::placeholder {
+        font-size: 2.50rem; /* Equivalent to text-lg */ 
+    }
+}
+
 
 </style>
