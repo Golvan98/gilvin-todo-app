@@ -11,19 +11,20 @@
                 </button>
             </div>
 
-            <div class="w-full h-10-percent flex items-center justify-center sm:text-xs md:text-md lg:text-4xl mb-4"> 𝔾ℙ𝕄 {{ selectedProjectId }} </div>
+            <div id="logo" class="w-full h-1/5 flex items-center justify-center sm:text-xs md:text-md lg:text-4xl mb-4"> 𝔾ℙ𝕄  </div>
 
-                <div id="2ndBlock" class="w-4/5 h-70-percent flex flex-col items-center justify-center">
+            <div id="dropDown" class="w-4/5 h-3/5 flex flex-col items-center justify-center">
         
-                <select v-model="form.user_id" id="user_id" type="text" placeholder="Project Name" class="bg-gray-300 w-4/5 h-1/4 py-4 mx-auto text-xs"> 
-                <option v-for="user in nonProjectMembers()" :value="user.id"> {{user.name}} </option>   
+
+                <div id="addMemberLabel" class="h-1/4"> Add Member to Project {{ selectedProjectName }}</div>
+
+                <select v-model="form.user_id" id="user_id" type="text" placeholder="Project Name" class="bg-gray-300 w-4/5 h-1/4 mx-auto text-xs"> 
+                <option id="user_id" v-for="user in nonProjectMembers()" :value="user.id"> {{user.name}} </option>   
                 </select>
 
                 <input type="hidden" v-model="form.project_id" id="project_id">
-
-               
                 
-                <div class="w-4/5 flex items-center justify-center mt-1 mb-4"> <button type="submit"> Add Member </button> </div>
+                <div id="addMemberConfirmButton" class="w-3/5 whitespace-nowrap flex items-center justify-center mt-1 mb-4 h-1/4 bg-indigo-300 text-white"> <button class="addMemberConfirmButton2" type="submit"> Add Member </button> </div>
             
             </div>
 
@@ -50,7 +51,8 @@ const props = defineProps({
   users: Object,
   showAddMemberModal: Boolean, // Assuming showAddMemberModal is a boolean prop
   nonProjectMembers:Object,
-  selectedProjectId:Number
+  selectedProjectId:Number,
+  selectedProjectName:Object
 });
 const form = useForm ({
     user_id:null,
@@ -82,3 +84,44 @@ const closeModal = () => {
 };
 
 </script>
+
+<style>
+
+@media screen and (min-width:901px){
+  #logo {
+  
+    font-size:72px;
+
+  }
+
+  #addMemberConfirmButton{
+    padding-left:24px;
+    padding-right:24px;
+    font-size:16px;
+  }
+
+  #addMemberLabel{
+    font-size:15px;
+  }
+}
+
+@media screen and (max-width:900px){
+  
+  
+  #user_id{ 
+    height:1%;
+    font-size: 4px;
+  }
+
+
+  #addMemberConfirmButton{
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  #addMemberLabel{
+    display:none;
+  }
+
+}
+
+</style>

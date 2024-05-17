@@ -20,7 +20,7 @@ class ProjectController extends Controller
         $users = User::all();
         $projectUsers = ProjectUser::all();
 
-        $currentUserId = auth()->user()->id;
+        $currentUserId = optional(auth()->user())->id;
 
        
 
