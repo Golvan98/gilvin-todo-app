@@ -19,7 +19,7 @@
 
                       <div id="nameSection" class="h-20-percent w-full flex justify-center">
                           <label for="name"></label>
-                          <input id="name" v-model="form.project_name" type="text" placeholder="project name" class="w-1/2 rounded-lg h-3/4">
+                          <input id="project_name" v-model="form.project_name" type="text" placeholder="project name" class="w-1/2 rounded-lg h-3/4">
                           <div v-if="form.errors.project_name" class="text-xs flex justify-start w-1/2"> {{form.errors.project_name}}</div>
                       </div>
 
@@ -84,8 +84,23 @@ const createProject = () => {
 </script>
 
 <style>
+
+@media screen and (min-width:901px) and (max-width:1199px){
+    /* 200% and below */
+    #createProjectButton{
+       
+        width:100%;
+    }
+
+}
+
 @media screen and (min-width: 1px) and (max-width:899px){
    /* 250%-300% */
+
+   #project_description, #project_name{
+        font-size:6px;
+    }
+
     #addProjectModal{
         font-size: 4px;
     }
@@ -110,6 +125,10 @@ const createProject = () => {
 
 @media screen and (min-width:400px) and (max-width:480px){
     /* 400 px */
+
+    #project_description, #project_name{
+        font-size:5px;
+    }
    
    #emailSection, #nameSection{
         font-size: 16px;
@@ -142,8 +161,13 @@ const createProject = () => {
     }
 
     #project_description{
-        font-size:1px;
-        color:red;
+        font-size:3px;
+        color:indigo;
+    }
+
+    #project_name{
+        font-size:3px;
+        color:indigo;
     }
 
     #nameSection{
@@ -163,14 +187,10 @@ const createProject = () => {
         font-size:26px;
     }
 
-    #emailSection input::placeholder, #nameSection input::placeholder, #createProjectButton input::placeholder {
-    font-size: 0.25rem; /* Equivalent to text-lg */
-}
-
 #emailSection input::placeholder,
     #nameSection input::placeholder,
     #createProjectButton input::placeholder {
-        font-size: 2.50rem; /* Equivalent to text-lg */ 
+        font-size: .18rem; /* Equivalent to text-lg */ 
     }
 }
 
