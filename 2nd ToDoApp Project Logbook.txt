@@ -265,4 +265,7 @@ May 17:
 then use this as basis for all other modals
 
 May 18:
-- made further adjustments to addprojectmodal's ui
+- made further adjustments to addprojectmodal's ui (fixed button overlapping issue)
+
+May 19/20:
+- assignment: add task not working bug fix
