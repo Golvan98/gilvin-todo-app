@@ -260,5 +260,9 @@ May 16:
 - tweaked addprojectmodal to accomodate 500% screen size.
 
 May 17:
-Assignment: fix addprojectmodal's input size for 300-500% screensize and
+- DONE Assignment: fix addprojectmodal's input size for 300-500% screensize and
+- revamped add member to project page and fixed project page not loading if there's no logged in user
 then use this as basis for all other modals
+
+May 18:
+- made further adjustments to addprojectmodal's ui

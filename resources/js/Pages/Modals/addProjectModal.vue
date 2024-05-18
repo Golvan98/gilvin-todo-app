@@ -26,12 +26,12 @@
                       <div id="emailSection" class="h-20-percent w-full flex justify-center ">
                           <label for="project_description"></label>
                           <input id="project_description" v-model="form.project_description" type="text" placeholder="project description" class="w-1/2 rounded-lg h-3/4 text-xs">
-                          <span v-if="form.errors.project_description" class="text-xs text-red-500 flex justify-start"> {{form.errors.project_description}}</span>
+                          <span v-if="form.errors.project_description" class="text-xs *:flex justify-start"> {{form.errors.project_description}}</span>
                       </div>
 
                       <div id="createProjectButton" class="flex h-20-percent items-center justify-center w-3/4">
                         <button @click="closeProjectModal" class="bg-gray-200 mr-2 h-1/2 w-1/3 rounded-sm p-1 flex items-center justify-center" type="submit mx-2"> Cancel </button>
-                          <button class="bg-indigo-300 ml-2 h-1/2 w-1/3 rounded-sm whitespace-nowrap px-4 py-1 flex items-center justify-center" type="submit"> Create Project</button>
+                          <button id="createProjectButtonConfirm" class="bg-indigo-300 ml-2 h-1/2 w-1/3 rounded-sm whitespace-nowrap px-4 py-1 flex items-center justify-center" type="submit"> Create Project</button>
                 </div>
             </div>
   
@@ -85,6 +85,8 @@ const createProject = () => {
 
 <style>
 
+
+
 @media screen and (min-width:901px) and (max-width:1199px){
     /* 200% and below */
     #createProjectButton{
@@ -92,9 +94,10 @@ const createProject = () => {
         width:100%;
     }
 
+
 }
 
-@media screen and (min-width: 1px) and (max-width:899px){
+@media screen and (min-width: 481px) and (max-width:899px){
    /* 250%-300% */
 
    #project_description, #project_name{
@@ -111,6 +114,11 @@ const createProject = () => {
     #createProjectButton{
         font-size:8px;
         width:100%;
+    }
+
+    #createProjectButtonConfirm{
+        width:40%;
+        color:white;    
     }
 
     #logo {
@@ -160,9 +168,14 @@ const createProject = () => {
         font-size: 1px;
     }
 
+    #createProjectButton{
+        margin-top:6px;
+    }
+    
     #project_description{
         font-size:3px;
         color:indigo;
+        
     }
 
     #project_name{
