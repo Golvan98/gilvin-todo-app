@@ -16,14 +16,25 @@
                 <div> Task:  </div>
             </div>
 
-            <div class="h-1/2 flex items-center justify-between mx-25-pct">
 
-                <button type="submit" class="bg-red-300 px-4 py-1 rounded-sm"> Yes </button> 
-                <input type="hidden" v-model="form.project_id" id="project_id">
-                <input type="hidden" v-model="form.member_id" id="member_id">
+             <div class="h-1/2 flex items-center justify-center w-full mb-2">
+
+                <div class="w-1/3 h-1/2 flex items-center justify-center"> 
+                    <button type="submit" class="bg-red-300 w-1/2 h-full rounded-sm text-white font-bold"> 
+                        <input type="hidden" v-model="form.project_id" id="project_id">
+                         <input type="hidden" v-model="form.member_id" id="member_id">
+                      Yes 
+                    </button> 
+                </div>
               
-                <button @click="closeModal" class="bg-indigo-300 px-4 py-1 rounded-sm"> No </button>
+                <div class="w-1/3 h-1/2  flex items-center justify-center"> 
+                    <button @click="closeModal" class="bg-indigo-300 w-1/2 h-full rounded-sm"> 
+                      No
+                    </button>
+                </div>
+
             </div>
+
 
                 
            </div>

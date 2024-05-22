@@ -1,5 +1,5 @@
 <template>
-<div  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
+<div id="allOfEditProjectModal"  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
           <form @submit.prevent="editProject" class="w-1/4 flex flex-col items-center justify-center text-gray-600 border border-gray-900 bg-white h-3/5">
 
               <div id="closeSection" class="w-full h-10-percent flex items-start justify-end"> 
@@ -10,7 +10,7 @@
                   </button>
               </div>
   
-              <div  id="logo" class="w-full h-20-percent flex items-center justify-center sm:text-xs md:text-2xl lg:text-4xl mb-1"> 𝔾ℙ𝕄  {{ projectName}} {{ projectId }}</div>
+              <div  id="logo" class="w-full h-20-percent flex items-center justify-center sm:text-xs md:text-2xl lg:text-1xl mb-1"> project {{ projectName}} {{ projectId }}</div>
               
               <div id="2ndBlock" class="w-4/5 flex flex-col items-center justify-center h-70-percent">
                       <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
@@ -110,4 +110,17 @@ const closeModal = () => {
 #description {
   cursor: default;
 }
+
+
+@media screen and (min-width:900px) {
+  /* 100%-200% */
+#allOfEditProjectModal{
+  color:red;
+  background-color: gray;
+}
+}
+
+
+
+
 </style>
