@@ -3,7 +3,7 @@
 
           <form @submit.prevent="createTask" class="bg-white w-1/4 h-2/5 flex-nowrap text-gray-600 border border-gray-900 ">
   
-           <div class="w-full h-1/2">
+           <div class="w-full h-3/5">
 
                 <div id="closeSection" class="w-full flex h-10-percent items-start justify-end"> 
                     <button @click="closeAddTaskModal" class=" text-black hover:text-red-400 focus:outline-none">
@@ -12,7 +12,7 @@
                         </svg>
                     </button>
                 </div>
-                <div id="formLabel" class="whitespace-nowrap h-45-percent flex items-center  justify-center"> Task Name for project {{ selectedProjectId }} </div>
+                <div id="formLabel" class="whitespace-nowrap h-45-percent flex items-center  justify-center"> Add a task for project {{ selectedProjectId }} </div>
                 <div id="taskForm" class="h-45-percent flex items-start justify-center">
                     <input v-model="form.name" id="name" type="text" class="w-3/4 h-1/2" placeholder="Task name here">     
                 </div>
@@ -20,7 +20,7 @@
            </div>
     
 
-           <div class="w-full h-1/2 bg-inherit flex items-center justify-center flex-col">
+           <div class="w-full h-2/5 bg-inherit flex items-center justify-center flex-col">
 
                 <div id="selectStatusLabel" class="h-1/3 w-full flex items-center justify-center"> Task Status</div>
               
@@ -30,10 +30,8 @@
                     <option value="Complete">Complete</option>   
                 </select>
                
-                
-
                 <div class="h-1/2 w-full flex items-center justify-center"> 
-                    <button class="bg-indigo-300 w-1/4 h-1/2 text-white whitespace-nowrap"> Create Task </button>
+                    <button id="createTaskButton" class="bg-indigo-300 w-1/3 h-1/2 text-white whitespace-nowrap flex items-center justify-center"> Create Task </button>
                 </div>  
 
            </div>
@@ -86,10 +84,10 @@ const closeAddTaskModal = () => {
     /* 150% to 0% */
     #formLabel,#taskForm,#selectStatusLabel,#selectStatus{
     font-size: 20px;
-   
+
     }   
     #status{
-        font-size:8px;
+        font-size:16px;
     }
 }
 
