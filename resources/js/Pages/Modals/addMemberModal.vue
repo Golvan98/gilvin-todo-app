@@ -89,7 +89,7 @@ const closeModal = () => {
 
 @media screen and (min-width:901px){
   #logo {
-  
+
     font-size:72px;
 
   }
@@ -101,7 +101,7 @@ const closeModal = () => {
   }
 
   #addMemberLabel{
-    font-size:15px;
+    font-size:12px;
   }
 }
 

@@ -17,11 +17,22 @@
                 <div> Task: {{ selectedTask.name }} </div>
             </div>
 
-            <div class="h-1/2 flex items-center justify-between mx-25-pct">
+            <div class="h-1/2 flex items-center justify-center w-full mb-2">
 
-                <Link :href="`/deleteTask/${selectedTask.id}`"> <button class="bg-red-300 px-4 py-1 rounded-sm"> Yes </button> </Link>
+                <div class="w-1/3 h-1/2 flex items-center justify-center"> 
+                  <Link :href="`/deleteTask/${selectedTask.id}`" class="w-full h-full flex items-center justify-center"> 
+                    <button class="bg-red-300 w-1/2 h-full rounded-sm text-white font-bold"> 
+                      Yes 
+                    </button> 
+                  </Link> 
+                </div>
               
-                <button @click="closeModal" class="bg-indigo-300 px-4 py-1 rounded-sm"> No </button>
+                <div class="w-1/3 h-1/2  flex items-center justify-center"> 
+                    <button @click="closeModal" class="bg-indigo-300 w-1/2 h-full rounded-sm"> 
+                      No
+                    </button>
+                </div>
+
             </div>
 
 
@@ -60,11 +71,13 @@ const closeModal = () => {
 
 <style>
 
-
 .mx-25-pct {
     margin-right: 25%;
     margin-left: 25%
   }
 
 
-  </style>
+
+
+
+</style>
