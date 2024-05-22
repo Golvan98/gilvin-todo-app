@@ -270,3 +270,11 @@ May 18:
 
 May 19/20:
 - assignment: add task not working bug fix
+
+May 22:
+- made final tweaks to add Task modal
+- made final UI tweaks to delete task modal
+- made final UI tweaks to remove member modal
+
+May 23:
+Assignment: Fix project delete section
