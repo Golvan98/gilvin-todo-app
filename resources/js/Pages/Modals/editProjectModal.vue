@@ -19,29 +19,28 @@
 
                       <div id="nameSection" class="h-30-percent flex items-center justify-center w-3/4">
                           <label for="project_name"> </label>
-                          <input class="w-full h-1/2 bg-green-300" v-model="form.project_name" id="project_name" type="text" :placeholder="projectName">
+                          <input class="w-full h-1/2" v-model="form.project_name" id="project_name" type="text" :placeholder="projectName">
                       </div>
 
                       <div id="description" class="h-30-percent flex items-center justify-center w-3/4">
                           <label for="project_description"></label>
-                          <input class="w-full h-1/2 bg-green-300" v-model="form.project_description" id="project_description" type="text" :placeholder="projectDescription">
+                          <input class="w-full h-1/2" v-model="form.project_description" id="project_description" type="text" :placeholder="projectDescription">
                       </div>
 
-                      <div id="buttonSection" class="flex w-full h-20-percent items-center justify-center mb-8 ">
+                      <div id="buttonSection" class="flex w-full h-20-percent items-center justify-center mb-8 space-x-2 ">
 
-                          <div class="w-1/2 h-1/2 flex items-center justify-center"> 
-                            <button id="editButton" class="w-1/2 flex items-center justify-center h-full whitespace-nowrap bg-indigo-300" type="submit"> Edit Project </button>
+                          <div class="w-1/2 h-full bg-indigo-300 flex items-center justify-center rounded-sm"> 
+                            <button id="editButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap " type="submit"> Edit Project </button>
                           </div>
 
-                          <div class="w-1/2 h-1/2" type="delete"> 
-                            <a class="w-1/2 h-1/2" :href="`/deleteProject/${projectId}`"> 
-                              <button id="deleteButton" class="w-1/2 h-full bg-indigo-300"> Delete </button>  
-                            </a>
-                          </div>
+
+                          <a class="w-1/2 h-full bg-red-400 text-white flex items-center justify-center rounded-sm" :href="`/deleteProject/${projectId}`"> 
+                            <button id="deleteButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap" > 
+                               Delete
+                            </button>
+                          </a>
 
                       </div>
-
-                      
 
                       <input type="hidden" v-model="form.project_id" id="project_id">
               </div>
@@ -124,22 +123,20 @@ const closeModal = () => {
 
 @media screen and (min-width:900px) {
   /* 1%-200% */
-#allOfEditProjectModal{
-  color:red;
-  background-color: gray;
-}
+
   #logo{
   font-size:24px;
   font-weight: bold;
 
   }
+
 }
 
 @media screen and (min-width:600px) and (max-width: 899px) {
-  /* 500%-250% */
+  /* 1%-250% */
 #allOfEditProjectModal{
   color:white;
-  background-color: blue;
+
 }
   #logo{
     font-size:12px;
@@ -149,16 +146,14 @@ const closeModal = () => {
 }
 
 @media screen and (min-width: 460px) and (max-width: 599px){
-  /*400% */
+  /*300% */
   #allOfEditProjectModal{
   color:white;
-  background-color: red;
+  
 }
-
-
   #project_name {
     margin-top: 24px;
-    background-color: red;;
+  
   }
 
   #nameSection {
@@ -168,27 +163,27 @@ const closeModal = () => {
   #logo{
     display:none;
   }
-  #buttonSection{
-    margin-top:8px;
-    font-size:4px;
-  }
 
-  #editButton{
-    padding-top: 4px;
+  #editButton, #deleteButton{
+    padding-top:4px;
     padding-bottom: 4px;
   }
+
+ 
 }
 
-@media screen and (min-width: 381px) and (max-width: 459px){
+@media screen and (min-width: 1px) and (max-width: 459px){
   /*500% */
   #allOfEditProjectModal{
   color:white;
-  background-color: blue;
 }
+
+  #logo{
+    display:none;
+  }
 
 #project_name {
     margin-top: 24px;
-    background-color: red;;
   }
 
   #project_description{
@@ -196,34 +191,22 @@ const closeModal = () => {
   }
 
 #nameSection {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
 #logo{
     display:none;
   }
 
-  #description{
-    height:10%;
-  }
 
   #buttonSection{
     margin-top:16px;
   }
 
-  #editButton{
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  #deleteButton{
-    padding-right:16px;
-    padding-left: 2px;
-  }
-
   
+  #closeSection{
+    margin-bottom:24px;
+  }
 
 
 }

@@ -275,6 +275,8 @@ May 22:
 - made final tweaks to add Task modal
 - made final UI tweaks to delete task modal
 - made final UI tweaks to remove member modal
+- made UI tweaks to editprojectmodal
 
 May 23:
 Assignment: Fix project delete section
+- 
