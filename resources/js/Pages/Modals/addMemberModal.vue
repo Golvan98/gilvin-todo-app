@@ -11,7 +11,7 @@
                 </button>
             </div>
 
-            <div id="logo" class="w-full h-1/5 flex items-center justify-center sm:text-xs md:text-md lg:text-4xl mb-4"> 𝔾ℙ𝕄  </div>
+            <div id="addMemberlogo" class="w-full h-1/5 flex items-center justify-center sm:text-xs md:text-md lg:text-4xl mb-4"> 𝔾ℙ𝕄  </div>
 
             <div id="dropDown" class="w-4/5 h-3/5 flex flex-col items-center justify-center">
         
@@ -88,7 +88,7 @@ const closeModal = () => {
 <style>
 
 @media screen and (min-width:901px){
-  #logo {
+  #addMemberlogo {
 
     font-size:72px;
 

@@ -27,7 +27,7 @@
                           <input class="w-full h-1/2" v-model="form.project_description" id="project_description" type="text" :placeholder="projectDescription">
                       </div>
 
-                      <div id="buttonSection" class="flex w-full h-20-percent items-center justify-center mb-8 space-x-2 ">
+                      <div id="buttonSection" class="flex w-4/5 h-10-percent items-center justify-center mb-8 space-x-2 ">
 
                           <div class="w-1/2 h-full bg-indigo-300 flex items-center justify-center rounded-sm"> 
                             <button id="editButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap " type="submit"> Edit Project </button>

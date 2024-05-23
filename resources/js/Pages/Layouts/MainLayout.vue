@@ -146,3 +146,10 @@ watch(() => page.props.flash.success, (newValue) => {
   // Automatically hide the flash message after 1000ms (1 second)
  // const computedFlashSuccess = computed(() => flashSuccess.value)
 </script>
+
+<style>
+
+
+
+
+</style>

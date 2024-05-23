@@ -77,6 +77,18 @@ const closeModal = () => {
   }
 
 
+@media screen and (min-width:1px) {
+  /* 1%-200% */
+
+  #logo{
+  font-size:24px;
+  font-weight: bold;
+
+  }
+
+
+}
+
 
 
 

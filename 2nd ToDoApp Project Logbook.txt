@@ -278,5 +278,7 @@ May 22:
 - made UI tweaks to editprojectmodal
 
 May 23:
-Assignment: Fix project delete section
-- 
+Assignment: Fix project delete section (actually not needed)
+- made further ui tweaks to editprojectmodal
+Assignment: Fix all div id naming, it mixes up everything
+that has the same id amongst all vue pages, there should be no duplicate naming 
