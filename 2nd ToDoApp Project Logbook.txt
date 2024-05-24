@@ -278,11 +278,15 @@ May 22:
 - made UI tweaks to editprojectmodal
 
 May 23:
-Assignment: Fix project delete section (actually not needed)
+Assignment: Fix project delete section ( NVM actually not needed)
 - made further ui tweaks to editprojectmodal
-Assignment: Fix all div id naming, it mixes up everything
 that has the same id amongst all vue pages, there should be no duplicate naming 
 - made further changes to editprojectmodal
+- changed div ids on modals to fix style ids in modals intermixing with one another
+done: Assignment: Fix all div id naming, it mixes up everything
+
 
 May 24:
 - Fix add task's 500%
+Assignment: Edit Task and Add Task UI
+- tweaked editTask UI

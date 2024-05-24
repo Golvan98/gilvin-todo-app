@@ -1,52 +1,57 @@
 <template>
     <div  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
 
-          <form @submit.prevent="editTask" class="bg-white w-1/4 h-2/5 flex-nowrap text-gray-600 border border-gray-900 ">
+          <form id="editTaskForm" @submit.prevent="editTask" class="bg-white w-1/4 h-1/2 flex-nowrap text-gray-600 border border-gray-900 ">
   
-           <div class="w-full h-1/2">
-            <div id="closeSection" class="w-full flex items-start justify-end"> 
+           
+            <div id="editTaskCloseSection" class="w-full h-10-percent flex items-start justify-end"> 
                   <button @click="closeModal" class=" text-black hover:text-red-400 focus:outline-none">
                       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> 
                       </svg>
                   </button>
-              </div>
-            <div class="h-1/2 flex items-end justify-center"> Task  </div>
-            <div class="h-1/2 flex items-center justify-center">
-                 
-                <input v-model="form.name" id="name" type="text" class="w-3/4 h-1/2" :placeholder="selectedTask.name">
-
             </div>
-          
-            
-           </div>
+
+            <div id="editTaskNameSection" class="h-35-percent flex flex-col items-center justify-center"> 
+
+                <div id="editTaskNameLabel" class="w-full h-2/5 flex items-center justify-center"> 
+                    Task Name
+                </div>          
+
+                <div class="w-full h-3/5 flex items-start justify-center"> 
+                    <input v-model="form.name" id="editTaskName" type="text" class="w-3/4 h-1/2" :placeholder="selectedTask.name"/>
+                </div>
+        
+            </div>            
+           
            
 
-           <div class="w-full h-1/2 bg-inherit">
+           <div id="editTaskStatusSection" class="w-full h-35-percent bg-inherit bg-white">
 
-            <div class="h-1/4 flex items-start justify-center"> Task Status {{ selectedTask.status }}</div>
-            <div class="h-1/4 flex items-start justify-center">
-                <select v-model="form.status" id="status">
-                    <option value="Pending" selected>Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Complete">Complete</option>   
-                </select>
-            </div>
+                <div id="editTaskStatusLabel" class="h-2/5 flex items-start justify-center"> 
+                    Task Status {{ selectedTask.status }}
+                </div>
 
-            <input type="hidden" v-model="form.task_id" id="task_id">
-            
+                <div id="editTaskStatus" class="h-1/4 flex items-start justify-center">
+                    <select class="h-full w-3/4" v-model="form.status" id="status" >
+                        <option value="Pending" selected>Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Complete">Complete</option>   
+                    </select>
+                </div>
 
-            <div class="h-1/2 flex items-center justify-center "> 
-               <div class="flex justify-between w-4/5">
-                <button class="w-1/5 h-auto bg-gray-300" type="submit"> Edit  Task </button>
-                <button  @click="selectTaskAndOpenDeleteTaskModal(task)" class="w-1/5 h-auto bg-red-300"> Delete  Task </button>
+                <input type="hidden" v-model="form.task_id" id="task_id"/>
+             
+            </div>   
+
+            <div id="editTaskButtonSection" class="h-20-percent flex items-center justify-center "> 
+               <div class="flex justify-between w-4/5 h-1/2">
+                <button class="w-1/5 h-full bg-indigo-300 rounded-sm" type="submit"> Edit  Task </button>
+                <button  @click="selectTaskAndOpenDeleteTaskModal(task)" class="w-1/5 h-full bg-red-300 rounded-sm"> Delete  Task </button>
                 <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :selectedTask="selectedTask"> </deleteTaskModal>
-               </div>
-               
-                
+               </div>   
             </div>  
 
-           </div>
           
   
           </form>
@@ -98,3 +103,30 @@ const editTask = () => {
 
 
 </script>
+
+<style>
+.h-35-percent{
+    height:35%;
+}
+
+.h-30-percent{
+    height:30%;
+}
+
+.h-20-percent{
+    height:20%;
+}
+.h-10-percent{
+      height: 10%;
+  }
+
+
+@media screen and (min-width: 900px){
+
+ #editTaskForm{
+    font-size:16px;
+ }
+}
+
+
+</style>
