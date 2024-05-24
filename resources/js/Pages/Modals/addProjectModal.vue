@@ -2,7 +2,7 @@
     <div  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
         <form id="addProjectModal" @submit.prevent="createProject" class="w-1/4 flex flex-col items-center justify-center text-gray-600 border border-gray-900 bg-white h-3/5">
 
-            <div id="closeSection" class="w-full h-10-percent flex items-start justify-end"> 
+            <div id="addProjectCloseSection" class="w-full h-10-percent flex items-start justify-end"> 
                   <button @click="closeProjectModal" class=" text-black hover:text-red-400 focus:outline-none">
                       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> 
@@ -10,22 +10,22 @@
                   </button>
               </div>
   
-               <div id="logo" class="w-full h-20-percent flex items-center justify-center text-6xl"> 𝔾ℙ𝕄</div>
+               <div id="addProjectlogo" class="w-full h-20-percent flex items-center justify-center text-6xl"> 𝔾ℙ𝕄</div>
 
                <div id="2ndBlock" class="flex flex-col items-center justify-center h-70-percent w-full">
                       <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
 
-                      <div id="formLabel" class="h-20-percent w-full flex justify-center text-3xl items-start whitespace-nowrap"> Create a Project</div>
+                      <div id="addProjectFormLabel" class="h-20-percent w-full flex justify-center text-3xl items-start whitespace-nowrap"> Create a Project</div>
 
-                      <div id="nameSection" class="h-20-percent w-full flex justify-center">
-                          <label for="name"></label>
-                          <input id="project_name" v-model="form.project_name" type="text" placeholder="project name" class="w-1/2 rounded-lg h-3/4">
+                      <div id="addProjectNameSection" class="h-20-percent w-full flex justify-center">
+                          <label for="add_project_name"></label>
+                          <input id="add_project_name" v-model="form.project_name" type="text" placeholder="project name" class="w-1/2 rounded-lg h-3/4">
                           <div v-if="form.errors.project_name" class="text-xs flex justify-start w-1/2"> {{form.errors.project_name}}</div>
                       </div>
 
-                      <div id="emailSection" class="h-20-percent w-full flex justify-center ">
-                          <label for="project_description"></label>
-                          <input id="project_description" v-model="form.project_description" type="text" placeholder="project description" class="w-1/2 rounded-lg h-3/4 text-xs">
+                      <div id="addProjectDescriptionSection" class="h-20-percent w-full flex justify-center ">
+                          <label for="add_project_description"></label>
+                          <input id="add_project_description" v-model="form.project_description" type="text" placeholder="project description" class="w-1/2 rounded-lg h-3/4 text-xs">
                           <span v-if="form.errors.project_description" class="text-xs *:flex justify-start"> {{form.errors.project_description}}</span>
                       </div>
 
@@ -100,14 +100,14 @@ const createProject = () => {
 @media screen and (min-width: 481px) and (max-width:899px){
    /* 250%-300% */
 
-   #project_description, #project_name{
+   #add_project_description, #add_project_name{
         font-size:6px;
     }
 
     #addProjectModal{
         font-size: 4px;
     }
-    #formLabel, #emailSection, #nameSection{
+    #addProjectFormLabel, #addProjectDescriptionSection, #addProjectNameSection{
         font-size: 16px;
     }
 
@@ -121,11 +121,11 @@ const createProject = () => {
         color:white;    
     }
 
-    #logo {
+    #addProjectlogo {
         font-size:54px;
     }
 
-    #emailSection input::placeholder, #nameSection input::placeholder, #createProjectButton input::placeholder {
+    #addProjectDescriptionSection input::placeholder, #addProjectNameSection input::placeholder, #createProjectButton input::placeholder {
     font-size: 0.50rem; /* Equivalent to text-lg */
 }
 
@@ -134,15 +134,15 @@ const createProject = () => {
 @media screen and (min-width:400px) and (max-width:480px){
     /* 400 px */
 
-    #project_description, #project_name{
+    #add_project_description, #add_project_name{
         font-size:5px;
     }
    
-   #emailSection, #nameSection{
+   #addProjectDescriptionSection, #addProjectNameSection{
         font-size: 16px;
     }
 
-    #formLabel{
+    #addProjectFormLabel{
         display:none;
     }
 
@@ -151,11 +151,11 @@ const createProject = () => {
         width:100%;
     }
 
-    #logo {
+    #addProjectlogo {
         font-size:36px;
     }
 
-    #emailSection input::placeholder, #nameSection input::placeholder, #createProjectButton input::placeholder {
+    #addProjectDescriptionSection input::placeholder, #addProjectNameSection input::placeholder, #createProjectButton input::placeholder {
     font-size: 0.35rem; /* Equivalent to text-lg */
 }
 }
@@ -163,7 +163,7 @@ const createProject = () => {
 @media screen and (min-width:0px) and (max-width:400px){
     /* 400 px */
    
-   #emailSection, #nameSection{
+   #addProjectDescriptionSection, #addProjectNameSection{
         
         font-size: 1px;
     }
@@ -172,22 +172,22 @@ const createProject = () => {
         margin-top:6px;
     }
     
-    #project_description{
+    #add_project_description{
         font-size:3px;
         color:indigo;
         
     }
 
-    #project_name{
+    #add_project_name{
         font-size:3px;
         color:indigo;
     }
 
-    #nameSection{
+    #addProjectNameSection{
         margin-bottom: 4px;
     }
 
-    #formLabel{
+    #addProjectFormLabel{
         display:none;
     }
 
@@ -196,12 +196,12 @@ const createProject = () => {
         width:100%;
     }
 
-    #logo {
+    #addProjectlogo {
         font-size:26px;
     }
 
-#emailSection input::placeholder,
-    #nameSection input::placeholder,
+#addProjectDescriptionSection input::placeholder,
+    #addProjectNameSection input::placeholder,
     #createProjectButton input::placeholder {
         font-size: .18rem; /* Equivalent to text-lg */ 
     }

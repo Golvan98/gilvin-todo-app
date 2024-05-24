@@ -5,7 +5,7 @@
           <form @submit.prevent="destroyTask" class="bg-white w-1/4 h-2/5 flex-nowrap text-gray-600 border border-gray-900 ">
   
            <div class="w-full h-1/2">
-            <div id="closeSection" class="w-full flex items-start justify-end"> 
+            <div id="deleteTaskCloseSection" class="w-full flex items-start justify-end"> 
                   <button @click="closeModal" class=" text-black hover:text-red-400 focus:outline-none">
                       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> 

@@ -5,16 +5,16 @@
   
            <div class="w-full h-3/5">
 
-                <div id="closeSection" class="w-full flex h-10-percent items-start justify-end"> 
+                <div id="addTaskCloseSection" class="w-full flex h-10-percent items-start justify-end"> 
                     <button @click="closeAddTaskModal" class=" text-black hover:text-red-400 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="h-6 w-6" id="addTaskCloseButton" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> 
                         </svg>
                     </button>
                 </div>
-                <div id="formLabel" class="whitespace-nowrap h-45-percent flex items-center  justify-center"> Add a task for project {{ selectedProjectId }} </div>
-                <div id="taskForm" class="h-45-percent flex items-start justify-center">
-                    <input v-model="form.name" id="name" type="text" class="w-3/4 h-1/2" placeholder="Task name here">     
+                <div id="addTaskFormLabel" class="whitespace-nowrap h-45-percent flex items-center  justify-center"> Add a task for project {{ selectedProjectId }} </div>
+                <div id="addTaskNameForm" class="h-45-percent flex items-start justify-center">
+                    <input v-model="form.name" id="addTaskName" type="text" class="w-3/4 h-1/2" placeholder="Task name here">     
                 </div>
         
            </div>
@@ -22,9 +22,9 @@
 
            <div class="w-full h-2/5 bg-inherit flex items-center justify-center flex-col">
 
-                <div id="selectStatusLabel" class="h-1/3 w-full flex items-center justify-center"> Task Status</div>
+                <div id="addTaskSelectStatusLabel" class="h-1/3 w-full flex items-center justify-center"> Task Status</div>
               
-                <select v-model="form.status" type="text"  placeholder="Project Name" id="status" class="h-1/3 w-3/4 flex items-start justify-center">
+                <select v-model="form.status" type="text"  placeholder="Project Name" id="addTaskFormStatus" class="h-1/3 w-3/4 flex items-start justify-center">
                     <option id="option1" value="Pending">Pending</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Complete">Complete</option>   
@@ -82,26 +82,26 @@ const closeAddTaskModal = () => {
 
 @media screen and (min-width:900px) {
     /* 150% to 0% */
-    #formLabel,#taskForm,#selectStatusLabel,#selectStatus{
+    #addTaskFormLabel,#addTaskNameForm,#addTaskSelectStatusLabel,#selectStatus{
     font-size: 20px;
 
     }   
-    #status{
+    #addTaskFormStatus{
         font-size:16px;
     }
 }
 
 @media screen and (min-width:600px) and (max-width:899px){
     /* 175 - 250% */
-    #formLabel,#taskForm,#selectStatusLabel,#selectStatus{
+    #addTaskFormLabel,#addTaskNameForm,#addTaskSelectStatusLabel,#selectStatus{
     font-size: 10px;
         
     }   
-    #formLabel{
+    #addTaskFormLabel{
         margin-top:4px;
     }
 
-    #status {
+    #addTaskFormStatus {
     font-size: 8px; /* Adjust the font size to your preference */
 }
 
@@ -109,33 +109,38 @@ const closeAddTaskModal = () => {
 }
 
 @media screen and (min-width:481px) and (max-width:599px){
-    #formLabel,#taskForm,#selectStatusLabel,#selectStatus{
+    #addTaskFormLabel,#addTaskNameForm,#addTaskSelectStatusLabel,#selectStatus{
     font-size: 7px;
     }   
 
-    #status{
+    #addTaskFormStatus{
         font-size:8px;
     }
-    #name{
+    #addTaskName{
         font-size:8px;
     }
 }
 
 @media screen and (min-width:1px) and (max-width:480px){
     
-    #formLabel,#taskForm,#selectStatusLabel,#selectStatus{
+    #addTaskFormLabel,#addTaskNameForm,#addTaskSelectStatusLabel,#selectStatus{
     font-size: 7px;
     }   
 
-    #selectStatusLabel{
+    #addTaskSelectStatusLabel{
         display:none;
     }
 
-    #status{
+    #addTaskFormStatus{
         font-size:4px;
     }
-    #name{
+    #addTaskName{
         font-size:4px;
+    }
+
+    #addTaskCloseButton{
+        width: 0.75rem;
+        height: 0.75rem;
     }
 }
 

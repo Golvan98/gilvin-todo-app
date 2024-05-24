@@ -2,7 +2,7 @@
 <div id="allOfEditProjectModal"  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
           <form @submit.prevent="editProject" class="w-1/4 flex flex-col items-center justify-center text-gray-600 border border-gray-900 bg-white h-3/5">
 
-              <div id="closeSection" class="w-full h-10-percent flex items-start justify-end"> 
+              <div id="editProjectCloseSection" class="w-full h-10-percent flex items-start justify-end"> 
                   <button @click="closeModal" class=" text-black hover:text-red-400 focus:outline-none">
                       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> 
@@ -10,32 +10,32 @@
                   </button>
               </div>
   
-              <div  id="logo" class="w-full h-20-percent flex items-center justify-center sm:text-xs md:text-2xl mb-1"> 
+              <div  id="editProjectLogo" class="w-full h-20-percent flex items-center justify-center sm:text-xs md:text-2xl mb-1"> 
                 project {{ projectName}} {{ projectId }} 
               </div>
               
-              <div id="2ndBlock" class="w-4/5 flex flex-col items-center justify-center h-70-percent">
+              <div id="editProject2ndBlock" class="w-4/5 flex flex-col items-center justify-center h-70-percent">
                       <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
 
-                      <div id="nameSection" class="h-30-percent flex items-center justify-center w-3/4">
-                          <label for="project_name"> </label>
-                          <input class="w-full h-1/2" v-model="form.project_name" id="project_name" type="text" :placeholder="projectName">
+                      <div id="editProjectNameSection" class="h-30-percent flex items-center justify-center w-3/4">
+                          <label for="editProjectName"> </label>
+                          <input class="w-full h-1/2" v-model="form.project_name" id="editProjectName" type="text" :placeholder="projectName">
                       </div>
 
                       <div id="description" class="h-30-percent flex items-center justify-center w-3/4">
-                          <label for="project_description"></label>
-                          <input class="w-full h-1/2" v-model="form.project_description" id="project_description" type="text" :placeholder="projectDescription">
+                          <label for="editProjectProjectDescription"></label>
+                          <input class="w-full h-1/2" v-model="form.project_description" id="editProjectProjectDescription" type="text" :placeholder="projectDescription">
                       </div>
 
-                      <div id="buttonSection" class="flex w-4/5 h-10-percent items-center justify-center mb-8 space-x-2 ">
+                      <div id="editProjectButtonSection" class="flex w-4/5 h-10-percent items-center justify-center mb-8 space-x-2 ">
 
                           <div class="w-1/2 h-full bg-indigo-300 flex items-center justify-center rounded-sm"> 
-                            <button id="editButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap " type="submit"> Edit Project </button>
+                            <button id="editProjectEditButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap " type="submit"> Edit Project </button>
                           </div>
 
 
                           <a class="w-1/2 h-full bg-red-400 text-white flex items-center justify-center rounded-sm" :href="`/deleteProject/${projectId}`"> 
-                            <button id="deleteButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap" > 
+                            <button id="editProjectDeleteButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap" > 
                                Delete
                             </button>
                           </a>
@@ -103,15 +103,15 @@ const closeModal = () => {
 </script>
 
 <style>
-#closeSection button,
+#editProjectCloseSection button,
 [type="delete"] {
   cursor: pointer; /* Set cursor to pointer for clickable elements */
 }
 
 /* Add this CSS to explicitly set cursor to default for non-clickable elements */
-#logo,
-#2ndBlock,
-#nameSection,
+#editProjectLogo,
+#editProject2ndBlock,
+#editProjectNameSection,
 #description {
   cursor: default;
 }
@@ -124,7 +124,7 @@ const closeModal = () => {
 @media screen and (min-width:900px) {
   /* 1%-200% */
 
-  #logo{
+  #editProjectLogo{
   font-size:24px;
   font-weight: bold;
 
@@ -138,7 +138,7 @@ const closeModal = () => {
   color:white;
 
 }
-  #logo{
+  #editProjectLogo{
     font-size:12px;
     font-weight: bold;
   }
@@ -151,20 +151,20 @@ const closeModal = () => {
   color:white;
   
 }
-  #project_name {
+  #editProjectName {
     margin-top: 24px;
   
   }
 
-  #nameSection {
+  #editProjectNameSection {
     margin-bottom: 12px;
   }
 
-  #logo{
+  #editProjectLogo{
     display:none;
   }
 
-  #editButton, #deleteButton{
+  #editProjectEditButton, #editProjectDeleteButton{
     padding-top:4px;
     padding-bottom: 4px;
   }
@@ -178,33 +178,33 @@ const closeModal = () => {
   color:white;
 }
 
-  #logo{
+  #editProjectLogo{
     display:none;
   }
 
-#project_name {
+#editProjectName {
     margin-top: 24px;
   }
 
-  #project_description{
+  #editProjectProjectDescription{
     margin-top:12px;
   }
 
-#nameSection {
+#editProjectNameSection {
     margin-bottom: 16px;
   }
 
-#logo{
+#editProjectLogo{
     display:none;
   }
 
 
-  #buttonSection{
+  #editProjectButtonSection{
     margin-top:16px;
   }
 
   
-  #closeSection{
+  #editProjectCloseSection{
     margin-bottom:24px;
   }
 
