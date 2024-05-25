@@ -289,4 +289,4 @@ done: Assignment: Fix all div id naming, it mixes up everything
 May 24:
 - Fix add task's 500%
 Assignment: Edit Task and Add Task UI
-- tweaked editTask UI
+- made changes to editTaskModal

@@ -115,7 +115,7 @@
       </div>  
 
       <div id="projectRectangles" v-if="selectedTab === 'myProjects'" v-for="project in projects" :key="projects.id" class="h-1/6 w-3/4 text-black mx-auto mt-2 rounded-lg">
-        <button @click="selectProject(project)" :class="{ 'bg-indigo-400': selectedProjectId == project.id }" class="bg-indigo-100 rounded-lg w-full h-full">
+        <button @click="selectProject(project)" :class="{ 'bg-indigo-400': selectedProjectId == project.id }" class="bg-indigo-100 rounded-sm w-full h-full">
         <div class="flex items-center justify-center mx-auto w-3/4 h-1/4"> 
           <div class="w-5/6 font-bold"> Project:  {{ truncateNecessary(project.project_name , 4) }}  </div>
             <div class="flex items-center justify-end w-1/6 h-full"> 
@@ -139,7 +139,7 @@
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId"  :selectedProjectName="selectedProjectName" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
         </div>  
 
-      <div id="projectRectangles" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-lg">
+      <div id="projectRectangles" v-for="user in projectMembers()" class="h-1/5 w-full flex bg-inherit text-black mx-auto mt-2 rounded-sm">
         
           <div class="w-5/6 h-full bg-inherit flex justify-center"> 
            <div class="w-3/4 h-full bg-indigo-100 rounded-sm">  {{ user.name }} </div>
@@ -160,13 +160,13 @@
       <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
-      <div id="projectRectangles"  v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex justify-between  w-3/4 bg-indigo-100  text-black mx-auto mt-2 rounded-lg">
+      <div id="projectRectangles"  v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex justify-center  w-3/4 bg-indigo-100  text-black mx-auto mt-2 rounded-sm">
         
-        <div class="w-4/6 ml-2 "> 
-          <div > {{ task.name }}</div> 
+        <div class="w-3/5 ml-2 flex justify-center"> 
+          <div class="break-text" > {{ task.name }}</div> 
         </div>
 
-          <div class="w-2/6 flex">
+          <div class="w-2/5 flex justify-end">
             <div class="h-auto"> 
               <button @click="selectTaskAndOpenEditTaskModal(task)"> 🖊️</button>
               <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
@@ -423,7 +423,12 @@ const currentProjectInfo = computed(() => {
 </script>
 
 <style>
-
+.break-text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    hyphens: auto;
+}
 
 @media screen and (min-width: 1200px) and (max-width:1281px)
 {
@@ -482,14 +487,14 @@ font-size: 16px;
 
 #pendingTasks, #inProgressTasks, #completedTasks{
   color: indigo;
-  font-size:5px;
+  font-size:4px;
 }
 }
 
 @media screen and (max-width: 399px)  {
 
 #pendingTasks, #inProgressTasks, #completedTasks{
-  font-size:5px;
+  font-size:3px;
   color: indigo;
 }
 
@@ -500,11 +505,11 @@ font-size: 16px;
  /*this registers if pixels is 1-400 */
   /* this section is fixated on myProjects Section */
   #myProjectsRow, #tasksRow, #membersRow{
-    
     font-size: 3px;
   }
   #projectRectangles{
     font-size:5px;
+    margin-top:16px;
   }
 
   #addButton {
