@@ -290,3 +290,9 @@ May 24:
 - Fix add task's 500%
 Assignment: Edit Task and Add Task UI
 - made changes to editTaskModal
+- fixed edit task modal and further made changes to projects page UI
+
+May 27:
+Assignment: LoginModal & Register Modal
+Assignment: add task status in projects overview
+- Assignemnt Done: made UI changes to Login Modal

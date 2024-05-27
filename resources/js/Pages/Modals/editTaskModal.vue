@@ -127,6 +127,8 @@ const editTask = () => {
     font-size:16px;
  }
 
+
+
  #editTaskEditButton {
 width: 25%
 }
@@ -135,10 +137,14 @@ width: 25%
 font-size:10px;
 font-weight: bold;
 }
-
-
-
  
+}
+
+@media screen and (min-width: 1360px) and (max-width:9999999px)
+{
+    #editTaskEditButton, #editTaskDeleteButton{
+    font-size: 16px;
+ }
 }
 
 
