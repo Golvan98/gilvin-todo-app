@@ -297,3 +297,6 @@ Assignment: LoginModal & Register Modal
 Assignment: add task status in projects overview
 - Assignment Done: made UI changes to Login Modal
 - Assignment Done: made UI changes to Register Modal, needs further tweaking
+
+May 28:
+- made further tweaks to registermodal

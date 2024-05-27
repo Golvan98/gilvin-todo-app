@@ -10,9 +10,9 @@
                   </button>
               </div>
   
-              <div v-if="!hasErrors" id="registerLogo" class="w-full h-20-percent flex items-end justify-center sm:text-xs md:text-2xl lg:text-4xl mb-1"> 𝔾ℙ𝕄</div>
+              <div v-if="!hasErrors" id="registerLogo" class="w-full h-10-percent flex items-end justify-center sm:text-xs md:text-2xl lg:text-4xl mb-1"> 𝔾ℙ𝕄</div>
 
-              <div id="register2ndBlock" class="w-4/5 flex flex-col items-center justify-center h-70-percent gap-4">
+              <div id="register2ndBlock" class="w-4/5 flex flex-col items-center justify-center h-80-percent gap-4">
                       <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
 
                       <input id="registerNameSection" class="h-10-percent flex items-center w-3/4 " 
@@ -28,7 +28,7 @@
                           <span id="registerError" v-if="form.errors.password || form.errors.email" class="flex items-start justify-start text-xs text-red-500 w-full"> {{form.errors.password}}</span>
                       </input>
 
-                      <div class="flex h-10-percent items-center justify-center rounded-md">
+                      <div class="flex h-auto items-center justify-center rounded-md ">
                           <button id="registerButton" type="submit" class="bg-gray-300 rounded-sm">Register</button>
                       </div>
                 </div>
@@ -69,7 +69,7 @@ const closeRegModal = () => {
 const formClass = computed(() => ({
   'w-1/4 flex flex-col items-center justify-center text-gray-600 border border-gray-900 bg-white': true,
   'h-3/5': Object.keys(form.errors).length === 0,
-  'h-4/5': Object.keys(form.errors).length > 0,
+  'h-5/6': Object.keys(form.errors).length > 0,
   'bg-red-300': Object.keys(form.errors).length > 0,
 }));
 
@@ -104,6 +104,8 @@ const formClass = computed(() => ({
         margin-bottom:16px;
         padding:0.50rem;
     }
+
+  
   @media screen and (min-width: 601px) and (max-width:1000px)
   {
     #registerError{
@@ -111,12 +113,14 @@ const formClass = computed(() => ({
         max-height: 4px;
         color:blue;
         width:100%;
-        margin-bottom:12px;
+        margin-bottom:8px;
     }
 
     #registerLogo{
         display:none;
     }
+
+  
 
     #register2ndBlock{
         height:90%;
@@ -143,16 +147,22 @@ const formClass = computed(() => ({
         display:none;
     }
 
+      #registerNameSection, #registerEmailSection, #registerPasswordSection{
+        max-height: 2px;
+        min-height:2px;
+}
+
     #register2ndBlock{
         height:90%;
         gap: 0.5rem;
     }
 
+
+
     #registerError{
-        font-size:3px;
+        font-size:2px;
         max-height: 2px;
         
-        margin-bottom:3px;
     }
 
     #registerNameSection, #registerEmailSection, #registerPasswordSection{
@@ -160,8 +170,7 @@ const formClass = computed(() => ({
 }
 
     #registerButton{
-        font-size:8px;
-        margin-bottom:4px;
+        font-size:4px;
         padding:0.05rem;
     }
    
