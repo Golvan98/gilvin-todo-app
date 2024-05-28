@@ -100,7 +100,7 @@ class ProjectController extends Controller
             'user_id' => $userId
         ]);
        
-      return redirect('projects')->with('success', 'Project created successfully');
+      return redirect()->back()->with('success', 'Project created successfully');
 
         
     }

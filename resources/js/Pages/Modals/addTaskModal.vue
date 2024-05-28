@@ -13,9 +13,12 @@
                     </button>
                 </div>
                 <div id="addTaskFormLabel" class="whitespace-nowrap h-45-percent flex items-center  justify-center"> Add a task for project {{ selectedProjectId }} </div>
-                <div id="addTaskNameForm" class="h-45-percent flex items-start justify-center">
-                    <input v-model="form.name" id="addTaskName" type="text" class="w-3/4 h-1/2" placeholder="Task name here">     
+                <div id="addTaskNameForm" class="h-45-percent flex flex-col items-center justify-center ">
+                    <input v-model="form.name" id="addTaskName" type="text" class="w-3/4 h-1/2" placeholder="Task name here">   
+                    <div id="addTaskError" v-if="form.errors.name" class="text-xs text-red-500 flex justify-center items-center w-4/5 h-1/2"> {{form.errors.name}}</div>
+               
                 </div>
+                    
         
            </div>
     
@@ -28,7 +31,9 @@
                     <option id="option1" value="Pending">Pending</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Complete">Complete</option>   
+                    
                 </select>
+                
                
                 <div class="h-1/2 w-full flex items-center justify-center"> 
                     <button id="createTaskButton" class="bg-indigo-300 w-1/3 h-1/2 text-white whitespace-nowrap flex items-center justify-center"> Create Task </button>
@@ -61,12 +66,28 @@ const { selectedProjectId, showAddTaskModal } = defineProps(['selectedProjectId'
 
 const emits = defineEmits(['closeAddTaskModal']);
 
-const createTask = () => {
+/*const createTask = () => {
     // Set the form's project_id to the selectedProjectId
     form.project_id = selectedProjectId;
     // Post the form data
     form.post('createTask');
+}; */
+
+
+
+
+const createTask = () => {
+    form.project_id = selectedProjectId;
+  form.post('createTask', {
+    onSuccess: () => {
+      if (!Object.keys(form.errors).length) {
+        closeAddTaskModal();
+      }
+    },
+  });
 };
+
+
 const closeAddTaskModal = () => {
   emits('closeAddTaskModal');
   // Emit an event if needed
@@ -103,12 +124,19 @@ const closeAddTaskModal = () => {
 
     #addTaskFormStatus {
     font-size: 8px; /* Adjust the font size to your preference */
-}
+    }
+
+    #addTaskError{
+        color:red;
+        width:100%;
+        font-size:4px;
+    }
 
 /* Style the options within the select element */
 }
 
 @media screen and (min-width:481px) and (max-width:599px){
+     /* 400% */
     #addTaskFormLabel,#addTaskNameForm,#addTaskSelectStatusLabel,#selectStatus{
     font-size: 7px;
     }   
@@ -119,9 +147,37 @@ const closeAddTaskModal = () => {
     #addTaskName{
         font-size:8px;
     }
+    
+    #addTaskFormLabel{
+        display:none;
+    }
+
+    #addTaskNameForm{
+        height:90%;
+    }
+
+    #addTaskError{
+        color:red;
+        width:100%;
+        font-size:4px;
+    }
+
+    #addTaskCloseButton{
+        width: 0.75rem;
+        height: 0.75rem;
+    }
 }
 
 @media screen and (min-width:1px) and (max-width:480px){
+
+    /* 500% */
+    #addTaskFormLabel{
+        display:none;
+    }
+    #addTaskNameForm{
+        height:90%;
+    }
+
     
     #addTaskFormLabel,#addTaskNameForm,#addTaskSelectStatusLabel,#selectStatus{
     font-size: 7px;
@@ -141,6 +197,12 @@ const closeAddTaskModal = () => {
     #addTaskCloseButton{
         width: 0.75rem;
         height: 0.75rem;
+    }
+
+    #addTaskError{
+        color:red;
+        width:100%;
+        font-size:3px;
     }
 }
 

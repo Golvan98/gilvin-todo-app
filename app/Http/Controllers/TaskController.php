@@ -15,14 +15,14 @@ class TaskController extends Controller
         // Dump and die to inspect the selectedProjectId
 
         $newTask = $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:4|max:20|',
             'status' => 'required', 
             'project_id' => 'required'
         ]);
 
         $createdTask = Task::create($newTask);
 
-        return redirect()->intended('projects')->with('success', 'Task Created');
+        return redirect()->back()->with('success', 'Task Created');
     
         // Assign selectedProjectId to the $newTask array
       

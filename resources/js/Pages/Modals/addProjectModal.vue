@@ -240,10 +240,7 @@ const createProject = () => {
         font-size: .18rem; /* Equivalent to text-lg */ 
     }
 
-    #addProjectError{
-        font-size:2px;
-      
-    }
+
     #addProjectlogo{
         display:none;
     }

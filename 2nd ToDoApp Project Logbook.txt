@@ -300,3 +300,8 @@ Assignment: add task status in projects overview
 
 May 28:
 - made further tweaks to registermodal
+- added error message to addprojectmodal
+- fixed modal not closing onSuccess of form post for addprojectmodal, will apply this to
+the rest next time
+
+May 29:
