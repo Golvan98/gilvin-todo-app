@@ -107,9 +107,9 @@
     </div>
    
     <div v-if="selectedTab === 'myProjects'" id="myProjectsRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
-      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black  flex items-center justify-center">
+      <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black  flex items-center justify-center font-bold">
         <div> Projects </div>
-        <button id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Project</button>
+        <button v-if="currentUserId" id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white "> Add Project</button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
       </div>  
@@ -162,11 +162,12 @@
 
       <div id="projectRectangles"  v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex justify-center  w-3/4 bg-indigo-100  text-black mx-auto mt-2 rounded-sm">
         
-        <div class="w-3/5 ml-2 flex justify-center"> 
-          <div class="break-text" > {{ task.name }}</div> 
+        <div class="w-4/5 ml-2 flex flex-col justify-center "> 
+          <div class="break-text w-full h-3/4 flex items-start justify-center" > {{ task.name }}</div> 
+          <div class="break-text w-full h-1/4 flex items-start justify-center mb-0.5" > Status: {{ task.status }}</div> 
         </div>
 
-          <div class="w-2/5 flex justify-end">
+          <div class="w-1/5 flex justify-end">
             <div class="h-auto"> 
               <button @click="selectTaskAndOpenEditTaskModal(task)"> 🖊️</button>
               <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
@@ -287,7 +288,8 @@ const props = defineProps ({
   inProgressTasksOfUsers:Object,
   pendingTasksOfUsers:Object,
   completedTasksOfUsers:Object,
-  projectsOwnedByUsers:Object
+  projectsOwnedByUsers:Object,
+  currentUserId:Object
 })
 
 const truncateText = (text, maxLength) => {

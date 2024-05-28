@@ -73,7 +73,8 @@ class ProjectController extends Controller
         'inProgressTasksOfUsers' => $inProgressTasksOfUsers,
         'pendingTasksOfUsers' => $pendingTasksOfUsers,
         'completedTasksOfUsers' => $completedTasksOfUsers,
-        'projectsOwnedByUsers' => $projectsOwnedByUsers
+        'projectsOwnedByUsers' => $projectsOwnedByUsers,
+        'currentUserId' => $currentUserId
     ]);
 
    

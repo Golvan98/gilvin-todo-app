@@ -24,7 +24,7 @@
                           <span id="registerError" v-if="form.errors.email" class="text-xs text-red-500 flex items-start justify-start w-full"> {{form.errors.email}}</span>
                       </input>
 
-                      <input id="registerPasswordSection" v-model="form.password" type="text" placeholder="password" class="h-10-percent flex items-center w-3/4">
+                      <input id="registerPasswordSection" v-model="form.password" type="password" placeholder="password" class="h-10-percent flex items-center w-3/4">
                           <span id="registerError" v-if="form.errors.password || form.errors.email" class="flex items-start justify-start text-xs text-red-500 w-full"> {{form.errors.password}}</span>
                       </input>
 
@@ -111,7 +111,7 @@ const formClass = computed(() => ({
     #registerError{
         font-size:6px;
         max-height: 4px;
-        color:blue;
+        color:red;
         width:100%;
         margin-bottom:8px;
     }
@@ -160,7 +160,7 @@ const formClass = computed(() => ({
 
 
     #registerError{
-        font-size:2px;
+        font-size:2.5px;
         max-height: 2px;
         
     }

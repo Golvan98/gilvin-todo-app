@@ -4,7 +4,7 @@
 
             <div id="addProjectCloseSection" class="w-full h-10-percent flex items-start justify-end"> 
                   <button @click="closeProjectModal" class=" text-black hover:text-red-400 focus:outline-none">
-                      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg id="addProjectCloseButton" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> 
                       </svg>
                   </button>
@@ -12,21 +12,21 @@
   
                <div id="addProjectlogo" class="w-full h-20-percent flex items-center justify-center text-6xl"> 𝔾ℙ𝕄</div>
 
-               <div id="2ndBlock" class="flex flex-col items-center justify-center h-70-percent w-full">
+               <div id="addProject2ndBlock" class="flex flex-col items-center justify-center h-70-percent w-full">
                       <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
 
                       <div id="addProjectFormLabel" class="h-20-percent w-full flex justify-center text-3xl items-start whitespace-nowrap"> Create a Project</div>
 
-                      <div id="addProjectNameSection" class="h-20-percent w-full flex justify-center">
+                      <div id="addProjectNameSection" class="h-30-percent w-full flex flex-col items-center justify-center ">
                           <label for="add_project_name"></label>
-                          <input id="add_project_name" v-model="form.project_name" type="text" placeholder="project name" class="w-1/2 rounded-lg h-3/4">
-                          <div v-if="form.errors.project_name" class="text-xs flex justify-start w-1/2"> {{form.errors.project_name}}</div>
+                          <input id="add_project_name" v-model="form.project_name" type="text" placeholder="project name" class="w-1/2 rounded-lg h-1/2 flex items-center">
+                          <div id="addProjectError" v-if="form.errors.project_name" class="text-xs text-red-500 flex justify-center items-center w-4/5 h-1/2"> {{form.errors.project_name}}</div>
                       </div>
 
-                      <div id="addProjectDescriptionSection" class="h-20-percent w-full flex justify-center ">
+                      <div id="addProjectDescriptionSection" class="h-30-percent w-full flex flex-col items-center justify-center ">
                           <label for="add_project_description"></label>
-                          <input id="add_project_description" v-model="form.project_description" type="text" placeholder="project description" class="w-1/2 rounded-lg h-3/4 text-xs">
-                          <span v-if="form.errors.project_description" class="text-xs *:flex justify-start"> {{form.errors.project_description}}</span>
+                          <input id="add_project_description" v-model="form.project_description" type="text" placeholder="project description" class="w-1/2 rounded-lg h-1/2 text-xs">
+                          <div id="addProjectError" v-if="form.errors.project_description" class="text-xs text-red-500 flex justify-center items-center w-4/5 h-1/2"> {{form.errors.project_description}}</div>
                       </div>
 
                       <div id="createProjectButton" class="flex h-20-percent items-center justify-center w-3/4">
@@ -70,7 +70,7 @@ const closeProjectModal = () => {
 //const login = () => form.post('register')
 const createProject = () => {
   form.post('createProject');
-  window.location.reload();
+ 
 };
 
 
@@ -85,23 +85,43 @@ const createProject = () => {
 
 <style>
 
+    .h-15-percent{
+            height: 15%;
+    }
+
+    .h-30-percent{
+        height: 30%;
+    }
 
 
-@media screen and (min-width:901px) and (max-width:1199px){
+@media screen and (min-width:900px) and (max-width:1199px){
     /* 200% and below */
     #createProjectButton{
-       
         width:100%;
     }
 
 
 }
 
-@media screen and (min-width: 481px) and (max-width:899px){
-   /* 250%-300% */
+@media screen and (min-width: 401px) and (max-width:899px){
+   /* 175%-300% */
 
    #add_project_description, #add_project_name{
         font-size:6px;
+    }
+
+    #addProjectFormLabel{
+        display:none;
+    }
+
+    #addProjectError{
+        color:red;
+        width:100%;
+        font-size:4px;
+    }
+
+    #addProjectlogo {
+       font-size: 14px;
     }
 
     #addProjectModal{
@@ -121,9 +141,7 @@ const createProject = () => {
         color:white;    
     }
 
-    #addProjectlogo {
-        font-size:54px;
-    }
+   
 
     #addProjectDescriptionSection input::placeholder, #addProjectNameSection input::placeholder, #createProjectButton input::placeholder {
     font-size: 0.50rem; /* Equivalent to text-lg */
@@ -131,7 +149,7 @@ const createProject = () => {
 
 }
 
-@media screen and (min-width:400px) and (max-width:480px){
+@media screen and (min-width:401px) and (max-width:480px){
     /* 400 px */
 
     #add_project_description, #add_project_name{
@@ -164,13 +182,28 @@ const createProject = () => {
     /* 400 px */
    
    #addProjectDescriptionSection, #addProjectNameSection{
-        
         font-size: 1px;
     }
 
     #createProjectButton{
         margin-top:6px;
     }
+
+    #addProjectError{
+        font-size:2px;
+        color:red;
+    }
+
+    #addProject2ndBlock{
+        height:90%;
+    }
+
+    #addProjectCloseButton{
+        height:0.75rem;
+        width:0.75rem;
+    }
+
+  
     
     #add_project_description{
         font-size:3px;
@@ -205,6 +238,15 @@ const createProject = () => {
     #createProjectButton input::placeholder {
         font-size: .18rem; /* Equivalent to text-lg */ 
     }
+
+    #addProjectError{
+        font-size:2px;
+      
+    }
+    #addProjectlogo{
+        display:none;
+    }
+
 }
 
 
