@@ -1,6 +1,6 @@
 <template>
     <div  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
-        <form id="addProjectModal" @submit.prevent="createProject" class="w-1/4 flex flex-col items-center justify-center text-gray-600 border border-gray-900 bg-white h-3/5">
+        <form v-if="showAddProjectModal" id="addProjectModal" @submit.prevent="createProject" class="w-1/4 flex flex-col items-center justify-center text-gray-600 border border-gray-900 bg-white h-3/5">
 
             <div id="addProjectCloseSection" class="w-full h-10-percent flex items-start justify-end"> 
                   <button @click="closeProjectModal" class=" text-black hover:text-red-400 focus:outline-none">
@@ -30,7 +30,7 @@
                       </div>
 
                       <div id="createProjectButton" class="flex h-20-percent items-center justify-center w-3/4">
-                        <button @click="closeProjectModal" class="bg-gray-200 mr-2 h-1/2 w-1/3 rounded-sm p-1 flex items-center justify-center" type="submit mx-2"> Cancel </button>
+                        <button @click="closeProjectModal" class="bg-gray-200 mr-2 h-1/2 w-1/3 rounded-sm p-1 flex items-center justify-center"> Cancel </button>
                           <button id="createProjectButtonConfirm" class="bg-indigo-300 ml-2 h-1/2 w-1/3 rounded-sm whitespace-nowrap px-4 py-1 flex items-center justify-center" type="submit"> Create Project</button>
                 </div>
             </div>
@@ -42,7 +42,7 @@
 
 <script setup>
 import { defineProps, defineEmits  } from 'vue';
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useForm } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3'
 import { computed ,  } from 'vue'
@@ -66,18 +66,19 @@ const closeProjectModal = () => {
   emits('closeAddProjectModal');
   // Emit an event if needed
 };
-
+const reload = ref(false);
 //const login = () => form.post('register')
+//const createProject = () => {form.post('createProject');};
+
 const createProject = () => {
-  form.post('createProject');
- 
+  form.post('createProject', {
+    onSuccess: () => {
+      if (!Object.keys(form.errors).length) {
+        closeProjectModal();
+      }
+    },
+  });
 };
-
-
-
-
-
-
 
 
 
