@@ -112,7 +112,7 @@ class ProjectController extends Controller
             'project_id'=> 'required',
         ]);
        $test =  ProjectUser::create($newMember);
-       return redirect()->route('fakeHome');
+       return redirect()->back()->with('success' , 'Member added to project');
 
     }
 

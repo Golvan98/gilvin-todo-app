@@ -67,7 +67,19 @@ if (props.selectedProjectId) {
 
 
 
-const addMember = () => form.post('addMember');
+//const addMember = () => form.post('addMember');
+
+
+const addMember = () => {
+  form.post('addMember', {
+    onSuccess: () => {
+      if(!Object.keys(form.errors).length){
+        closeAddMemberModal();
+      }
+    },
+  });
+}
+
 
 
 
