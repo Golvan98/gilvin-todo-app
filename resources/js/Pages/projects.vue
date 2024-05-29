@@ -163,7 +163,7 @@
       <div id="projectRectangles"  v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex justify-center  w-3/4 bg-indigo-100  text-black mx-auto mt-2 rounded-sm">
         
         <div class="w-4/5 ml-2 flex flex-col justify-center "> 
-          <div class="break-text w-full h-3/4 flex items-start justify-center" > {{ task.name }}</div> 
+          <div class="break-text w-full h-3/4 flex items-start justify-center" >  {{ truncateText( task.name , 35) }}</div> 
           <div class="break-text w-full h-1/4 flex items-start justify-center mb-0.5" > Status: {{ task.status }}</div> 
         </div>
 

@@ -138,7 +138,7 @@ class ProjectController extends Controller
         $userdelete =  DB::table('projects')->where('id', $id)->delete();
         
 
-        return redirect()->intended('home')->with('success', 'project deleted');
+        return redirect()->back()->with('success', 'project deleted');
 
     }
 }

@@ -38,7 +38,7 @@
                           </div>
 
 
-                          <a class="w-1/2 h-full bg-red-400 text-white flex items-center justify-center rounded-sm" :href="`/deleteProject/${projectId}`"> 
+                          <a class="w-1/2 h-full bg-red-400 text-white flex items-center justify-center rounded-sm" :href="`/deleteProject/${projectId}`" @click="reloadPage"> 
                             <button id="editProjectDeleteButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap" > 
                                Delete
                             </button>
@@ -118,6 +118,11 @@ const editProject = () => {
     },
   });
 }
+
+const reloadPage = () => {
+  // Navigate to the current page again, triggering a reload
+  window.location.reload();
+};
 
 
 

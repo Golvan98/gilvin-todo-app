@@ -39,9 +39,7 @@ class TaskController extends Controller
         $targetTask = Task::find($editedTask['task_id']);
         $targetTask->update($editedTask);
 
-        return redirect()->intended('home')->with('success', 'Task Edited');
-
-
+        return redirect()->back()->with('success', 'Task Edited');
     }
 
     public function deleteTask(Request $request, $id)

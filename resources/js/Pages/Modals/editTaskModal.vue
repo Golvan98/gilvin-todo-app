@@ -95,11 +95,22 @@ const closeModal = () => {
 
 
 
-const editTask = () => {
+/* const editTask = () => {
     form.task_id = props.selectedTask.id; // Corrected line
     form.post('editTask');
-}
+} */
 
+const editTask = () => {
+    form.task_id = props.selectedTask.id; 
+  form.post('editTask', {
+    onSuccess: () => {
+      if (!Object.keys(form.errors).length) {
+        closeModal();
+       // This line will refresh the page
+      }
+    },
+  });
+}
 
 
 </script>
