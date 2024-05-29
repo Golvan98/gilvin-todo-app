@@ -38,11 +38,12 @@
                           </div>
 
 
-                          <a class="w-1/2 h-full bg-red-400 text-white flex items-center justify-center rounded-sm" :href="`/deleteProject/${projectId}`" @click="reloadPage"> 
+                         <div class="w-1/2 h-full bg-red-400 text-white flex items-center justify-center rounded-sm"  @click="showDeleteProjectModal = true"> 
                             <button id="editProjectDeleteButton" class="rounded-sm w-1/2 flex items-center justify-center h-1/2 whitespace-nowrap" > 
-                               Delete
+                               Delete {{showDeleteProjectModal}}
                             </button>
-                          </a>
+                          </div>
+                          <deleteProjectModal v-if="showDeleteProjectModal" :showDeleteProjectModal="showDeleteProjectModal" :projectId="projectId" @closeDeleteProjectModal="showDeleteProjectModal = false" />
 
                       </div>
 
@@ -64,6 +65,7 @@ import { computed } from 'vue'
 import { reactive } from 'vue'
 import { Link, usePage } from '@inertiajs/vue3'
 import { watch } from 'vue';
+import deleteProjectModal from './deleteProjectModal.vue';
 
 const page = usePage()
 
@@ -73,6 +75,7 @@ const form = useForm ({
     project_id:null 
 })
 
+const showDeleteProjectModal = ref(false);
 
 
 const props = defineProps({

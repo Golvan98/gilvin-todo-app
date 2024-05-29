@@ -309,8 +309,9 @@ May 29:
 - fixed modal not closing when adding members
 - fixed modal not closing when deleting tasks
 - fixed modal not closing when editing projects, also added form errors 
+- fixed modal not closing when editing tasks, neglected its form errors
 
 May 30:
 - Assignment: Fix that editProjectModal, it activates a form error and it persists the flash message after deleting
-- Assignment: Edit Task Modal Form Errors and modal close fix
-- Assignment: myprojects section has fucked up boxes and text sizes at 175-200%
+- Assignment: myprojects section has fucked up boxes and text sizes at 175-200%, fix it
+- :href="`/deleteProject/${projectId}`"

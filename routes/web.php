@@ -45,7 +45,7 @@ Route::post('editProject' , [ProjectController::class, 'editProject'])->name('ed
 
 Route::get('/fakeHome', [IndexController::class, 'fakeHome'])->name('fakeHome');
 
-Route::get('/deleteProject/{id}', [ProjectController::class, 'deleteProject'])->name('deleteProject');
+Route::delete('/deleteProject/{id}', [ProjectController::class, 'deleteProject'])->name('deleteProject');
 
 Route::post('/editTask', [TaskController::class, 'editTask'])->name('editTask');
 
