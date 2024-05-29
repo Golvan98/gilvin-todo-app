@@ -128,7 +128,7 @@ class ProjectController extends Controller
 
         $targetProject = Project::find($editRequest['project_id']);
         $targetProject->update($editRequest);
-        return redirect()->intended('home')->with('success' , 'project edited');
+        return redirect()->back()->with('success' , 'project edited');
     }
 
 

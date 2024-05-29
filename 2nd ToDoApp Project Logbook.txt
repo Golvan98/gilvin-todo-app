@@ -305,3 +305,6 @@ May 28:
 the rest next time
 
 May 29:
+- added form errors and fixed on addtask modal not closing onSuccess
+- fixed modal not closing when adding members
+- fixed modal not closing when deleting tasks

@@ -4,7 +4,7 @@
 
               <div id="editProjectCloseSection" class="w-full h-10-percent flex items-start justify-end"> 
                   <button @click="closeModal" class=" text-black hover:text-red-400 focus:outline-none">
-                      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg id="editProjectCloseButton" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path> 
                       </svg>
                   </button>
@@ -17,15 +17,19 @@
               <div id="editProject2ndBlock" class="w-4/5 flex flex-col items-center justify-center h-70-percent">
                       <input type="hidden" name="_token" :value="csrfToken"> <!-- CSRF token field -->
 
-                      <div id="editProjectNameSection" class="h-30-percent flex items-center justify-center w-3/4">
+                      <div id="editProjectNameSection" class="h-30-percent flex flex-col items-center justify-center w-3/4 whitespace-nowrap">
                           <label for="editProjectName"> </label>
                           <input class="w-full h-1/2" v-model="form.project_name" id="editProjectName" type="text" :placeholder="projectName">
+                          <div id="editProjectError" v-if="form.errors.project_name" class="text-xs text-red-500 flex justify-center items-center w-full h-1/2"> {{form.errors.project_name}}</div>
+                    
                       </div>
 
-                      <div id="description" class="h-30-percent flex items-center justify-center w-3/4">
+                      <div id="description" class="h-30-percent flex flex-col items-center justify-center w-3/4">
                           <label for="editProjectProjectDescription"></label>
                           <input class="w-full h-1/2" v-model="form.project_description" id="editProjectProjectDescription" type="text" :placeholder="projectDescription">
-                      </div>
+                          <div id="editProjectError" v-if="form.errors.project_description" class="whitespace-nowrap text-xs text-red-500 flex justify-center items-center w-full h-1/2"> {{form.errors.project_description}}</div>
+                    
+                        </div>
 
                       <div id="editProjectButtonSection" class="flex w-4/5 h-10-percent items-center justify-center mb-8 space-x-2 ">
 
@@ -69,10 +73,7 @@ const form = useForm ({
     project_id:null 
 })
 
-const editProject = () => {
-    form.project_id = projectId;
-    form.post('editProject');
-}
+
 
 const props = defineProps({
   showEditProjectModal: Boolean, // Assuming showAddMemberModal is a boolean prop
@@ -99,6 +100,38 @@ const closeModal = () => {
   emits('closeEditProjectModal');
   // Emit an event if needed
 };
+
+
+/*const editProject = () => {
+    form.project_id = projectId;
+    form.post('editProject');
+} */
+
+const editProject = () => {
+  form.project_id = projectId;
+  form.post('editProject', {
+    onSuccess: () => {
+      if (!Object.keys(form.errors).length) {
+        closeEditProjectModal();
+       // This line will refresh the page
+      }
+    },
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 
@@ -130,6 +163,12 @@ const closeModal = () => {
 
   }
 
+  #editProjectError{
+    font-size:9px;
+    margin-top: 4px;
+    color:red;
+  }
+
 }
 
 @media screen and (min-width:600px) and (max-width: 899px) {
@@ -143,6 +182,14 @@ const closeModal = () => {
     font-weight: bold;
   }
 
+  #editProjectError{
+    font-size:5.5px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    min-height:16px;
+    color:red;
+  }
+
 }
 
 @media screen and (min-width: 460px) and (max-width: 599px){
@@ -150,6 +197,10 @@ const closeModal = () => {
   #allOfEditProjectModal{
   color:white;
   
+}
+
+#editProject2ndBlock{
+  height:90%;
 }
   #editProjectName {
     margin-top: 24px;
@@ -169,11 +220,24 @@ const closeModal = () => {
     padding-bottom: 4px;
   }
 
+  #editProjectError{
+    font-size:4px;
+    min-height:16px;
+    color:red;
+  }
+
  
 }
 
 @media screen and (min-width: 1px) and (max-width: 459px){
   /*500% */
+
+  #editProjectError{
+    font-size:2.9px;
+    min-height:16px;
+    color:red;
+  }
+
   #allOfEditProjectModal{
   color:white;
 }
@@ -206,6 +270,12 @@ const closeModal = () => {
   
   #editProjectCloseSection{
     margin-bottom:24px;
+  }
+
+  #editProjectCloseButton{
+    height: 0.75rem;
+    width:0.75rem;
+    margin-top:2px;
   }
 
 

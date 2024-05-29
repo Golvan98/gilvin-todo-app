@@ -69,12 +69,12 @@ if (props.selectedProjectId) {
 
 //const addMember = () => form.post('addMember');
 
-
 const addMember = () => {
   form.post('addMember', {
     onSuccess: () => {
-      if(!Object.keys(form.errors).length){
+      if (!Object.keys(form.errors).length) {
         closeAddMemberModal();
+       // This line will refresh the page
       }
     },
   });

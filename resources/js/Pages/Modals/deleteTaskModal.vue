@@ -2,7 +2,7 @@
 <template>
     <div  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
 
-          <form @submit.prevent="destroyTask" class="bg-white w-1/4 h-2/5 flex-nowrap text-gray-600 border border-gray-900 ">
+          <form @submit.prevent="deleteTask" class="bg-white w-1/4 h-2/5 flex-nowrap text-gray-600 border border-gray-900 ">
   
            <div class="w-full h-1/2">
             <div id="deleteTaskCloseSection" class="w-full flex items-start justify-end"> 
@@ -20,11 +20,11 @@
             <div class="h-1/2 flex items-center justify-center w-full mb-2">
 
                 <div id="deleteTaskButtonsSection" class="w-1/3 h-1/2 flex items-center justify-center"> 
-                  <Link :href="`/deleteTask/${selectedTask.id}`" class="w-full h-full flex items-center justify-center"> 
-                    <button class="bg-red-300 w-1/2 h-full rounded-sm text-white font-bold"> 
+                  <div class="w-full h-full flex items-center justify-center"> 
+                    <button type="submit" class="bg-red-300 w-1/2 h-full rounded-sm text-white font-bold"> 
                       Yes 
                     </button> 
-                  </Link> 
+                  </div> 
                 </div>
               
                 <div id="deleteTaskButtonsSection" class="w-1/3 h-1/2  flex items-center justify-center"> 
@@ -51,6 +51,10 @@
 import { useForm } from '@inertiajs/vue3';
 import { defineProps, defineEmits, ref } from 'vue';
 import { Link, usePage } from '@inertiajs/vue3'
+import { router } from '@inertiajs/vue3'
+import { computed } from 'vue'
+import { reactive } from 'vue'
+import { watch } from 'vue';
 
 
 const props = defineProps({
@@ -58,12 +62,25 @@ const props = defineProps({
   selectedTask:Object
 
 });
+const form = useForm({
+ // task_id: null // Added task_id to the form
+});
 
 const emits = defineEmits(['closeDeleteTaskModal']);
 
 const closeModal = () => {
   emits('closeDeleteTaskModal');
   // Emit an event if needed
+};
+
+
+const deleteTask = () => {
+  form.task_id = props.selectedTask.id;
+  form.delete(`deleteTask/${props.selectedTask.id}`, {
+    onSuccess: () => {
+      closeModal();
+    },
+  });
 };
 
 

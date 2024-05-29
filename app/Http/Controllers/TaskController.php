@@ -48,7 +48,6 @@ class TaskController extends Controller
     {
         $userdelete =  DB::table('tasks')->where('id', $id)->delete();
         
-
-        return redirect()->intended('home')->with('success', 'task deleted');
+        return redirect()->back()->with('success', 'task deleted');
     }
 }
