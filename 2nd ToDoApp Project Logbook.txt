@@ -314,4 +314,9 @@ May 29:
 May 30:
 - Assignment: Fix that editProjectModal, it activates a form error and it persists the flash message after deleting
 - Assignment: myprojects section has fucked up boxes and text sizes at 175-200%, fix it
-- :href="`/deleteProject/${projectId}`"
+- created separate modal for deleting projects to fix editproject flash messages persisting
+-
+
+
+May 31:
+Assignment: Plug some content fillers for left and right footer

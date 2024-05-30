@@ -32,7 +32,7 @@
 
       <div id="listofProjectsByUser" v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> 
         <button @click="setTabAndProject(projectsOwnedByUser)" :class="{ 'bg-indigo-300': selectedTab === projectsOwnedByUser.project_name, 'bg-white': selectedTab !== projectsOwnedByUser.project_name }"> 
-          <span class="truncate-text">{{ truncateText(projectsOwnedByUser.project_name, 8) }} </span>
+          <span class="truncate-text">{{ truncateNecessary(projectsOwnedByUser.project_name, 15) }} </span>
         </button>
       </div>
 
@@ -109,14 +109,14 @@
     <div v-if="selectedTab === 'myProjects'" id="myProjectsRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black  flex items-center justify-center font-bold">
         <div> Projects </div>
-        <button v-if="currentUserId" id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white "> Add Project</button>
+        <button v-if="currentUserId" id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-2 py-1 rounded-sm font-bold text-white "> Add Project</button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
       </div>  
 
       <div id="projectRectangles" v-if="selectedTab === 'myProjects'" v-for="project in projects" :key="projects.id" class="h-1/6 w-3/4 text-black mx-auto mt-2 rounded-lg">
-        <button @click="selectProject(project)" :class="{ 'bg-indigo-400': selectedProjectId == project.id }" class="bg-indigo-100 rounded-sm w-full h-full">
-        <div class="flex items-center justify-center mx-auto w-3/4 h-1/4"> 
+        <button id="projectBlock" @click="selectProject(project)" :class="{ 'bg-indigo-400': selectedProjectId == project.id }" class="bg-indigo-100 rounded-sm w-full h-full  ">
+        <div id="projectBlock2" class="flex items-center justify-center mx-auto w-3/4 h-1/4"> 
           <div class="w-5/6 font-bold"> Project:  {{ truncateNecessary(project.project_name , 4) }}  </div>
             <div class="flex items-center justify-end w-1/6 h-full"> 
               <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="bg-cover text-black bg-inherit font-bold">•••</button>
@@ -135,7 +135,7 @@
     <div v-if="selectedTab === 'myProjects'" id="membersRow" class="row-start-2 row-span-5 col-start-5 bg-white rounded-r-lg overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit  text-black font-bold flex items-center justify-center">
         <div> Project Members </div> 
-         <button id="addButton" v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
+         <button id="addButton" v-if="selectedProjectId && currentUser.id == projectOwnerId" @click="showAddMemberModal = true" class="ml-2 bg-indigo-500 px-1 py-1 rounded-sm font-bold text-white"> Add Members {{ memberUserIds }}  </button>
          <addMemberModal v-if="showAddMemberModal" :selectedProjectId="selectedProjectId"  :selectedProjectName="selectedProjectName" :nonProjectMembers="nonProjectMembers" :showAddMemberModal="showAddMemberModal" :users="users" @closeAddMemberModal="showAddMemberModal = false"> </addMemberModal>
         </div>  
 
@@ -156,24 +156,24 @@
 
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black font-bold flex items-center justify-center">
       <div> Project Tasks </div> 
-      <button id="addButton" v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-indigo-500 px-4 py-2 rounded-sm font-bold text-white"> Add Task </button>
+      <button id="addButton" v-if="selectedProjectId" @click="showAddTaskModal = true" class="ml-2 bg-indigo-500 px-2 py-1 rounded-sm font-bold text-white"> Add Task </button>
       <addTaskModal v-if="showAddTaskModal" :showAddTaskModal ="showAddTaskModal" :selectedProjectId="selectedProjectId" @closeAddTaskModal="showAddTaskModal = false"></addTaskModal>
       </div>
 
       <div id="projectRectangles"  v-for="task in filteredTasks()" :key="task.id" class="h-1/5 flex justify-center  w-3/4 bg-indigo-100  text-black mx-auto mt-2 rounded-sm">
         
         <div class="w-4/5 ml-2 flex flex-col justify-center "> 
-          <div class="break-text w-full h-3/4 flex items-start justify-center" >  {{ truncateText( task.name , 35) }}</div> 
-          <div class="break-text w-full h-1/4 flex items-start justify-center mb-0.5" > Status: {{ task.status }}</div> 
+          <div id="taskStatus1" class="break-text w-full h-3/4 flex items-start justify-center" >  {{ truncateText( task.name , 35) }}</div> 
+          <div id="taskStatus2" class="break-text w-full h-1/4 flex items-start justify-center mb-0.5 whitespace-nowrap" > Status: {{ task.status }}</div> 
         </div>
 
           <div class="w-1/5 flex justify-end">
             <div class="h-auto"> 
-              <button @click="selectTaskAndOpenEditTaskModal(task)"> 🖊️</button>
+              <button id="taskStatus1" @click="selectTaskAndOpenEditTaskModal(task)"> 🖊️</button>
               <editTaskModal v-if="showEditTaskModal" :showEditTaskModal="showEditTaskModal" :selectedTask="selectedTask" @closeEditTaskModal="showEditTaskModal = false" > </editTaskModal>
             </div>
             <div class="h-auto"> 
-              <button @click="selectTaskAndOpenDeleteTaskModal(task)"> 🗑️ </button>
+              <button id="taskStatus1" @click="selectTaskAndOpenDeleteTaskModal(task)"> 🗑️ </button>
               <deleteTaskModal v-if="showDeleteTaskModal" :showDeleteTaskModal="showDeleteTaskModal" @closeDeleteTaskModal="showDeleteTaskModal = false" :selectedTask="selectedTask"> </deleteTaskModal>
             </div>
           </div>  
@@ -482,6 +482,10 @@ font-size: 16px;
   color: indigo;
 }
 
+#projectBlock{
+  font-size:9px;
+}
+
 } 
 
 
@@ -498,6 +502,21 @@ font-size: 16px;
 #pendingTasks, #inProgressTasks, #completedTasks{
   font-size:3px;
   color: indigo;
+}
+
+#projectBlock{
+  font-size:4px;
+}
+
+#projectBlock2{
+  margin-top:2px;
+}
+#taskStatus1{
+  font-size:3px;
+}
+
+#taskStatus2{
+  font-size:3px;
 }
 
 }
