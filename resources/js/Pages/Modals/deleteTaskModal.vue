@@ -79,6 +79,10 @@ const deleteTask = () => {
   form.delete(`deleteTask/${props.selectedTask.id}`, {
     onSuccess: () => {
       closeModal();
+      setTimeout(() => {
+                // Reload the page after the delay
+                location.reload();
+            }, 500);
     },
   });
 };

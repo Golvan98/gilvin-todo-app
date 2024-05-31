@@ -4,6 +4,8 @@
   </div>
 
   <div id="container" class="w-full h-screen bg-white text-red-500 flex flex-col">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-NYGDtpaTUNvJz+CzNT9FxIzmxxb4q/PuQ21i4sBSFkQPZpJQMqcn5AGtb1FusJfV4RsxauUSFtY2RCw8B2+2kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Top Navbar -->
     <div id="topNavBar" class="bg-indigo-500 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white ">
 
@@ -44,12 +46,29 @@
     <!-- Footer -->
     <footer id="footer" class="h-10-percent mx-auto bg-indigo-500 flex w-full">
       <div id="leftFooter" class="h-full flex items-center justify-center">
-        This is the Left Footer. This Remains on Top if it is zoomed in to an extent
+        This website is a Web project management app leveraging CRUD w/ Laravel, Vue.js, Docker & MySQL 
       </div>
+
       <div id="rightFooter" class="bg-indigo-500 h-full flex items-center justify-center">
-        This is the Right Footer. This Remains Below if it is zoomed in to an extent
+        <a href="https://www.facebook.com/gilvin.zalsos" target="_blank" style="font-size: 16px;" class="text-white mx-2">ⓕ</a>
+
+
+        <a href="https://twitter.com/GelvenZolsos" target="_blank" style="font-size: 16px" class="text-white mx-2">𝕏</a>
+
+        <a href="https://www.linkedin.com/in/gilvin-zalsos-213692141/" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;" class="mx-2">
+          <path fill="currentColor" d="M21.98 0H2.02C.9 0 0 .9 0 2.02v19.96C0 23.1.9 24 2.02 24h19.96C23.1 24 24 23.1 24 21.98V2.02C24 .9 23.1 0 21.98 0zM7.26 20.015H4.026V9.13h3.234v10.885zM5.646 7.557a1.922 1.922 0 1 1 0-3.843 1.92 1.92 0 0 1 0 3.843zM20.016 20.015h-3.23v-5.701c0-1.362-.027-3.116-1.887-3.116-1.887 0-2.176 1.474-2.176 2.996v5.821h-3.23V9.13h3.155v1.59h.045c.44-.837 1.52-1.72 3.113-1.72 3.332 0 3.943 2.194 3.943 5.056v5.96z"/>
+        </svg>
+        </a>
+
+        <a href="https://github.com/Golvan98" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;" class="mx-2">
+          <path fill="currentColor" d="M12 0C5.372 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.385.6.11.793-.261.793-.578 0-.286-.01-1.041-.015-2.044-3.348.724-4.055-1.611-4.055-1.611-.547-1.387-1.336-1.756-1.336-1.756-1.092-.746.083-.731.083-.731 1.207.085 1.84 1.239 1.84 1.239 1.07 1.834 2.805 1.303 3.49.998.108-.772.419-1.302.763-1.604-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.383 1.235-3.224-.124-.303-.536-1.526.116-3.178 0 0 1.008-.322 3.3 1.23.957-.266 1.98-.398 3-.404 1.02.006 2.043.138 3 .404 2.29-1.552 3.297-1.23 3.297-1.23.654 1.652.242 2.875.118 3.178.77.841 1.232 1.914 1.232 3.224 0 4.61-2.807 5.624-5.478 5.92.43.371.817 1.102.817 2.222 0 1.604-.014 2.893-.014 3.286 0 .321.192.694.8.576C20.566 21.795 24 17.297 24 12c0-6.627-5.373-12-12-12z"/>
+        </svg>
+       </a>
+
       </div>
+
     </footer>
+
   </div>
 </template>
 
