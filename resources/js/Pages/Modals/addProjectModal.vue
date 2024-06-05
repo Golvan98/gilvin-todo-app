@@ -75,6 +75,9 @@ const createProject = () => {
     onSuccess: () => {
       if (!Object.keys(form.errors).length) {
         closeProjectModal();
+        setTimeout(() => {
+          location.reload();
+        }, 500); // 3000 milliseconds = 3 seconds
       }
     },
   });

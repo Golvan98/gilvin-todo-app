@@ -321,3 +321,12 @@ May 30:
 May 31:
 Assignment: Plug some content fillers for left and right footer
 Assignment: - try a flash message using vuejs to fix that delete project bug overlapping modals
+- added footer content
+
+
+June:
+Assignment: - try a flash message using vuejs to fix that delete project bug overlapping modals
+NOTE^ maybe just try a closeEditProjectModal command, pass that emit it onto delectprojectmodal onSuccess is ran
+
+June 5:
+- added a locationreload to fix flash message not reshowing after a form submission is done

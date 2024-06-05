@@ -1,7 +1,7 @@
 
 <template>
     <div  class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-opacity-95 w-full ">
-
+      
           <form @submit.prevent="deleteProject" class="bg-white w-1/4 h-2/5 flex-nowrap text-gray-600 border border-gray-900 ">
   
            <div class="w-full h-1/2">
@@ -21,14 +21,14 @@
 
                 <div id="deleteTaskButtonsSection" class="w-1/3 h-1/2 flex items-center justify-center"> 
                   <div class="w-full h-full flex items-center justify-center"> 
-                    <button type="submit" class="bg-red-300 w-1/2 h-full rounded-sm text-white font-bold"> 
-                      Yes 
+                    <button @click="closeEditProjectModal" type="submit" class="bg-red-300 w-1/2 h-full rounded-sm text-white font-bold"> 
+                     Yes {{ showEditProjectModal }}
                     </button> 
                   </div> 
                 </div>
               
                 <div id="deleteTaskButtonsSection" class="w-1/3 h-1/2  flex items-center justify-center"> 
-                    <button @click=" closeDeleteProjectModal"  class="bg-indigo-300 w-1/2 h-full rounded-sm"> 
+                    <button @click="closeModal"  class="bg-indigo-300 w-1/2 h-full rounded-sm"> 
                       No 
                     </button>
                 </div>
@@ -48,7 +48,7 @@
 
 <script setup>
 import { defineProps, defineEmits  } from 'vue';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useForm } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3'
 import { computed } from 'vue'
@@ -57,30 +57,49 @@ import { Link, usePage } from '@inertiajs/vue3'
 import { watch } from 'vue';
 import deleteProjectModal from '@/Pages/Modals/deleteProjectModal.vue'
 
+const flashMessage = computed(() => {
+  // Check if the flash message is present in local storage
+  const storedFlashMessage = localStorage.getItem('flashMessage');
+  
+  // Clear the flash message from local storage
+  localStorage.removeItem('flashMessage');
+
+  return storedFlashMessage || page.props.flash?.success;
+});
+
 const props = defineProps ({
     selectedProjectId: Number,
-    projectId: Number
+    projectId: Number,
+    showEditProjectModal:Boolean
 });
 
 const form = useForm ({
     project_id:null
 })
 
-const emits = defineEmits(['closeDeleteProjectModal']);
+const emits = defineEmits(['closeDeleteProjectModal', 'closeEditProjectModal']);
 
 const closeDeleteProjectModal = () => {
   emits('closeDeleteProjectModal');
   // Emit an event if needed
 };
 
-
-
 const closeModal = () => {
   emits('closeDeleteProjectModal');
+  emits('closeEditProjectModal');
+  
   // Emit an event if needed
 };
 
-    const deleteProject = () => {
+const closeEditProjectModal = () => {
+  emits('closeEditProjectModal');
+  // Emit an event if needed
+};
+
+const closeEditModal = () => {
+  emits('closeEditProjectModal');
+};
+/*    const deleteProject = () => {
     form.project_id = props.projectId;
     form.delete(`deleteProject/${props.projectId}` ,{
     onSuccess: () => {
@@ -91,6 +110,21 @@ const closeModal = () => {
             }, 500);
     },
     });
+}; */
+
+const deleteProject = () => {
+  form.project_id = props.projectId;
+  form.delete(`deleteProject/${props.projectId}`, {
+    onSuccess: () => {
+      closeModal();
+      // Store the flash message in local storage
+      localStorage.setItem('flashMessage', 'Project deleted successfully!');
+      // Reload the page after the delay
+      setTimeout(() => {
+        location.reload();
+      }, 500);
+    },
+  });
 };
 
 </script>

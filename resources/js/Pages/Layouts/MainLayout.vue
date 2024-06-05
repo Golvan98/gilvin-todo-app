@@ -1,10 +1,12 @@
 <template>
-<div v-if="flashSuccess" class="alert fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+<div v-if="flashSuccess" class="alert fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-1 right-3 text-sm">
                {{ flashSuccess }} 
-  </div>
+</div>
+
+
+
 
   <div id="container" class="w-full h-screen bg-white text-red-500 flex flex-col">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-NYGDtpaTUNvJz+CzNT9FxIzmxxb4q/PuQ21i4sBSFkQPZpJQMqcn5AGtb1FusJfV4RsxauUSFtY2RCw8B2+2kg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Top Navbar -->
     <div id="topNavBar" class="bg-indigo-500 w-full grid grid-cols-3 grid-rows-1 h-16 font-bold shadow-lg text-1xl text-white ">
@@ -51,8 +53,6 @@
 
       <div id="rightFooter" class="bg-indigo-500 h-full flex items-center justify-center">
         <a href="https://www.facebook.com/gilvin.zalsos" target="_blank" style="font-size: 16px;" class="text-white mx-2">ⓕ</a>
-
-
         <a href="https://twitter.com/GelvenZolsos" target="_blank" style="font-size: 16px" class="text-white mx-2">𝕏</a>
 
         <a href="https://www.linkedin.com/in/gilvin-zalsos-213692141/" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 16px; height: 16px;" class="mx-2">
@@ -148,6 +148,8 @@ import { ref, watch , computed  } from 'vue'
 import { Link, usePage } from '@inertiajs/vue3'
 
 const page = usePage()
+
+
 const flashSuccess = ref(page.props.flash.success)
 
 const user = computed( () => page.props.user)

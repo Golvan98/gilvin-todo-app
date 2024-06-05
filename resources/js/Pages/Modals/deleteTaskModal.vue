@@ -87,6 +87,15 @@ const deleteTask = () => {
   });
 };
 
+window.addEventListener('load', () => {
+  const flashMessage = $inertia.page.props.value.flash;
+
+  if (flashMessage && flashMessage.success) {
+    // Display the customized message
+    alert("Bonjour");
+  }
+});
+
 
 </script>
 

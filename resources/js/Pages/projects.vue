@@ -1,6 +1,10 @@
 <template>
 
 <MainLayout>
+  <div v-if="flashMessage" class="alert fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+      {{ flashMessage }}
+  </div>
+  
 
 <div id="secondBlock" class="bg-indigo-300 flex items-center justify-center mx-auto mr-5-pct ml-5-pct w-full h-full ">
 
@@ -109,7 +113,7 @@
     <div v-if="selectedTab === 'myProjects'" id="myProjectsRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black  flex items-center justify-center font-bold">
         <div> Projects </div>
-        <button v-if="currentUserId" id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-2 py-1 rounded-sm font-bold text-white "> Add Project</button>
+        <button v-if="currentUserId" id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-2 py-1 rounded-sm font-bold text-white "> Add Project </button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
       </div>  
@@ -245,6 +249,9 @@
 
     
 
+
+    
+
     
     
 
@@ -291,6 +298,20 @@ const props = defineProps ({
   projectsOwnedByUsers:Object,
   currentUserId:Object
 })
+
+
+const flashMessage = computed(() => {
+  // Check if the flash message is present in local storage
+  const storedFlashMessage = localStorage.getItem('flashMessage');
+  
+  // Clear the flash message from local storage
+  localStorage.removeItem('flashMessage');
+
+  return storedFlashMessage || page.props.flash?.success;
+});
+
+
+
 
 const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {

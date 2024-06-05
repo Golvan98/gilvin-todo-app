@@ -43,7 +43,7 @@
                                Delete {{showDeleteProjectModal}}
                             </button>
                           </div>
-                          <deleteProjectModal v-if="showDeleteProjectModal" :showDeleteProjectModal="showDeleteProjectModal" :projectId="projectId" @closeDeleteProjectModal="showDeleteProjectModal = false" />
+                          <deleteProjectModal v-if="showDeleteProjectModal" :showDeleteProjectModal="showDeleteProjectModal" :projectId="projectId" :showEditProjectModal="showEditProjectModal" @closeEditProjectModal="showEditProjectModal = false" @closeDeleteProjectModal="showDeleteProjectModal = false" />
 
                       </div>
 
