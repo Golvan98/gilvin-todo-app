@@ -139,8 +139,8 @@ const formClass = computed(() => ({
     #registerCloseButton{
         height:0.75rem;
         width:0.75rem;
-
-        color:red;
+        margin-top:2px;
+        margin-left:2px;
     }
 
     #registerLogo{
@@ -155,6 +155,7 @@ const formClass = computed(() => ({
     #register2ndBlock{
         height:90%;
         gap: 0.5rem;
+        margin-top: 9px;
     }
 
 

@@ -334,4 +334,4 @@ June 5:
 
 June 6:
 - fixed editproject modal not closing after deleting a project. (I'm never touching modals again)
-- 
+- made few tweaks to UI, this might be the final commit. Project's done for 
