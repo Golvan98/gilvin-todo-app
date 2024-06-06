@@ -23,15 +23,15 @@
     <div id="projectNavBar" class="bg-white row-start-2 row-span-5 col-start-2 col-span-1 text-black  ">
 
       <div class="mainNavButton flex justify-center"> 
-        <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class=" flex items-center justify-center w-1/2 " style="white-space: nowrap;"> Projects Overview</button>
+        <button  @click="setSelectedTab('myProjects')" :class="{ 'bg-indigo-300': selectedTab === 'myProjects', 'w-full': selectedTab === 'myProjects', 'bg-white': selectedTab !== 'myProjects' }" class=" flex items-center justify-center w-1/2 " style="white-space: nowrap;"> Projects Overview</button>
       </div>
       
        <div class="navButton flex justify-center"> 
-        <button @click="setSelectedTab('myTasks')" :class="{ 'bg-indigo-300': selectedTab === 'myTasks', 'bg-white': selectedTab !== 'myTasks' }" class=" flex items-center justify-center w-1/2 "> My Tasks </button>
+        <button @click="setSelectedTab('myTasks')" :class="{ 'bg-indigo-300': selectedTab === 'myTasks', 'w-full': selectedTab === 'myTasks', 'bg-white': selectedTab !== 'myTasks' }" class=" flex items-center justify-center w-1/2 "> My Tasks </button>
       </div>
 
       <div id="yourProjects" class="navButton marginTenPercent flex justify-center"> 
-        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2 font-bold" style="white-space: nowrap;"> Your Projects </button>
+        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'w-full': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2 font-bold" style="white-space: nowrap;"> Your Projects </button>
       </div>
 
       <div id="listofProjectsByUser" v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> 
