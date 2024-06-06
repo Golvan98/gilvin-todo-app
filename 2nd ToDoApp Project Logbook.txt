@@ -330,3 +330,8 @@ NOTE^ maybe just try a closeEditProjectModal command, pass that emit it onto del
 
 June 5:
 - added a locationreload to fix flash message not reshowing after a form submission is done
+- created a flashmessage fix for locationreload, will test more of it
+
+June 6:
+- fixed editproject modal not closing after deleting a project. (I'm never touching modals again)
+- 

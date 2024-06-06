@@ -1,5 +1,5 @@
 <template>
-<div v-if="flashSuccess" class="alert fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-1 right-3 text-sm">
+<div v-if="flashSuccess" class="alert fixed bg-green-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
                {{ flashSuccess }} 
 </div>
 

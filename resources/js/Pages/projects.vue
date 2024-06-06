@@ -119,7 +119,7 @@
       </div>  
 
       <div id="projectRectangles" v-if="selectedTab === 'myProjects'" v-for="project in projects" :key="projects.id" class="h-1/6 w-3/4 text-black mx-auto mt-2 rounded-lg">
-        <button id="projectBlock" @click="selectProject(project)" :class="{ 'bg-indigo-400': selectedProjectId == project.id }" class="bg-indigo-100 rounded-sm w-full h-full  ">
+        <button id="projectBlock" @click="selectProject(project)" :class="{ 'bg-indigo-200': selectedProjectId == project.id }" class="bg-gray-100 rounded-sm w-full h-full  ">
         <div id="projectBlock2" class="flex items-center justify-center mx-auto w-3/4 h-1/4"> 
           <div class="w-5/6 font-bold"> Project:  {{ truncateNecessary(project.project_name , 4) }}  </div>
             <div class="flex items-center justify-end w-1/6 h-full"> 
@@ -268,13 +268,11 @@
 </template>
 
 <script setup>
-
-
 import addMemberModal from '@/Pages/Modals/addMemberModal.vue'
 import addProjectModal from '@/Pages/Modals/addProjectModal.vue'
 import editProjectModal from '@/Pages/Modals/editProjectModal.vue'
 import addTaskModal from '@/Pages/Modals/addTaskModal.vue'
-import { ref, watch , computed } from 'vue'
+import { ref, watch , computed, onMounted, defineComponent  } from 'vue'
 import MainLayout from '@/Pages/Layouts/MainLayout.vue'
 import loginModal from '@/Pages/Modals/loginModal.vue'
 import registerModal from '@/Pages/Modals/registerModal.vue'
@@ -282,6 +280,39 @@ import { Link, usePage,  } from '@inertiajs/vue3'
 import editTaskModal from '@/Pages/Modals/editTaskModal.vue'
 import deleteTaskModal from '@/Pages/Modals/deleteTaskModal.vue'
 import removeMemberModal from '@/Pages/Modals/removeMemberModal.vue'
+
+
+const flashMessage = ref('');
+
+// Function to get and clear the flash message from local storage
+const getFlashMessage = () => {
+  const storedFlashMessage = localStorage.getItem('flashMessage');
+  localStorage.removeItem('flashMessage');
+  return storedFlashMessage || page.props.flash?.success;
+};
+
+// Computed property to return the flash message
+const computedFlashMessage = computed(() => getFlashMessage());
+
+// Set the flash message initially and set up a watch to clear it
+onMounted(() => {
+  flashMessage.value = computedFlashMessage.value;
+
+  watch(
+    () => computedFlashMessage.value,
+    (newValue) => {
+      flashMessage.value = newValue;
+      if (newValue) {
+        setTimeout(() => {
+          flashMessage.value = '';
+        }, 1000); // Clear the message after 5 seconds
+      }
+    },
+    { immediate: true }
+  );
+});
+
+
 
 const page = usePage()
 
@@ -300,15 +331,6 @@ const props = defineProps ({
 })
 
 
-const flashMessage = computed(() => {
-  // Check if the flash message is present in local storage
-  const storedFlashMessage = localStorage.getItem('flashMessage');
-  
-  // Clear the flash message from local storage
-  localStorage.removeItem('flashMessage');
-
-  return storedFlashMessage || page.props.flash?.success;
-});
 
 
 
@@ -531,6 +553,8 @@ font-size: 16px;
 
 #projectBlock2{
   margin-top:2px;
+  font-size:3px;
+  white-space: nowrap;
 }
 #taskStatus1{
   font-size:3px;
@@ -550,8 +574,10 @@ font-size: 16px;
     font-size: 3px;
   }
   #projectRectangles{
-    font-size:5px;
+    font-size:3px;
     margin-top:16px;
+    height:auto;
+    
   }
 
   #addButton {
@@ -584,6 +610,7 @@ font-size: 16px;
   #projectRectangles{
     height: 10%;
     width: 90%;
+    height:auto
   
   }
 
