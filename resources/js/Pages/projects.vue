@@ -120,7 +120,7 @@
 
       <div id="projectRectangles" v-if="selectedTab === 'myProjects'" v-for="project in projects" :key="projects.id" class="h-1/6 w-3/4 text-black mx-auto mt-2 rounded-lg">
         <button id="projectBlock" @click="selectProject(project)" :class="{ 'bg-indigo-200': selectedProjectId == project.id }" class="bg-gray-100 rounded-sm w-full h-full  ">
-        <div id="projectBlock2" class="flex items-center justify-center mx-auto w-3/4 h-1/4"> 
+        <div id="projectBlock2" class="flex items-center justify-center mx-auto w-3/4 h-1/4 whitespace-no-wrap"> 
           <div class="w-5/6 font-bold"> Project:  {{ truncateNecessary(project.project_name , 4) }}  </div>
             <div class="flex items-center justify-end w-1/6 h-full"> 
               <button v-if="currentUser.id == project.ownerId" @click="selectProjectAndOpenEditModal(project.id)" class="bg-cover text-black bg-inherit font-bold">•••</button>
@@ -473,6 +473,13 @@ const currentProjectInfo = computed(() => {
     overflow-wrap: break-word;
     white-space: normal;
     hyphens: auto;
+}
+
+@media screen and (min-width: 900px) and (max-width:99999px)
+{
+  #projectBlock2{
+    margin-top:4.5px;
+  }
 }
 
 @media screen and (min-width: 1200px) and (max-width:1281px)
