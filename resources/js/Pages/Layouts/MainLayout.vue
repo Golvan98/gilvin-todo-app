@@ -17,7 +17,8 @@
         <div v-if="user">{{ user.name }}   </div>
         <Link href="home"> <div> Home  </div> </Link>
         <Link href="projects"> <div> Projects </div> </Link>
-        <Link href="projects"> <div> Get Started </div> </Link>
+        <div v-if="!user"> <button @click="showRegisterModal = true"> Get Started </button> </div>
+        <Link v-if="user" href="projects"> <div> Get Started </div> </Link>
       </div>
 
       <div v-if="!user" id="rightSection" class="col-span-1 flex items-center justify-end mr-25-pct">

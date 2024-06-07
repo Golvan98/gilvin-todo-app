@@ -31,7 +31,8 @@
       </div>
 
       <div id="yourProjects" class="navButton marginTenPercent flex justify-center"> 
-        <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'w-full': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2 font-bold" style="white-space: nowrap;"> Your Projects </button>
+        <span class="font-bold"> Owned Projects</span>
+        <!-- THIS HERE IS AN UNUSED selectTabValue <button @click="setSelectedTab('otherProjects')" :class="{ 'bg-indigo-300': selectedTab === 'otherProjects', 'w-full': selectedTab === 'otherProjects', 'bg-white': selectedTab !== 'otherProjects' }" class="flex items-center justify-center w-1/2 font-bold" style="white-space: nowrap;">  Owned Projects </button> ...--> 
       </div>
 
       <div id="listofProjectsByUser" v-for="projectsOwnedByUser in projectsOwnedByUsers" :key="projectsOwnedByUser.id" class="flex justify-center"> 
@@ -54,7 +55,7 @@
       
        <div id="mainTaskPlacer" v-for="task in pendingTasks()" :key=task.id class="flex items-start justify-center mx-auto w-full h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-3/4 flex justify-center bg-indigo-300 h-3/4 rounded-lg"> 
+            <div v-if="selectedTab !== 'otherProjects'" id="taskPlacer" class="w-3/4 flex justify-center bg-indigo-300 h-3/4 rounded-lg"> 
                 <div class="w-5/6 flex justify-center"> 
                     <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
                 </div>
@@ -76,7 +77,7 @@
       
        <div id="mainTaskPlacer" v-for="task in inProgressTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex justify-center bg-indigo-300 h-3/4 rounded-lg"> 
+            <div v-if="selectedTab !== 'otherProjects'" id="taskPlacer" class="w-full flex justify-center bg-indigo-300 h-3/4 rounded-lg"> 
                 <div class="w-5/6 flex justify-center"> 
                     <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
                 </div>
@@ -98,7 +99,7 @@
       
        <div id="mainTaskPlacer" v-for="task in completedTasks()" :key=task.id class="flex items-start justify-center mx-auto w-3/4 h-1/4 font-bold"> 
           
-            <div id="taskPlacer" class="w-full flex justify-center  bg-indigo-300 h-3/4 rounded-lg"> 
+            <div v-if="selectedTab !== 'otherProjects'" id="taskPlacer" class="w-full flex justify-center  bg-indigo-300 h-3/4 rounded-lg"> 
                 <div class="w-5/6 flex justify-center"> 
                     <div class="w-5/6"> <span class="truncate-text">{{ truncateText(task.name, 30) }}</span></div>
                 </div>
@@ -113,7 +114,7 @@
     <div v-if="selectedTab === 'myProjects'" id="myProjectsRow" class="row-start-2 row-span-5 col-start-3 bg-white overflow-y-auto">
       <div class="h-10-percent w-3/4 mx-auto bg-inherit text-black  flex items-center justify-center font-bold">
         <div> Projects </div>
-        <button v-if="currentUserId" id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-2 py-1 rounded-sm font-bold text-white "> Add Project </button>
+        <button v-if="currentUserId" id="addButton" @click="showAddProjectModal = true" class="ml-2 bg-indigo-500 px-2 py-1 rounded-sm font-bold text-white "> Add a project </button>
         <addProjectModal v-if="showAddProjectModal" :showAddProjectModal="showAddProjectModal" @closeAddProjectModal="showAddProjectModal = false"></addProjectModal>
 
       </div>  
